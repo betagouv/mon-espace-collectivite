@@ -5,17 +5,17 @@ const isCI = !!process.env.CI;
 const isProduction = nodeEnvironment === 'production';
 
 const contentSecurityPolicy = `
-  default-src 'self' https://matomo.incubateur.anct.gouv.fr https://sentry.incubateur.net;
-  script-src 'self' https://matomo.incubateur.anct.gouv.fr 'unsafe-inline' 'unsafe-eval';
+  default-src 'self' https://matomo.incubateur.anct.gouv.fr https://sentry.incubateur.net https://tally.so;
+  script-src 'self' https://matomo.incubateur.anct.gouv.fr https://tally.so 'unsafe-inline' 'unsafe-eval';
   script-src-attr 'none';
   style-src 'self' https: 'unsafe-inline';
   img-src 'self' data:;
-  frame-src https://www.youtube-nocookie.com/;
+  frame-src https://www.youtube-nocookie.com/ https://tally.so;
   object-src 'none';
   connect-src 'self' https://matomo.incubateur.anct.gouv.fr https://sentry.incubateur.net https://openmaptiles.geo.data.gouv.fr https://openmaptiles.github.io https://aides-territoires.beta.gouv.fr;
   worker-src 'self' blob:;
   font-src 'self' https: data:;
-  frame-ancestors 'self' https://matomo.incubateur.anct.gouv.fr;
+  frame-ancestors 'self' https://matomo.incubateur.anct.gouv.fr https://tally.so;
   form-action 'self';
   base-uri 'self';
   ${isProduction ? 'upgrade-insecure-requests true;' : ''}
