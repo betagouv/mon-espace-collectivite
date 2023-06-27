@@ -1,4 +1,3 @@
-import { ServerWebAppConfig } from '@app/web/webAppConfig';
 import { NextRequest, NextResponse } from 'next/server';
 
 const nodeEnvironment = process.env.NODE_ENV;
@@ -13,9 +12,7 @@ const contentSecurityPolicy = `
   img-src 'self' data:;
   frame-src https://www.youtube-nocookie.com/;
   object-src 'none';
-  connect-src 'self' https://${ServerWebAppConfig.S3.uploadsBucket}.${
-  ServerWebAppConfig.S3.host
-} https://matomo.incubateur.anct.gouv.fr https://sentry.incubateur.net https://openmaptiles.geo.data.gouv.fr https://openmaptiles.github.io https://aides-territoires.beta.gouv.fr;
+  connect-src 'self' https://matomo.incubateur.anct.gouv.fr https://sentry.incubateur.net https://openmaptiles.geo.data.gouv.fr https://openmaptiles.github.io https://aides-territoires.beta.gouv.fr;
   worker-src 'self' blob:;
   font-src 'self' https: data:;
   frame-ancestors 'self' https://matomo.incubateur.anct.gouv.fr;

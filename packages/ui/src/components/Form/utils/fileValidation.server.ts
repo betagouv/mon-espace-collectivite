@@ -1,5 +1,6 @@
-import { formatByteSize } from '@app/ui/utils/formatByteSize';
 import { z } from 'zod';
+
+import { formatByteSize } from '@app/ui/utils/formatByteSize';
 
 export const fileMimeTypeValidation = (allowedTypes: string[], message?: string) =>
   z.string().refine((value) => allowedTypes.includes(value), message);

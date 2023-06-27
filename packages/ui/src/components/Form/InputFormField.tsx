@@ -1,8 +1,9 @@
-import { UiComponentProps } from '@app/ui/utils/uiComponentProps';
 import classNames from 'classnames';
 import React, { HTMLInputTypeAttribute, HTMLProps } from 'react';
 import { Control, Controller, FieldValues } from 'react-hook-form';
 import { FieldPath } from 'react-hook-form/dist/types/path';
+
+import { UiComponentProps } from '@app/ui/utils/uiComponentProps';
 
 type CommonProps<T extends FieldValues> = {
   control: Control<T>;

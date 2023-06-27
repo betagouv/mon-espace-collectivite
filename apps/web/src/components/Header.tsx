@@ -1,9 +1,10 @@
+import Link from 'next/link';
+import React from 'react';
+
 import { SessionUser } from '@app/web/auth/sessionUser';
 import HeaderBackLink from '@app/web/components/HeaderBackLink';
 import { HeaderUserMenu } from '@app/web/components/HeaderUserMenu';
 import { PublicWebAppConfig } from '@app/web/webAppConfig';
-import Link from 'next/link';
-import React from 'react';
 
 const Header = ({ user, backLink }: { user?: SessionUser | null; backLink?: boolean }) => (
   <header role="banner" className="fr-header">

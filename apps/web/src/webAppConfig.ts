@@ -1,4 +1,8 @@
-import { mainLiveUrl, projectTitle, repositoryUrl } from '@app/config/config';
+const { mainLiveUrl, projectTitle, repositoryUrl } = {
+  mainLiveUrl: 'mainLiveUrl',
+  projectTitle: 'projectTitle',
+  repositoryUrl: 'repositoryUrl',
+};
 
 const NodeEnvironment = process.env.NODE_ENV;
 

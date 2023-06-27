@@ -1,10 +1,11 @@
 'use client';
 
-import { SessionUser } from '@app/web/auth/sessionUser';
 import classNames from 'classnames';
 import Link from 'next/link';
 import { KeyboardEvent, MouseEvent as ReactMouseEvent, useRef } from 'react';
 import { useOnClickOutside } from 'usehooks-ts';
+
+import { SessionUser } from '@app/web/auth/sessionUser';
 
 import styles from './HeaderUserMenu.module.css';
 

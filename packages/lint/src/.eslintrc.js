@@ -25,14 +25,6 @@ module.exports = {
     'unicorn/no-array-callback-reference': 'off',
     'no-continue': 'off',
     'prettier/prettier': 'error',
-    'no-unused-vars': [
-      'error',
-      {
-        argsIgnorePattern: '^_',
-        varsIgnorePattern: '^_',
-        caughtErrorsIgnorePattern: '^_',
-      },
-    ],
     // Null and undefined have different intent in our code, especially for integration with prisma and trpc
     'unicorn/no-null': 'off',
     'unicorn/filename-case': [
@@ -44,6 +36,10 @@ module.exports = {
         },
       },
     ],
+    // When hunting dead code it's useful to use the following:
+    // ---
+    // 'no-unused-vars': 'error',
+    // 'import/no-unused-modules': [1, { unusedExports: true }],
   },
   parserOptions: {
     sourceType: 'module',
@@ -85,18 +81,7 @@ module.exports = {
         'no-continue': 'off',
         // Typescript compiler will avoid errors based on inconsistent returns
         'consistent-return': 'off',
-        'import/order': [
-          'error',
-          {
-            pathGroups: [
-              {
-                pattern: '@app/**',
-                group: 'external',
-                position: 'after',
-              },
-            ],
-          },
-        ],
+        'import/order': 'error',
         // Module resolve leads to false negatives in monorepo, typescript compiler will handle any error
         'import/no-unresolved': [2, { ignore: ['^@app/', '^react-hook-form/dist'] }],
         // This rule is unreliable in monorepos and typescript compiler will help on bad imports

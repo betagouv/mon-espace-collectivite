@@ -1,5 +1,6 @@
-import { GenerateUploadedImageSourceSetsInput, generateUploadedImageSourceSets } from '@app/web/utils/responsiveImage';
 import React, { ComponentProps } from 'react';
+
+import { GenerateUploadedImageSourceSetsInput, generateUploadedImageSourceSets } from '@app/web/utils/responsiveImage';
 
 const ResponsiveUploadedImage = ({
   id,

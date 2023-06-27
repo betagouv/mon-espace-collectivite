@@ -1,11 +1,9 @@
+import NextAuth, { NextAuthOptions } from 'next-auth';
+import KeycloakProvider, { KeycloakProfile } from 'next-auth/providers/keycloak';
+
 import { inclusionConnectProviderId } from '@app/web/auth/inclusionConnect';
 import { nextAuthAdapter } from '@app/web/auth/nextAuthAdapter';
 import '@app/web/auth/nextAuthSetup';
-import { sendVerificationRequest } from '@app/web/auth/sendVerificationRequest';
-import { PublicWebAppConfig, ServerWebAppConfig } from '@app/web/webAppConfig';
-import NextAuth, { NextAuthOptions } from 'next-auth';
-import EmailProvider from 'next-auth/providers/email';
-import KeycloakProvider, { KeycloakProfile } from 'next-auth/providers/keycloak';
 
 export const authOptions: NextAuthOptions = {
   adapter: nextAuthAdapter,
@@ -18,10 +16,6 @@ export const authOptions: NextAuthOptions = {
     // newUser: '/bienvenue',
   },
   providers: [
-    EmailProvider({
-      ...ServerWebAppConfig.Auth.Email,
-      sendVerificationRequest,
-    }),
     KeycloakProvider({
       // Allow an email user to login with Inclusion Connect
       allowDangerousEmailAccountLinking: true,

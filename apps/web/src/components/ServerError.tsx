@@ -1,7 +1,8 @@
 'use client';
 
-import { PublicWebAppConfig } from '@app/web/webAppConfig';
 import { PropsWithChildren } from 'react';
+
+import { PublicWebAppConfig } from '@app/web/webAppConfig';
 
 export const GenericError = ({
   title,

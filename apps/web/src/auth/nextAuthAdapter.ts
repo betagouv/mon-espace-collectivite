@@ -1,7 +1,8 @@
-import { inclusionConnectProviderId } from '@app/web/auth/inclusionConnect';
-import { prismaClient } from '@app/web/prismaClient';
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
 import type { Adapter, AdapterUser } from 'next-auth/adapters';
+
+import { inclusionConnectProviderId } from '@app/web/auth/inclusionConnect';
+import { prismaClient } from '@app/web/prismaClient';
 
 const prismaAdapter = PrismaAdapter(prismaClient);
 

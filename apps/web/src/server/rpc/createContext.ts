@@ -1,7 +1,8 @@
-import { getSessionTokenFromCookies } from '@app/web/auth/getSessionTokenFromCookies';
-import { getSessionUserFromSessionToken } from '@app/web/auth/getSessionUserFromSessionToken';
 import { inferAsyncReturnType } from '@trpc/server';
 import { CreateNextContextOptions } from '@trpc/server/src/adapters/next';
+
+import { getSessionTokenFromCookies } from '@app/web/auth/getSessionTokenFromCookies';
+import { getSessionUserFromSessionToken } from '@app/web/auth/getSessionUserFromSessionToken';
 
 export const createContext = async ({ req, res }: CreateNextContextOptions) => {
   const sessionToken = getSessionTokenFromCookies(req.cookies);

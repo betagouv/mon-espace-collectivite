@@ -1,5 +1,6 @@
-import { runPromisesSequentially } from '@app/web/utils/runPromisesSequentially';
 import { chunk } from 'lodash';
+
+import { runPromisesSequentially } from '@app/web/utils/runPromisesSequentially';
 
 export const runPromisesInChunks = async <T>(
   promises: ArrayLike<T | PromiseLike<T>>,

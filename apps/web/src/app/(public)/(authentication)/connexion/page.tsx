@@ -1,9 +1,10 @@
+import { Route } from 'next';
+import { redirect } from 'next/navigation';
+
 import SigninPanel from '@app/web/app/(public)/(authentication)/connexion/SigninPanel';
 import { getSessionUser } from '@app/web/auth/getSessionUser';
 import Breadcrumbs from '@app/web/components/Breadcrumbs';
 import { getServerUrl } from '@app/web/utils/baseUrl';
-import { Route } from 'next';
-import { redirect } from 'next/navigation';
 
 export const revalidate = 0;
 

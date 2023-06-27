@@ -1,5 +1,6 @@
-import PublicFooter from '@app/web/app/(public)/PublicFooter';
 import { Meta, StoryObj } from '@storybook/react';
+
+import PublicFooter from '@app/web/app/(public)/PublicFooter';
 
 export default {
   title: 'PublicFooter',
