@@ -19,8 +19,8 @@
     "with-env": "dotenv -e ../../.env --",
     "with-remote-env": "dotenv -e ../../.env.remote -e ../../.env --",
     "prisma": "pnpm --silent with-env prisma",
-    "standalone:configure": "cp -R ./public ./.next/standalone/apps/web/public && cp -R ./.next/static ./.next/standalone/apps/web/.next/static",
-    "standalone:start": "../../node_modules/.bin/dotenv -e ../../.env -- node ./.next/standalone/apps/web/server.js"
+    "heroku-postbuild": "pnpm run build && ./prepare-standalone.sh",
+    "heroku-start": "node ./dist/apps/web/server.js"
   },
   "dependencies": {
     "@codegouvfr/react-dsfr": "^0.57.2",
