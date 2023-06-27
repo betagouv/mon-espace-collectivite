@@ -1,26 +1,23 @@
-import { chunk } from 'lodash'
-import { runPromisesSequentially } from '@app/web/utils/runPromisesSequentially'
+import { runPromisesSequentially } from '@app/web/utils/runPromisesSequentially';
+import { chunk } from 'lodash';
 
 export const runPromisesInChunks = async <T>(
   promises: ArrayLike<T | PromiseLike<T>>,
   chunkSize: number,
-  onChunk?: (
-    chunkResult: Awaited<T>[],
-    chunkIndex: number,
-  ) => void | Promise<void>,
+  onChunk?: (chunkResult: Awaited<T>[], chunkIndex: number) => void | Promise<void>,
 ): Promise<Awaited<T>[]> => {
-  const chunked = chunk(promises, chunkSize)
+  const chunked = chunk(promises, chunkSize);
 
   const chunkedResults = await runPromisesSequentially(
     chunked.map((promisesChunk, chunkIndex) =>
       Promise.all(promisesChunk).then(async (chunkResult) => {
         if (onChunk) {
-          await onChunk(chunkResult, chunkIndex)
+          await onChunk(chunkResult, chunkIndex);
         }
-        return chunkResult
+        return chunkResult;
       }),
     ),
-  )
+  );
 
-  return chunkedResults.flat()
-}
+  return chunkedResults.flat();
+};

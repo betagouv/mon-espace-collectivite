@@ -1,13 +1,8 @@
-import classNames from 'classnames'
-import styles from './Spinner.module.css'
+import classNames from 'classnames';
 
-export const Spinner = ({
-  className,
-  size = 'medium',
-}: {
-  className?: string
-  size?: 'small' | 'medium' | 'large'
-}) => (
+import styles from './Spinner.module.css';
+
+export const Spinner = ({ className, size = 'medium' }: { className?: string; size?: 'small' | 'medium' | 'large' }) => (
   <picture>
     <img
       className={classNames(
@@ -23,4 +18,4 @@ export const Spinner = ({
       alt=""
     />
   </picture>
-)
+);

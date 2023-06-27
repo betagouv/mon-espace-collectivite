@@ -1,19 +1,19 @@
-import React from 'react'
-import { useRef } from '@storybook/addons'
-import { Preview } from '@storybook/react'
-import '@app/web/app/app.css'
+import '@app/web/app/app.css';
+import { useRef } from '@storybook/addons';
+import { Preview } from '@storybook/react';
+import React from 'react';
 
 const loadDsfrJs = () => {
-  const existing = document.querySelector('#dsfr-js')
+  const existing = document.querySelector('#dsfr-js');
   if (existing) {
-    return
+    return;
   }
 
-  const script = document.createElement('script')
-  script.id = 'dsfr-js'
-  script.src = '/dsfr/dsfr.module.min.js'
-  document.body.append(script)
-}
+  const script = document.createElement('script');
+  script.id = 'dsfr-js';
+  script.src = '/dsfr/dsfr.module.min.js';
+  document.body.append(script);
+};
 
 const preview: Preview = {
   parameters: {
@@ -35,14 +35,14 @@ const preview: Preview = {
   },
   decorators: [
     (Story) => {
-      const isSetup = useRef(false)
+      const isSetup = useRef(false);
       if (!isSetup.current) {
-        loadDsfrJs()
-        isSetup.current = true
+        loadDsfrJs();
+        isSetup.current = true;
       }
-      return <Story />
+      return <Story />;
     },
   ],
-}
+};
 
-export default preview
+export default preview;

@@ -1,27 +1,25 @@
-import React from 'react'
+import { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
 
-import { Meta, StoryObj } from '@storybook/react'
-import SearchableSelect from './SearchableSelect'
+import SearchableSelect from './SearchableSelect';
 
-const Commune = ({ commune }: { commune: string }) => (
-  <div style={{ color: ' #000091' }}>{commune}</div>
-)
+const Commune = ({ commune }: { commune: string }) => <div style={{ color: ' #000091' }}>{commune}</div>;
 
 const Structure = ({ name, addresse }: { name: string; addresse: string }) => (
   <>
     <div style={{ color: ' #000091' }}>{name}</div>
     <div className="fr-text--sm fr-mb-0">{addresse}</div>
   </>
-)
+);
 
 const meta: Meta<typeof SearchableSelect> = {
   title: 'DSFR Component/Searchable Select',
   component: SearchableSelect,
-}
+};
 
-export default meta
+export default meta;
 
-type Story = StoryObj<typeof SearchableSelect>
+type Story = StoryObj<typeof SearchableSelect>;
 
 export const Default: Story = {
   name: 'Simple searchable select',
@@ -39,7 +37,7 @@ export const Default: Story = {
   argTypes: {
     setSelected: { action: 'selected' },
   },
-}
+};
 
 const communes = [
   'Grave 47520 Le passage',
@@ -48,7 +46,7 @@ const communes = [
   'Paris 75001 Paris',
   "Val d'oise 95380 Villeron",
   "Val d'oise 95380 Louvres",
-]
+];
 const structures = [
   {
     name: 'CCAS - Espace Gustave Graville',
@@ -74,7 +72,7 @@ const structures = [
     name: 'MJC tendance',
     addresse: 'première a gauche en sortant',
   },
-]
+];
 
 export const Complex: Story = {
   name: 'Complex searchable select',
@@ -102,4 +100,4 @@ export const Complex: Story = {
   argTypes: {
     setSelected: { action: 'selected' },
   },
-}
+};

@@ -1,7 +1,7 @@
-'use client'
+'use client';
 
-import { PropsWithChildren } from 'react'
-import { PublicWebAppConfig } from '@app/web/webAppConfig'
+import { PublicWebAppConfig } from '@app/web/webAppConfig';
+import { PropsWithChildren } from 'react';
 
 export const GenericError = ({
   title,
@@ -9,9 +9,9 @@ export const GenericError = ({
   lead,
   children,
 }: PropsWithChildren<{
-  title: string
-  subtitle: string
-  lead: string
+  title: string;
+  subtitle: string;
+  lead: string;
 }>) => (
   <main role="main" id="content">
     <div className="fr-container">
@@ -28,13 +28,7 @@ export const GenericError = ({
               </a>
             </li>
             <li>
-              <a
-                className="fr-btn fr-btn--secondary"
-                href={
-                  PublicWebAppConfig.contactEmail &&
-                  `mailto:${PublicWebAppConfig.contactEmail}`
-                }
-              >
+              <a className="fr-btn fr-btn--secondary" href={PublicWebAppConfig.contactEmail && `mailto:${PublicWebAppConfig.contactEmail}`}>
                 Contactez-nous
               </a>
             </li>
@@ -49,34 +43,19 @@ export const GenericError = ({
             height="200"
             viewBox="0 0 160 200"
           >
-            <use
-              className="fr-artwork-motif"
-              href="/dsfr/artwork/background/ovoid.svg"
-            />
-            <use
-              className="fr-artwork-background"
-              href="/dsfr/artwork/background/ovoid.svg#artwork-background"
-            />
+            <use className="fr-artwork-motif" href="/dsfr/artwork/background/ovoid.svg" />
+            <use className="fr-artwork-background" href="/dsfr/artwork/background/ovoid.svg#artwork-background" />
             <g transform="translate(40, 60)">
-              <use
-                className="fr-artwork-decorative"
-                href="/dsfr/artwork/pictograms/system/technical-error.svg#artwork-decorative"
-              />
-              <use
-                className="fr-artwork-minor"
-                href="/dsfr/artwork/pictograms/system/technical-error.svg#artwork-minor"
-              />
-              <use
-                className="fr-artwork-major"
-                href="/dsfr/artwork/pictograms/system/technical-error.svg#artwork-major"
-              />
+              <use className="fr-artwork-decorative" href="/dsfr/artwork/pictograms/system/technical-error.svg#artwork-decorative" />
+              <use className="fr-artwork-minor" href="/dsfr/artwork/pictograms/system/technical-error.svg#artwork-minor" />
+              <use className="fr-artwork-major" href="/dsfr/artwork/pictograms/system/technical-error.svg#artwork-major" />
             </g>
           </svg>
         </div>
       </div>
     </div>
   </main>
-)
+);
 
 export const ServerError = () => (
   <GenericError
@@ -88,7 +67,7 @@ export const ServerError = () => (
     <br />
     Si vous avez besoin d&apos;une aide immédiate, merci de nous contacter.
   </GenericError>
-)
+);
 
 export const NotFoundError = () => (
   <GenericError
@@ -96,21 +75,14 @@ export const NotFoundError = () => (
     subtitle="Erreur 404"
     lead="La page que vous cherchez est introuvable. Excusez-nous pour la gène occasionnée."
   >
-    Si vous avez tapé l&apos;adresse web dans le navigateur, vérifiez
-    qu&apos;elle est correcte. La page n’est peut-être plus disponible.
+    Si vous avez tapé l&apos;adresse web dans le navigateur, vérifiez qu&apos;elle est correcte. La page n’est peut-être plus disponible.
     <br />
-    Dans ce cas, pour continuer votre visite vous pouvez consulter notre page
-    d’accueil.
+    Dans ce cas, pour continuer votre visite vous pouvez consulter notre page d’accueil.
   </GenericError>
-)
+);
 
 export const UnauthorizedError = () => (
-  <GenericError
-    title="Accès refusé"
-    subtitle="Erreur 403"
-    lead="Vous n'avez pas accès à cette page."
-  >
-    Si vous avez tapé l&apos;adresse web dans le navigateur, vérifiez
-    qu&apos;elle est correcte.
+  <GenericError title="Accès refusé" subtitle="Erreur 403" lead="Vous n'avez pas accès à cette page.">
+    Si vous avez tapé l&apos;adresse web dans le navigateur, vérifiez qu&apos;elle est correcte.
   </GenericError>
-)
+);

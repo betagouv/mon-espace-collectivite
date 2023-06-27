@@ -1,13 +1,14 @@
-import React, { ReactNode } from 'react'
-import classNames from 'classnames'
-import styles from './Options.module.css'
+import classNames from 'classnames';
+import React, { ReactNode } from 'react';
+
+import styles from './Options.module.css';
 
 export type Option<T extends string> = {
-  component?: ReactNode
-  name: string
-  value: T
-  disabled?: boolean
-}
+  component?: ReactNode;
+  name: string;
+  value: T;
+  disabled?: boolean;
+};
 
 const Options = <T extends string>({
   options,
@@ -15,17 +16,13 @@ const Options = <T extends string>({
   limit,
   noResultMessage,
 }: {
-  options: Option<T>[]
-  select: (option: Option<T>) => void
-  limit: number
-  noResultMessage?: string
+  options: Option<T>[];
+  select: (option: Option<T>) => void;
+  limit: number;
+  noResultMessage?: string;
 }) => {
   if (options.length === 0) {
-    return (
-      <option className={classNames(styles.option, styles.disabled)}>
-        {noResultMessage || 'Aucun résultat'}
-      </option>
-    )
+    return <option className={classNames(styles.option, styles.disabled)}>{noResultMessage || 'Aucun résultat'}</option>;
   }
   return (
     <>
@@ -39,7 +36,7 @@ const Options = <T extends string>({
           })}
           onMouseDown={() => {
             if (!option.disabled) {
-              select(option)
+              select(option);
             }
           }}
         >
@@ -47,7 +44,7 @@ const Options = <T extends string>({
         </div>
       ))}
     </>
-  )
-}
+  );
+};
 
-export default Options
+export default Options;

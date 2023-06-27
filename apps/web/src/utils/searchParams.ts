@@ -1,11 +1,9 @@
-export const searchParamAsArray = <T extends string = string>(
-  param?: string | string[],
-): T[] => {
+export const searchParamAsArray = <T extends string = string>(param?: string | string[]): T[] => {
   if (!param) {
-    return []
+    return [];
   }
   if (typeof param === 'string') {
-    return [param] as T[]
+    return [param] as T[];
   }
-  return param as T[]
-}
+  return param as T[];
+};

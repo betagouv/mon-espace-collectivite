@@ -1,5 +1,5 @@
-import { MjmlAll, MjmlAttributes, MjmlFont, MjmlSpacer } from 'mjml-react'
-import React from 'react'
+import { emailAssetUrl } from '@app/emails/emailAssetUrl';
+import { PublicWebAppConfig } from '@app/web/webAppConfig';
 import {
   Mjml,
   MjmlBody,
@@ -12,12 +12,12 @@ import {
   MjmlText,
   MjmlTitle,
   renderToMjml,
-} from '@luma-team/mjml-react'
-import { PublicWebAppConfig } from '@app/web/webAppConfig'
-import { emailAssetUrl } from '@app/emails/emailAssetUrl'
+} from '@luma-team/mjml-react';
+import { MjmlAll, MjmlAttributes, MjmlFont, MjmlSpacer } from 'mjml-react';
+import React from 'react';
 
-const brandColor = '#000091'
-const backgroundColor = '#F6F6F6'
+const brandColor = '#000091';
+const backgroundColor = '#F6F6F6';
 
 export const emailSignin = {
   text: ({ url }: { url: string }): string =>
@@ -31,20 +31,11 @@ export const emailSignin = {
           <MjmlAttributes>
             <MjmlAll fontFamily="Marianne, Helvetica, Arial, sans-serif" />
             <MjmlSection backgroundColor="white" />
-            <MjmlButton
-              backgroundColor={brandColor}
-              borderRadius={0}
-              fontSize="16px"
-              lineHeight="24px"
-              fontWeight={400}
-              innerPadding="8px 16px"
-            />
+            <MjmlButton backgroundColor={brandColor} borderRadius={0} fontSize="16px" lineHeight="24px" fontWeight={400} innerPadding="8px 16px" />
             <MjmlText fontSize="16px" lineHeight="24px" fontWeight={400} />
           </MjmlAttributes>
           <MjmlTitle>{`Connexion à ${PublicWebAppConfig.projectTitle}`}</MjmlTitle>
-          <MjmlPreview>
-            Voici votre lien de connexion sécurisé à usage unique :
-          </MjmlPreview>
+          <MjmlPreview>Voici votre lien de connexion sécurisé à usage unique :</MjmlPreview>
         </MjmlHead>
         <MjmlBody backgroundColor={backgroundColor}>
           {/* Section used for a bit of headroom at the top */}
@@ -52,19 +43,10 @@ export const emailSignin = {
           {/* Header with logos */}
           <MjmlSection paddingBottom="8px">
             <MjmlColumn width="24%" verticalAlign="middle">
-              <MjmlImage
-                align="left"
-                src={emailAssetUrl('/email/fr.svg')}
-                alt="République Française"
-              />
+              <MjmlImage align="left" src={emailAssetUrl('/email/fr.svg')} alt="République Française" />
             </MjmlColumn>
             <MjmlColumn width="76%" verticalAlign="middle">
-              <MjmlImage
-                align="left"
-                width={160}
-                src={emailAssetUrl('/email/logo.svg')}
-                alt={PublicWebAppConfig.projectTitle}
-              />
+              <MjmlImage align="left" width={160} src={emailAssetUrl('/email/logo.svg')} alt={PublicWebAppConfig.projectTitle} />
             </MjmlColumn>
           </MjmlSection>
           <MjmlSection paddingTop={0}>
@@ -73,16 +55,11 @@ export const emailSignin = {
                 Connexion à {PublicWebAppConfig.projectTitle}
               </MjmlText>
               <MjmlSpacer height="16px" />
-              <MjmlText>
-                Voici votre lien de connexion sécurisé à usage unique&nbsp;:
-              </MjmlText>
+              <MjmlText>Voici votre lien de connexion sécurisé à usage unique&nbsp;:</MjmlText>
               <MjmlButton align="left" href={url}>
                 Se connecter
               </MjmlButton>
-              <MjmlText>
-                Si vous n&apos;avez pas demandé à recevoir cet email, vous
-                pouvez l&apos;ignorer en toute sécurité.
-              </MjmlText>
+              <MjmlText>Si vous n&apos;avez pas demandé à recevoir cet email, vous pouvez l&apos;ignorer en toute sécurité.</MjmlText>
             </MjmlColumn>
           </MjmlSection>
           {/* Section used for a bit of padding at the bottom */}
@@ -90,4 +67,4 @@ export const emailSignin = {
         </MjmlBody>
       </Mjml>,
     ),
-}
+};

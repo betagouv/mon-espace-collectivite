@@ -1,20 +1,20 @@
-import { Octokit } from 'octokit'
+import { Octokit } from 'octokit';
 
-export const owner = 'inclusion-numerique'
-export const repo = process.env.NEXT_PUBLIC_APP_SLUG || ''
+export const owner = 'inclusion-numerique';
+export const repo = process.env.NEXT_PUBLIC_APP_SLUG || '';
 
-let octokit: Octokit
+let octokit: Octokit;
 
 // Lazily validate env and instanciate octokit
 export const getOctokit = () => {
   if (!octokit) {
-    const token = process.env.GITHUB_TOKEN
+    const token = process.env.GITHUB_TOKEN;
 
     if (!token) {
-      throw new Error('Missing GITHUB_TOKEN env variable for authentication')
+      throw new Error('Missing GITHUB_TOKEN env variable for authentication');
     }
-    octokit = new Octokit({ auth: token })
+    octokit = new Octokit({ auth: token });
   }
 
-  return octokit
-}
+  return octokit;
+};

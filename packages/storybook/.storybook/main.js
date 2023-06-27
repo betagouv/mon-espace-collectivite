@@ -1,16 +1,16 @@
 /* eslint unicorn/prefer-module: 0,  @typescript-eslint/no-var-requires: 0, @typescript-eslint/unbound-method: 0 */
 
-const { parse } = require('dotenv')
-const { resolve } = require('node:path')
-const { readFileSync, existsSync } = require('node:fs')
+const { parse } = require('dotenv');
+const { resolve } = require('node:path');
+const { readFileSync, existsSync } = require('node:fs');
 
 const dotenvVariables = () => {
-  const dotenvFile = resolve(__dirname, '../../../.env')
+  const dotenvFile = resolve(__dirname, '../../../.env');
   if (!existsSync(dotenvFile)) {
-    return null
+    return null;
   }
-  return parse(readFileSync(dotenvFile))
-}
+  return parse(readFileSync(dotenvFile));
+};
 
 // See https://github.com/storybookjs/storybook/blob/111edc3929eb8afff1b58285b0b9c49dd493ae85/code/frameworks/nextjs/README.md
 module.exports = {
@@ -46,4 +46,4 @@ module.exports = {
     ...config,
     ...dotenvVariables(),
   }),
-}
+};

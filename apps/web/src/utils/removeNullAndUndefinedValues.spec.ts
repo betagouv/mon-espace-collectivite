@@ -1,4 +1,4 @@
-import { removeNullAndUndefinedValues } from '@app/web/utils/removeNullAndUndefinedValues'
+import { removeNullAndUndefinedValues } from '@app/web/utils/removeNullAndUndefinedValues';
 
 describe('removeNullAndUndefinedValues', () => {
   it('Removes null and values', () => {
@@ -12,6 +12,6 @@ describe('removeNullAndUndefinedValues', () => {
         f: undefined,
         g: Number.NaN,
       }),
-    ).toEqual({ a: '', b: 0, c: {}, d: [], g: Number.NaN })
-  })
-})
+    ).toEqual({ a: '', b: 0, c: {}, d: [], g: Number.NaN });
+  });
+});

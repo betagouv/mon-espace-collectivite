@@ -1,11 +1,12 @@
-import React from 'react'
-import { useForm } from 'react-hook-form'
-import z from 'zod'
-import { zodResolver } from '@hookform/resolvers/zod/dist/zod'
-import { Meta, StoryObj } from '@storybook/react'
-import { useOnDiff } from '@app/web/hooks/useOnDiff'
-import RadioFormField, { RadioFormFieldProps } from './RadioFormField'
-import { RadioOption } from './utils/options'
+import { useOnDiff } from '@app/web/hooks/useOnDiff';
+import { zodResolver } from '@hookform/resolvers/zod/dist/zod';
+import { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import z from 'zod';
+
+import RadioFormField, { RadioFormFieldProps } from './RadioFormField';
+import { RadioOption } from './utils/options';
 
 const objectFormValidation = z
   .object({
@@ -13,43 +14,40 @@ const objectFormValidation = z
     choiceError: z.enum(['choice-1', 'choice-2', 'choice-3']),
     choiceSuccess: z.enum(['choice-1', 'choice-2', 'choice-3']),
   })
-  .strict()
-type ObjectFormData = z.infer<typeof objectFormValidation>
+  .strict();
+type ObjectFormData = z.infer<typeof objectFormValidation>;
 
-const Template = ({
-  path,
-  ...args
-}: Omit<RadioFormFieldProps<ObjectFormData>, 'control'>) => {
+const Template = ({ path, ...args }: Omit<RadioFormFieldProps<ObjectFormData>, 'control'>) => {
   const form = useForm<ObjectFormData>({
     resolver: zodResolver(objectFormValidation),
     reValidateMode: 'onChange',
     mode: 'all',
-  })
+  });
 
   useOnDiff(form, () => {
     form.setValue('choiceSuccess', 'choice-2', {
       shouldTouch: true,
       shouldDirty: true,
       shouldValidate: true,
-    })
-    form.setError('choiceError', { message: 'Choice is required' })
-  })
+    });
+    form.setError('choiceError', { message: 'Choice is required' });
+  });
 
   return (
     <form>
       <RadioFormField control={form.control} path={path} {...args} />
     </form>
-  )
-}
+  );
+};
 
 const meta: Meta<typeof RadioFormField> = {
   title: 'DSFR Component/Form/Radio',
   component: RadioFormField,
-}
+};
 
-export default meta
+export default meta;
 
-type Story = StoryObj<typeof RadioFormField>
+type Story = StoryObj<typeof RadioFormField>;
 
 const options: RadioOption[] = [
   {
@@ -64,7 +62,7 @@ const options: RadioOption[] = [
     name: 'Choix 3',
     value: 'choice-3',
   },
-]
+];
 
 export const Default: Story = {
   name: 'Liste verticale',
@@ -73,7 +71,7 @@ export const Default: Story = {
     label: 'Label',
     options,
   },
-}
+};
 
 export const Inline: Story = {
   name: 'Liste horizontale',
@@ -83,7 +81,7 @@ export const Inline: Story = {
     options,
     inline: true,
   },
-}
+};
 
 export const Hint: Story = {
   name: "Liste avec texte d'aide",
@@ -93,7 +91,7 @@ export const Hint: Story = {
     options,
     hint: 'Texte de description additionnel',
   },
-}
+};
 
 export const Hints: Story = {
   name: "Liste avec textes d'aide",
@@ -105,7 +103,7 @@ export const Hints: Story = {
       hint: `Aide pour ${option.name}`,
     })),
   },
-}
+};
 
 export const Error: Story = {
   name: "État d'erreur",
@@ -114,7 +112,7 @@ export const Error: Story = {
     label: 'Label',
     options,
   },
-}
+};
 
 export const Success: Story = {
   name: 'État succès',
@@ -124,7 +122,7 @@ export const Success: Story = {
     options,
     valid: 'Choix valide',
   },
-}
+};
 
 export const Disabled: Story = {
   name: 'État désactivé',
@@ -134,7 +132,7 @@ export const Disabled: Story = {
     options,
     disabled: true,
   },
-}
+};
 
 export const Tailles: Story = {
   name: 'Petite radio',
@@ -144,4 +142,4 @@ export const Tailles: Story = {
     options,
     small: true,
   },
-}
+};

@@ -1,6 +1,6 @@
-import { mainLiveUrl, projectTitle, repositoryUrl } from '@app/config/config'
+import { mainLiveUrl, projectTitle, repositoryUrl } from '@app/config/config';
 
-const NodeEnvironment = process.env.NODE_ENV
+const NodeEnvironment = process.env.NODE_ENV;
 
 /**
  * Necessary environment variables for web app are listed here.
@@ -11,9 +11,9 @@ const NodeEnvironment = process.env.NODE_ENV
  * It contains secrets that must not be sent to the client
  */
 
-const emailServer = `smtp://${process.env.SMTP_USERNAME ?? ''}:${
-  process.env.SMTP_PASSWORD ?? ''
-}@${process.env.SMTP_SERVER ?? ''}:${process.env.SMTP_PORT ?? ''}`
+const emailServer = `smtp://${process.env.SMTP_USERNAME ?? ''}:${process.env.SMTP_PASSWORD ?? ''}@${process.env.SMTP_SERVER ?? ''}:${
+  process.env.SMTP_PORT ?? ''
+}`;
 
 export const ServerWebAppConfig = {
   NodeEnv: NodeEnvironment,
@@ -26,12 +26,10 @@ export const ServerWebAppConfig = {
   Auth: {
     Email: {
       server: emailServer,
-      from: `${process.env.EMAIL_FROM_NAME ?? ''} <${
-        process.env.EMAIL_FROM_ADDRESS ?? ''
-      }>`,
+      from: `${process.env.EMAIL_FROM_NAME ?? ''} <${process.env.EMAIL_FROM_ADDRESS ?? ''}>`,
     },
   },
-}
+};
 
 /**
  * Public config can be used on client side or server side
@@ -50,4 +48,4 @@ export const PublicWebAppConfig = {
     host: process.env.NEXT_PUBLIC_MATOMO_HOST ?? '',
     siteId: process.env.NEXT_PUBLIC_MATOMO_SITE_ID ?? '',
   },
-}
+};

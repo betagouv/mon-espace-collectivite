@@ -1,28 +1,21 @@
-import Link from 'next/link'
-import { AuthCard } from '@app/web/app/(public)/(authentication)/AuthCard'
-import Breadcrumbs from '@app/web/components/Breadcrumbs'
-import { PublicWebAppConfig } from '@app/web/webAppConfig'
+import { AuthCard } from '@app/web/app/(public)/(authentication)/AuthCard';
+import Breadcrumbs from '@app/web/components/Breadcrumbs';
+import { PublicWebAppConfig } from '@app/web/webAppConfig';
+import Link from 'next/link';
 
-export const revalidate = 0
+export const revalidate = 0;
 
 const errorMessage = (error?: string): string | undefined => {
   if (error === 'Verification') {
-    return "Le lien de connexion n'est plus valide. Il a peut-être déjà été utilisé ou est expiré."
+    return "Le lien de connexion n'est plus valide. Il a peut-être déjà été utilisé ou est expiré.";
   }
 
-  return 'Une erreur est survenue lors de la connexion. Veuillez réessayer.'
-}
+  return 'Une erreur est survenue lors de la connexion. Veuillez réessayer.';
+};
 
-const ErrorPage = ({
-  searchParams: { error } = {},
-}: {
-  searchParams?: { error?: string }
-}) => (
+const ErrorPage = ({ searchParams: { error } = {} }: { searchParams?: { error?: string } }) => (
   <>
-    <Breadcrumbs
-      currentPage="Erreur"
-      parents={[{ label: 'Connexion', linkProps: { href: '/connexion' } }]}
-    />
+    <Breadcrumbs currentPage="Erreur" parents={[{ label: 'Connexion', linkProps: { href: '/connexion' } }]} />
     <AuthCard>
       <h2 style={{ textAlign: 'center' }} className="fr-mb-12v">
         Connexion à {PublicWebAppConfig.projectTitle}
@@ -41,6 +34,6 @@ const ErrorPage = ({
       </ul>
     </AuthCard>
   </>
-)
+);
 
-export default ErrorPage
+export default ErrorPage;

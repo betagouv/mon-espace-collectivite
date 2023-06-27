@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef } from 'react';
 
 /**
  * This previous / current pattern is preferable to useEffect in terms of performance and unintended side effects
@@ -9,18 +9,16 @@ export const useOnDiff = <T>(
   value: T,
   onDiff: (newValue: T, oldValue: T | undefined) => void | Promise<void>,
   options?: {
-    equalityFunction?: (newValue: T, oldValue: T | undefined) => boolean
+    equalityFunction?: (newValue: T, oldValue: T | undefined) => boolean;
   },
 ) => {
-  const previousValue = useRef<T>()
+  const previousValue = useRef<T>();
 
-  const hasDiff = options?.equalityFunction
-    ? !options.equalityFunction(value, previousValue.current)
-    : value !== previousValue.current
+  const hasDiff = options?.equalityFunction ? !options.equalityFunction(value, previousValue.current) : value !== previousValue.current;
 
   if (hasDiff) {
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    onDiff(value, previousValue.current)
-    previousValue.current = value
+    onDiff(value, previousValue.current);
+    previousValue.current = value;
   }
-}
+};

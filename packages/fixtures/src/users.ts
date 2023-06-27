@@ -1,12 +1,9 @@
-import { faker } from '@faker-js/faker'
-import { prismaClient } from '@app/web/prismaClient'
+import { prismaClient } from '@app/web/prismaClient';
+import { faker } from '@faker-js/faker';
 
-const BASE_NUMBER = 10
+const BASE_NUMBER = 10;
 
-export const users: Exclude<
-  Parameters<typeof prismaClient.user.upsert>[0]['create'],
-  undefined
->[] = [
+export const users: Exclude<Parameters<typeof prismaClient.user.upsert>[0]['create'], undefined>[] = [
   {
     id: '99afd613-9d54-4110-9062-065c627eda8a',
     firstName: 'Edith',
@@ -22,17 +19,12 @@ export const users: Exclude<
     name: 'Georges Moustaki',
     email: 'georges@moustaki.com',
   },
-]
+];
 
-export const randomUsers: (
-  random: number,
-) => Exclude<
-  Parameters<typeof prismaClient.user.create>[0]['data'],
-  undefined
->[] = (random) =>
+export const randomUsers: (random: number) => Exclude<Parameters<typeof prismaClient.user.create>[0]['data'], undefined>[] = (random) =>
   Array.from({ length: random * BASE_NUMBER }, (_, index) => {
-    const firstName = faker.name.firstName()
-    const lastName = faker.name.lastName()
+    const firstName = faker.name.firstName();
+    const lastName = faker.name.lastName();
 
     return {
       firstName,
@@ -40,5 +32,5 @@ export const randomUsers: (
       name: `${firstName} ${lastName}`,
       email: faker.internet.email(),
       emailVerified: index % 3 ? null : new Date(),
-    }
-  })
+    };
+  });

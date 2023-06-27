@@ -1,2 +1,1 @@
-export const databasePasswordSecretName = (namespace: string) =>
-  `DATABASE_PASSWORD`
+export const databasePasswordSecretName = (namespace: string) => `DATABASE_PASSWORD`;

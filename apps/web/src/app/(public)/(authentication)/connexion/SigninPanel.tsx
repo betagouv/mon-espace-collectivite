@@ -1,18 +1,12 @@
-import { Route } from 'next'
-import ButtonsGroup from '@codegouvfr/react-dsfr/ButtonsGroup'
-import { AuthCard } from '@app/web/app/(public)/(authentication)/AuthCard'
-import { signinErrorMessage } from '@app/web/app/(public)/(authentication)/authenticationErrorMessage'
-import { EmailSigninForm } from '@app/web/app/(public)/(authentication)/connexion/EmailSigninForm'
-import { InclusionConnectSigninButton } from '@app/web/app/(public)/(authentication)/connexion/InclusionConnectSigninButton'
-import { PublicWebAppConfig } from '@app/web/webAppConfig'
+import { AuthCard } from '@app/web/app/(public)/(authentication)/AuthCard';
+import { signinErrorMessage } from '@app/web/app/(public)/(authentication)/authenticationErrorMessage';
+import { EmailSigninForm } from '@app/web/app/(public)/(authentication)/connexion/EmailSigninForm';
+import { InclusionConnectSigninButton } from '@app/web/app/(public)/(authentication)/connexion/InclusionConnectSigninButton';
+import { PublicWebAppConfig } from '@app/web/webAppConfig';
+import ButtonsGroup from '@codegouvfr/react-dsfr/ButtonsGroup';
+import { Route } from 'next';
 
-const SigninPanel = ({
-  error,
-  callbackUrl,
-}: {
-  error?: string
-  callbackUrl: Route
-}) => (
+const SigninPanel = ({ error, callbackUrl }: { error?: string; callbackUrl: Route }) => (
   <AuthCard>
     <h4>Connexion à {PublicWebAppConfig.projectTitle}</h4>
     {error ? (
@@ -35,16 +29,13 @@ const SigninPanel = ({
         {
           children: 'Se créer un compte',
           linkProps: {
-            href:
-              callbackUrl === '/'
-                ? '/creer-un-compte'
-                : `/creer-un-compte?suivant=${callbackUrl}`,
+            href: callbackUrl === '/' ? '/creer-un-compte' : `/creer-un-compte?suivant=${callbackUrl}`,
           },
           priority: 'secondary',
         },
       ]}
     />
   </AuthCard>
-)
+);
 
-export default SigninPanel
+export default SigninPanel;

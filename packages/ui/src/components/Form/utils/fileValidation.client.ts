@@ -1,38 +1,25 @@
-import { z } from 'zod'
-import { formatByteSize } from '@app/ui/utils/formatByteSize'
+import { formatByteSize } from '@app/ui/utils/formatByteSize';
+import { z } from 'zod';
 
-export const fileMimeTypeValidation = (
-  allowedTypes: string[],
-  message?: string,
-) => z.string().refine((value) => allowedTypes.includes(value), message)
+export const fileMimeTypeValidation = (allowedTypes: string[], message?: string) =>
+  z.string().refine((value) => allowedTypes.includes(value), message);
 
-export const fileSizeValidation = (
-  maxSizeInBytes: number,
-  message?: string | ((maxSize: number) => string),
-) =>
+export const fileSizeValidation = (maxSizeInBytes: number, message?: string | ((maxSize: number) => string)) =>
   z
     .number()
     .int()
-    .max(
-      maxSizeInBytes,
-      message
-        ? typeof message === 'string'
-          ? message
-          : message(maxSizeInBytes)
-        : undefined,
-    )
+    .max(maxSizeInBytes, message ? (typeof message === 'string' ? message : message(maxSizeInBytes)) : undefined);
 
-const fileSizeValidationErrorMessage = (maxSize: number) =>
-  `La taille du fichier doit être inférieure à ${formatByteSize(maxSize)}`
+const fileSizeValidationErrorMessage = (maxSize: number) => `La taille du fichier doit être inférieure à ${formatByteSize(maxSize)}`;
 
 export type FileValidationOptions = {
-  required?: boolean
-  requiredMessage?: string
-  maxSizeInBytes?: number
-  maxSizeMessage?: string | ((maxSize: number) => string)
-  acceptedMimeTypes?: string[]
-  acceptedMimeTypesMessage?: string
-}
+  required?: boolean;
+  requiredMessage?: string;
+  maxSizeInBytes?: number;
+  maxSizeMessage?: string | ((maxSize: number) => string);
+  acceptedMimeTypes?: string[];
+  acceptedMimeTypesMessage?: string;
+};
 
 export const fileValidation = ({
   required,
@@ -42,40 +29,28 @@ export const fileValidation = ({
   acceptedMimeTypes,
   acceptedMimeTypesMessage = "Ce type de fichier n'est pas accepté",
 }: FileValidationOptions) => {
-  let validation = z.custom<File>()
+  let validation = z.custom<File>();
 
   if (required) {
-    validation = validation.refine(
-      (value) => !!value && value instanceof File && value.name.length > 0,
-      requiredMessage,
-    )
+    validation = validation.refine((value) => !!value && value instanceof File && value.name.length > 0, requiredMessage);
   }
   if (maxSizeInBytes) {
-    const sizeValidation = fileSizeValidation(maxSizeInBytes, maxSizeMessage)
+    const sizeValidation = fileSizeValidation(maxSizeInBytes, maxSizeMessage);
 
     validation = validation.refine(
-      (value) =>
-        (!required && !value) ||
-        (value instanceof File && sizeValidation.safeParse(value.size).success),
-      typeof maxSizeMessage === 'function'
-        ? maxSizeMessage(maxSizeInBytes)
-        : maxSizeMessage,
-    )
+      (value) => (!required && !value) || (value instanceof File && sizeValidation.safeParse(value.size).success),
+      typeof maxSizeMessage === 'function' ? maxSizeMessage(maxSizeInBytes) : maxSizeMessage,
+    );
   }
 
   if (acceptedMimeTypes) {
-    const typeValidation = fileMimeTypeValidation(
-      acceptedMimeTypes,
-      acceptedMimeTypesMessage,
-    )
+    const typeValidation = fileMimeTypeValidation(acceptedMimeTypes, acceptedMimeTypesMessage);
 
     validation = validation.refine(
-      (value) =>
-        (!required && !value) ||
-        (value instanceof File && typeValidation.safeParse(value.type).success),
+      (value) => (!required && !value) || (value instanceof File && typeValidation.safeParse(value.type).success),
       acceptedMimeTypesMessage,
-    )
+    );
   }
 
-  return validation
-}
+  return validation;
+};

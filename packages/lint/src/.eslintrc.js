@@ -98,10 +98,7 @@ module.exports = {
           },
         ],
         // Module resolve leads to false negatives in monorepo, typescript compiler will handle any error
-        'import/no-unresolved': [
-          2,
-          { ignore: ['^@app/', '^react-hook-form/dist'] },
-        ],
+        'import/no-unresolved': [2, { ignore: ['^@app/', '^react-hook-form/dist'] }],
         // This rule is unreliable in monorepos and typescript compiler will help on bad imports
         'import/no-extraneous-dependencies': 'off',
         '@typescript-eslint/unbound-method': 'off',
@@ -168,4 +165,4 @@ module.exports = {
       },
     },
   ],
-}
+};

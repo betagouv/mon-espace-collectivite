@@ -1,29 +1,26 @@
-import 'client-only'
+import 'client-only';
 
-const loadedScripts = new Set<string>()
+const loadedScripts = new Set<string>();
 
-export function loadScript(
-  url: string,
-  options?: { nomodule?: boolean },
-): Promise<void> {
-  const nomodule = !!options?.nomodule
+export function loadScript(url: string, options?: { nomodule?: boolean }): Promise<void> {
+  const nomodule = !!options?.nomodule;
   if (loadedScripts.has(url)) {
-    return Promise.resolve()
+    return Promise.resolve();
   }
-  loadedScripts.add(url)
+  loadedScripts.add(url);
   return new Promise((resolve) => {
-    const script = document.createElement('script')
-    script.type = 'text/javascript'
-    script.async = true
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.async = true;
     if (nomodule) {
-      script.setAttribute('nomodule', '')
+      script.setAttribute('nomodule', '');
     }
 
     script.addEventListener('load', () => {
-      resolve()
-    })
+      resolve();
+    });
 
-    script.src = url
-    document.body.append(script)
-  })
+    script.src = url;
+    document.body.append(script);
+  });
 }

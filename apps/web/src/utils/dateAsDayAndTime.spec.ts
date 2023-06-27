@@ -1,9 +1,7 @@
-import { dateAsDayAndTime } from '@app/web/utils/dateAsDayAndTime'
+import { dateAsDayAndTime } from '@app/web/utils/dateAsDayAndTime';
 
 describe('dateAsDayAndTime', () => {
   it('formats date', () => {
-    expect(dateAsDayAndTime(new Date('2023-02-16T07:48:58'))).toEqual(
-      '16/02/2023 07h48',
-    )
-  })
-})
+    expect(dateAsDayAndTime(new Date('2023-02-16T07:48:58'))).toEqual('16/02/2023 07h48');
+  });
+});

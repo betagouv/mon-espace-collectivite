@@ -1,19 +1,19 @@
-'use client'
+'use client';
 
-import { signOut } from 'next-auth/react'
-import Link from 'next/link'
-import { useState } from 'react'
-import { AuthCard } from '@app/web/app/(public)/(authentication)/AuthCard'
-import Breadcrumbs from '@app/web/components/Breadcrumbs'
+import { AuthCard } from '@app/web/app/(public)/(authentication)/AuthCard';
+import Breadcrumbs from '@app/web/components/Breadcrumbs';
+import { signOut } from 'next-auth/react';
+import Link from 'next/link';
+import { useState } from 'react';
 
-export const revalidate = 0
+export const revalidate = 0;
 
 const SignoutPage = () => {
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
   const onLogout = async () => {
-    setIsLoading(true)
-    await signOut({ redirect: true, callbackUrl: '/' })
-  }
+    setIsLoading(true);
+    await signOut({ redirect: true, callbackUrl: '/' });
+  };
 
   return (
     <>
@@ -23,12 +23,7 @@ const SignoutPage = () => {
         <p>Êtes-vous sur de vouloir vous déconnecter&nbsp;?</p>
         <ul className="fr-btns-group">
           <li>
-            <button
-              type="button"
-              className="fr-btn"
-              disabled={isLoading}
-              onClick={onLogout}
-            >
+            <button type="button" className="fr-btn" disabled={isLoading} onClick={onLogout}>
               Se déconnecter
             </button>
           </li>
@@ -38,7 +33,7 @@ const SignoutPage = () => {
         </div>
       </AuthCard>
     </>
-  )
-}
+  );
+};
 
-export default SignoutPage
+export default SignoutPage;

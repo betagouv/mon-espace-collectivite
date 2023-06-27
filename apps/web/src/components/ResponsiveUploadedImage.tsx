@@ -1,17 +1,13 @@
-import React, { ComponentProps } from 'react'
-import {
-  GenerateUploadedImageSourceSetsInput,
-  generateUploadedImageSourceSets,
-} from '@app/web/utils/responsiveImage'
+import { GenerateUploadedImageSourceSetsInput, generateUploadedImageSourceSets } from '@app/web/utils/responsiveImage';
+import React, { ComponentProps } from 'react';
 
 const ResponsiveUploadedImage = ({
   id,
   quality,
   breakpoints,
   ...imgProps
-}: Omit<ComponentProps<'img'>, 'src' | 'srcSet'> &
-  GenerateUploadedImageSourceSetsInput) => {
-  const sources = generateUploadedImageSourceSets({ id, quality, breakpoints })
+}: Omit<ComponentProps<'img'>, 'src' | 'srcSet'> & GenerateUploadedImageSourceSetsInput) => {
+  const sources = generateUploadedImageSourceSets({ id, quality, breakpoints });
   return (
     <picture>
       {sources.map(({ media, srcSet }) => (
@@ -20,7 +16,7 @@ const ResponsiveUploadedImage = ({
       {/* eslint-disable-next-line react/jsx-props-no-spreading */}
       <img srcSet={sources.at(-1)?.srcSet} {...imgProps} />
     </picture>
-  )
-}
+  );
+};
 
-export default ResponsiveUploadedImage
+export default ResponsiveUploadedImage;

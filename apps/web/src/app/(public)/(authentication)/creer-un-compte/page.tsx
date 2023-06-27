@@ -1,29 +1,29 @@
-import { Route } from 'next'
-import { redirect } from 'next/navigation'
-import Alert from '@codegouvfr/react-dsfr/Alert'
-import SignupPanel from '@app/web/app/(public)/(authentication)/creer-un-compte/SignupPanel'
-import { getSessionUser } from '@app/web/auth/getSessionUser'
-import Breadcrumbs from '@app/web/components/Breadcrumbs'
-import { getServerUrl } from '@app/web/utils/baseUrl'
-import { PublicWebAppConfig } from '@app/web/webAppConfig'
+import SignupPanel from '@app/web/app/(public)/(authentication)/creer-un-compte/SignupPanel';
+import { getSessionUser } from '@app/web/auth/getSessionUser';
+import Breadcrumbs from '@app/web/components/Breadcrumbs';
+import { getServerUrl } from '@app/web/utils/baseUrl';
+import { PublicWebAppConfig } from '@app/web/webAppConfig';
+import Alert from '@codegouvfr/react-dsfr/Alert';
+import { Route } from 'next';
+import { redirect } from 'next/navigation';
 
-export const revalidate = 0
+export const revalidate = 0;
 const SigninPage = async ({
   searchParams: { error, email, raison, suivant } = {},
 }: {
   searchParams?: {
-    error?: string
-    raison?: 'connexion-sans-compte'
-    email?: string
-    suivant?: Route
-  }
+    error?: string;
+    raison?: 'connexion-sans-compte';
+    email?: string;
+    suivant?: Route;
+  };
 }) => {
-  const user = await getSessionUser()
+  const user = await getSessionUser();
   if (user) {
-    redirect(getServerUrl('/'))
+    redirect(getServerUrl('/'));
   }
 
-  const callbackUrl: Route = suivant ?? '/'
+  const callbackUrl: Route = suivant ?? '/';
 
   return (
     <>
@@ -39,7 +39,7 @@ const SigninPage = async ({
       ) : null}
       <SignupPanel error={error} email={email} callbackUrl={callbackUrl} />
     </>
-  )
-}
+  );
+};
 
-export default SigninPage
+export default SigninPage;

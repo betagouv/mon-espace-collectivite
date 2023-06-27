@@ -1,35 +1,26 @@
-'use client'
+'use client';
 
-import classNames from 'classnames'
-import { Route } from 'next'
-import { useState } from 'react'
-import { signIn } from 'next-auth/react'
-import { Spinner } from '@app/web/ui/Spinner'
-import { inclusionConnectProviderId } from '@app/web/auth/inclusionConnect'
-import styles from './InclusionConnectSigninButton.module.css'
+import { inclusionConnectProviderId } from '@app/web/auth/inclusionConnect';
+import { Spinner } from '@app/web/ui/Spinner';
+import classNames from 'classnames';
+import { Route } from 'next';
+import { signIn } from 'next-auth/react';
+import { useState } from 'react';
 
-export const InclusionConnectSigninButton = ({
-  className,
-  callbackUrl,
-}: {
-  className?: string
-  callbackUrl: Route
-}) => {
-  const [isLoading, setIsLoading] = useState(false)
+import styles from './InclusionConnectSigninButton.module.css';
+
+export const InclusionConnectSigninButton = ({ className, callbackUrl }: { className?: string; callbackUrl: Route }) => {
+  const [isLoading, setIsLoading] = useState(false);
   const onClick = () => {
-    setIsLoading(true)
-    signIn(inclusionConnectProviderId, { callbackUrl })
-  }
+    setIsLoading(true);
+    signIn(inclusionConnectProviderId, { callbackUrl });
+  };
   return (
     <div className={classNames(styles.inclusionConnectSection, className)}>
       <div className={styles.buttonContainer}>
         <button
           type="button"
-          className={classNames(
-            styles.inclusionConnectBtn,
-            'fr-btn',
-            isLoading && styles.loading,
-          )}
+          className={classNames(styles.inclusionConnectBtn, 'fr-btn', isLoading && styles.loading)}
           disabled={isLoading}
           title="S'identifier avec InclusionConnect"
           onClick={onClick}
@@ -51,5 +42,5 @@ export const InclusionConnectSigninButton = ({
         En savoir plus
       </a>
     </div>
-  )
-}
+  );
+};

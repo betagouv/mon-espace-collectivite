@@ -1,10 +1,7 @@
-export const findSecretByName = <Secret extends { id: string; name: string }>(
-  secrets: Secret[],
-  name: string,
-): Secret => {
-  const found = secrets.find((secret) => secret.name === name)
+export const findSecretByName = <Secret extends { id: string; name: string }>(secrets: Secret[], name: string): Secret => {
+  const found = secrets.find((secret) => secret.name === name);
   if (!found) {
-    throw new Error(`Secret "${name}" does not exists or is not accessible`)
+    throw new Error(`Secret "${name}" does not exists or is not accessible`);
   }
-  return found
-}
+  return found;
+};

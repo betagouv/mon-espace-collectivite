@@ -1,19 +1,11 @@
-import { Route } from 'next'
-import ButtonsGroup from '@codegouvfr/react-dsfr/ButtonsGroup'
-import { AuthCard } from '@app/web/app/(public)/(authentication)/AuthCard'
-import { signinErrorMessage } from '@app/web/app/(public)/(authentication)/authenticationErrorMessage'
-import { InclusionConnectSigninButton } from '@app/web/app/(public)/(authentication)/connexion/InclusionConnectSigninButton'
-import EmailSignupForm from '@app/web/app/(public)/(authentication)/creer-un-compte/EmailSignupForm'
+import { AuthCard } from '@app/web/app/(public)/(authentication)/AuthCard';
+import { signinErrorMessage } from '@app/web/app/(public)/(authentication)/authenticationErrorMessage';
+import { InclusionConnectSigninButton } from '@app/web/app/(public)/(authentication)/connexion/InclusionConnectSigninButton';
+import EmailSignupForm from '@app/web/app/(public)/(authentication)/creer-un-compte/EmailSignupForm';
+import ButtonsGroup from '@codegouvfr/react-dsfr/ButtonsGroup';
+import { Route } from 'next';
 
-const SignupPanel = ({
-  error,
-  email,
-  callbackUrl,
-}: {
-  error?: string
-  email?: string
-  callbackUrl: Route
-}) => (
+const SignupPanel = ({ error, email, callbackUrl }: { error?: string; email?: string; callbackUrl: Route }) => (
   <AuthCard>
     {error ? (
       <div className="fr-alert fr-alert--error fr-alert--sm fr-mb-6v">
@@ -40,6 +32,6 @@ const SignupPanel = ({
       ]}
     />
   </AuthCard>
-)
+);
 
-export default SignupPanel
+export default SignupPanel;

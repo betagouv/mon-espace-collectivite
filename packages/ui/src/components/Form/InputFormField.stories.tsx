@@ -1,10 +1,11 @@
-import React from 'react'
-import { useForm } from 'react-hook-form'
-import z from 'zod'
-import { zodResolver } from '@hookform/resolvers/zod/dist/zod'
-import { Meta, StoryObj } from '@storybook/react'
-import { useOnDiff } from '@app/web/hooks/useOnDiff'
-import InputFormField, { InputFormFieldProps } from './InputFormField'
+import { useOnDiff } from '@app/web/hooks/useOnDiff';
+import { zodResolver } from '@hookform/resolvers/zod/dist/zod';
+import { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import z from 'zod';
+
+import InputFormField, { InputFormFieldProps } from './InputFormField';
 
 const objectFormValidation = z
   .object({
@@ -12,13 +13,10 @@ const objectFormValidation = z
     email: z.string().email(),
     email2: z.string().email(),
   })
-  .strict()
-type ObjectFormData = z.infer<typeof objectFormValidation>
+  .strict();
+type ObjectFormData = z.infer<typeof objectFormValidation>;
 
-const Template = ({
-  path,
-  ...args
-}: Omit<InputFormFieldProps<ObjectFormData>, 'control'>) => {
+const Template = ({ path, ...args }: Omit<InputFormFieldProps<ObjectFormData>, 'control'>) => {
   const form = useForm<ObjectFormData>({
     resolver: zodResolver(objectFormValidation),
     reValidateMode: 'onChange',
@@ -28,7 +26,7 @@ const Template = ({
       email: 'john.doe@gmail.fr',
       email2: 'john.doe',
     },
-  })
+  });
 
   useOnDiff(form, () => {
     if (path === 'email' || path === 'email2') {
@@ -36,28 +34,28 @@ const Template = ({
         shouldTouch: true,
         shouldValidate: true,
         shouldDirty: true,
-      })
+      });
       if (path === 'email2') {
-        form.setError('email2', { message: 'invalid Email' })
+        form.setError('email2', { message: 'invalid Email' });
       }
     }
-  })
+  });
 
   return (
     <form>
       <InputFormField control={form.control} path={path} {...args} />
     </form>
-  )
-}
+  );
+};
 
 const meta: Meta<typeof InputFormField> = {
   title: 'DSFR Component/Form/Input',
   component: InputFormField,
-}
+};
 
-export default meta
+export default meta;
 
-type Story = StoryObj<typeof InputFormField>
+type Story = StoryObj<typeof InputFormField>;
 
 export const Default: Story = {
   name: 'Etat par défaut',
@@ -65,7 +63,7 @@ export const Default: Story = {
   args: {
     label: 'Label',
   },
-}
+};
 
 export const Success: Story = {
   name: 'Etat succès',
@@ -74,7 +72,7 @@ export const Success: Story = {
     label: 'Label',
     valid: 'Email valide',
   },
-}
+};
 
 export const Error: Story = {
   name: 'Etat erreur',
@@ -82,7 +80,7 @@ export const Error: Story = {
   args: {
     label: 'Label',
   },
-}
+};
 
 export const Disabled: Story = {
   name: 'Etat désactivé',
@@ -91,7 +89,7 @@ export const Disabled: Story = {
     label: 'Label',
     disabled: true,
   },
-}
+};
 
 export const Hint: Story = {
   name: "Avec texte d'aide",
@@ -100,7 +98,7 @@ export const Hint: Story = {
     label: 'Label',
     hint: 'texte de description additionnel',
   },
-}
+};
 
 export const Textarea: Story = {
   name: 'Zone de texte',
@@ -110,7 +108,7 @@ export const Textarea: Story = {
     type: 'textarea',
     rows: 5,
   },
-}
+};
 
 export const Icon: Story = {
   name: 'Avec icone',
@@ -119,4 +117,4 @@ export const Icon: Story = {
     label: 'Label',
     icon: 'fr-icon-alert-line',
   },
-}
+};

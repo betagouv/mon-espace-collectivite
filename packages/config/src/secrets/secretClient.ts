@@ -1,10 +1,9 @@
-import axios from 'axios'
-import { region } from '@app/config/config'
+import { region } from '@app/config/config';
+import axios from 'axios';
 
-export const projectId = process.env.SCW_PROJECT_ID ?? ''
+export const projectId = process.env.SCW_PROJECT_ID ?? '';
 
-const authToken =
-  process.env.SCW_API_KEY_SECRET ?? process.env.SCW_SECRET_KEY ?? ''
+const authToken = process.env.SCW_API_KEY_SECRET ?? process.env.SCW_SECRET_KEY ?? '';
 
 // https://developers.scaleway.com/en/products/secret_manager/api/v1alpha1/#introduction
 export const secretClient = axios.create({
@@ -13,4 +12,4 @@ export const secretClient = axios.create({
   params: {
     project_id: projectId,
   },
-})
+});

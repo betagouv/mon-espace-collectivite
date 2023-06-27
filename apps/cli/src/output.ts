@@ -4,4 +4,4 @@
  * forbidden by our lint rules
  */
 // eslint-disable-next-line no-console
-export const output = console.log
+export const output = console.log;

@@ -5,4 +5,4 @@ module.exports = {
     // Process exit ok in scripts
     'unicorn/no-process-exit': 'off',
   },
-}
+};
