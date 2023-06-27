@@ -1,4 +1,4 @@
-import Footer from '@codegouvfr/react-dsfr/Footer'
+import Footer from '@codegouvfr/react-dsfr/Footer';
 
 const PublicFooter = () => (
   <Footer
@@ -28,7 +28,7 @@ const PublicFooter = () => (
         text: 'Code source',
         linkProps: {
           href: {
-            href: 'https://github.com/inclusion-numerique/projets-territoires',
+            href: 'https://github.com/betagouv/mon-espace-collectivite',
           },
           target: '_blank',
           rel: 'noreferrer',
@@ -36,5 +36,5 @@ const PublicFooter = () => (
       },
     ]}
   />
-)
-export default PublicFooter
+);
+export default PublicFooter;

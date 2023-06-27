@@ -17,8 +17,6 @@ const transformIgnorePackages = [
   'data-uri-to-buffer',
   'fetch-blob',
   'formdata-polyfill',
-  '@aws-sdk/middleware-retry',
-  '@aws-sdk/client-s3',
   'axios',
 ]
 
@@ -48,7 +46,6 @@ const config = {
       '<rootDir>/node_modules/next/dist/build/jest/__mocks__/fileMock.js',
     '^.+\\.(svg)$':
       '<rootDir>/node_modules/next/dist/build/jest/__mocks__/fileMock.js',
-    '^@pt/(.*)$': '<rootDir>/src/$1',
   },
   testPathIgnorePatterns: ['/node_modules/', '/.next/'],
   watchPathIgnorePatterns: ['/.next/'],

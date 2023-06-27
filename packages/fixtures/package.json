@@ -1,15 +1,12 @@
 {
   "name": "@app/fixtures",
   "version": "0.1.0",
-  "license": "AGPL-3.0-or-later",
+  "license": "AGPL-3.0",
   "scripts": {
     "load": "dotenv -e ../../.env -- ts-node -r tsconfig-paths/register src/seeds.ts -e",
     "lint": "eslint src",
     "tsc": "tsc --noEmit",
     "test": "jest --passWithNoTests"
-  },
-  "engines": {
-    "node": "^18.16"
   },
   "dependencies": {
     "@commander-js/extra-typings": "^10.0.3",

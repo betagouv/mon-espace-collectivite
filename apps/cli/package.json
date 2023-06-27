@@ -1,7 +1,7 @@
 {
   "name": "@app/cli",
   "version": "0.1.0",
-  "license": "AGPL-3.0-or-later",
+  "license": "AGPL-3.0",
   "private": true,
   "scripts": {
     "cli": "dotenv -e ../../.env -- ts-node -r tsconfig-paths/register src/index.ts",
@@ -9,9 +9,6 @@
     "tsc": "tsc --noEmit",
     "test": "jest --passWithNoTests",
     "build": "tsc"
-  },
-  "engines": {
-    "node": "^18.16"
   },
   "dependencies": {
     "@commander-js/extra-typings": "^10.0.3",

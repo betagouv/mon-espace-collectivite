@@ -2,14 +2,10 @@
  * Project configuration constants
  * ⚠️ Never put any secret value or authentication token in this file (or in any version controlled file)
  */
-import { arrayFromEnvironmentVariable } from './arrayFromEnvironmentVariable'
-
 export const projectTitle = process.env.NEXT_PUBLIC_APP_NAME || ''
 export const projectSlug = process.env.NEXT_PUBLIC_APP_SLUG || ''
-export const mainLiveUrl = `https://${projectSlug}.incubateur.anct.gouv.fr`
-export const repositoryUrl = `https://github.com/inclusion-numerique/${projectSlug}`
-
-export const cypressProjectId = 'ns2oqz'
+export const mainLiveUrl = `https://${projectSlug}.anct.gouv.fr`
+export const repositoryUrl = `https://github.com/betagouv/${projectSlug}`
 
 export const databaseInstanceName = process.env.DATABASE_INSTANCE_NAME ?? ''
 export const containerNamespaceName = process.env.CONTAINER_NAMESPACE_NAME ?? ''
@@ -35,10 +31,3 @@ export const sentryOrg = process.env.SENTRY_ORG ?? ''
 export const sentryProject = process.env.SENTRY_PROJECT ?? ''
 export const sentryUrl = process.env.SENTRY_URL ?? ''
 export const smtpPort = process.env.SMTP_PORT ?? ''
-
-export const cockpitGrafanaEditors = arrayFromEnvironmentVariable(
-  process.env.COCKPIT_GRAPHANA_EDITORS,
-)
-export const cockpitGrafanaViewers = arrayFromEnvironmentVariable(
-  process.env.COCKPIT_GRAPHANA_VIEWERS,
-)

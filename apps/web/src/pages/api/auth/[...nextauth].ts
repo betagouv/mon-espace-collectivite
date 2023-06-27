@@ -1,11 +1,11 @@
-import NextAuth, { NextAuthOptions } from 'next-auth'
-import EmailProvider from 'next-auth/providers/email'
-import KeycloakProvider, { KeycloakProfile } from 'next-auth/providers/keycloak'
-import { inclusionConnectProviderId } from '@app/web/auth/inclusionConnect'
-import { nextAuthAdapter } from '@app/web/auth/nextAuthAdapter'
-import '@app/web/auth/nextAuthSetup'
-import { sendVerificationRequest } from '@app/web/auth/sendVerificationRequest'
-import { PublicWebAppConfig, ServerWebAppConfig } from '@app/web/webAppConfig'
+import { inclusionConnectProviderId } from '@app/web/auth/inclusionConnect';
+import { nextAuthAdapter } from '@app/web/auth/nextAuthAdapter';
+import '@app/web/auth/nextAuthSetup';
+import { sendVerificationRequest } from '@app/web/auth/sendVerificationRequest';
+import { PublicWebAppConfig, ServerWebAppConfig } from '@app/web/webAppConfig';
+import NextAuth, { NextAuthOptions } from 'next-auth';
+import EmailProvider from 'next-auth/providers/email';
+import KeycloakProvider, { KeycloakProfile } from 'next-auth/providers/keycloak';
 
 export const authOptions: NextAuthOptions = {
   adapter: nextAuthAdapter,
@@ -27,10 +27,10 @@ export const authOptions: NextAuthOptions = {
       allowDangerousEmailAccountLinking: true,
       id: inclusionConnectProviderId,
       name: 'Inclusion Connect',
-      clientId: PublicWebAppConfig.InclusionConnect.clientId,
-      clientSecret: ServerWebAppConfig.InclusionConnect.clientSecret,
+      clientId: 'TODO',
+      clientSecret: 'TODO',
       // KeycloakProvider adds wellknown open id config path
-      issuer: PublicWebAppConfig.InclusionConnect.issuer,
+      issuer: 'TODO',
       profile: (profile: KeycloakProfile) => ({
         id: profile.sub,
         name: profile.name ?? profile.preferred_username,
@@ -48,30 +48,25 @@ export const authOptions: NextAuthOptions = {
         // KeyCloak is a type of oauth
         account?.type === 'oauth' ||
         // If user exists and comes from prisma, we will have User model properties defined
-        ('created' in user &&
-          !!user.created &&
-          'updated' in user &&
-          !!user.updated)
+        ('created' in user && !!user.created && 'updated' in user && !!user.updated);
 
       if (isAllowedToSignIn) {
-        return true
+        return true;
       }
       // Return false to display a default error message
       // return false
 
       // Or you can return a URL to redirect to:
-      return `/creer-un-compte?raison=connexion-sans-compte&email=${
-        user?.email ?? ''
-      }`
+      return `/creer-un-compte?raison=connexion-sans-compte&email=${user?.email ?? ''}`;
     },
     session: ({ session, user }) => {
       if (session.user) {
         // eslint-disable-next-line no-param-reassign
-        session.user.id = user.id
+        session.user.id = user.id;
       }
-      return session
+      return session;
     },
   },
-}
+};
 
-export default NextAuth(authOptions)
+export default NextAuth(authOptions);
