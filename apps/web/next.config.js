@@ -30,7 +30,7 @@ const externalServerPackagesForFasterDevelopmentUx = isDevelopment
 const nextConfig = {
   output: 'standalone',
   reactStrictMode: true,
-  transpilePackages: ['@app/emails'],
+  transpilePackages: [],
   experimental: {
     // See https://beta.nextjs.org/docs/api-reference/next.config.js#servercomponentsexternalpackages
     serverComponentsExternalPackages: externalServerPackagesForFasterDevelopmentUx,
@@ -76,4 +76,5 @@ const sentryWebpackPluginOptions = {
   silent: true, // Suppresses all logs
 };
 
-module.exports = withBundleAnalyzer(withSentryConfig(nextConfig, sentryWebpackPluginOptions));
+// module.exports = withBundleAnalyzer(withSentryConfig(nextConfig, sentryWebpackPluginOptions));
+module.exports = withBundleAnalyzer(nextConfig);

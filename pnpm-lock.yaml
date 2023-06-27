@@ -103,9 +103,6 @@ importers:
 
   apps/web:
     dependencies:
-      '@app/emails':
-        specifier: '*'
-        version: link:../../packages/emails
       '@codegouvfr/react-dsfr':
         specifier: ^0.57.2
         version: 0.57.2
@@ -410,120 +407,6 @@ importers:
       typescript:
         specifier: ^5.0.4
         version: 5.0.4
-
-  packages/config:
-    dependencies:
-      axios:
-        specifier: ^1.4.0
-        version: 1.4.0
-      dotenv:
-        specifier: ^16.0.3
-        version: 16.0.3
-      dotenv-cli:
-        specifier: ^7.2.1
-        version: 7.2.1
-      nanoid:
-        specifier: ^3.3.6
-        version: 3.3.6
-    devDependencies:
-      '@types/node':
-        specifier: ^18.16.6
-        version: 18.16.6
-      eslint:
-        specifier: ^8.41.0
-        version: 8.41.0
-      jest:
-        specifier: ^29.5.0
-        version: 29.5.0(@types/node@18.16.6)(ts-node@10.9.1)
-      ts-node:
-        specifier: ^10.9.1
-        version: 10.9.1(@swc/core@1.3.60)(@types/node@18.16.6)(typescript@5.0.4)
-      tsconfig-paths:
-        specifier: ^4.2.0
-        version: 4.2.0
-      typescript:
-        specifier: ^5.0.4
-        version: 5.0.4
-
-  packages/emails:
-    dependencies:
-      '@luma-team/mjml-react':
-        specifier: ^0.3.0-0
-        version: 0.3.0-0(react-dom@18.2.0)(react@18.2.0)
-      html-minifier:
-        specifier: ^4.0.0
-        version: 4.0.0
-      mjml:
-        specifier: ^4.14.1
-        version: 4.14.1
-      mjml-react:
-        specifier: ^2.0.8
-        version: 2.0.8(mjml@4.14.1)(react-dom@18.2.0)(react@18.2.0)
-      react:
-        specifier: ^18.2.0
-        version: 18.2.0
-      react-dom:
-        specifier: ^18.2.0
-        version: 18.2.0(react@18.2.0)
-    devDependencies:
-      '@types/html-minifier':
-        specifier: ^4.0.2
-        version: 4.0.2
-      '@types/jest':
-        specifier: ^29.5.1
-        version: 29.5.1
-      '@types/mjml':
-        specifier: ^4.7.1
-        version: 4.7.1
-      '@types/mjml-react':
-        specifier: ^2.0.6
-        version: 2.0.6
-      '@types/node':
-        specifier: ^18.16.6
-        version: 18.16.6
-      '@types/react':
-        specifier: ^18.2.7
-        version: 18.2.7
-      eslint:
-        specifier: ^8.41.0
-        version: 8.41.0
-      jest:
-        specifier: ^29.5.0
-        version: 29.5.0(@types/node@18.16.6)(ts-node@10.9.1)
-      typescript:
-        specifier: ^5.0.4
-        version: 5.0.4
-
-  packages/fixtures:
-    dependencies:
-      '@commander-js/extra-typings':
-        specifier: ^10.0.3
-        version: 10.0.3(commander@10.0.1)
-      '@faker-js/faker':
-        specifier: ^8.0.2
-        version: 8.0.2
-      '@prisma/client':
-        specifier: ^4.14.1
-        version: 4.14.1(prisma@4.14.1)
-      '@types/node':
-        specifier: ^18.16.6
-        version: 18.16.6
-      dotenv:
-        specifier: ^16.0.3
-        version: 16.0.3
-      ts-node:
-        specifier: ^10.9.1
-        version: 10.9.1(@swc/core@1.3.60)(@types/node@18.16.6)(typescript@5.0.4)
-      typescript:
-        specifier: ^5.0.4
-        version: 5.0.4
-    devDependencies:
-      commander:
-        specifier: ^10.0.1
-        version: 10.0.1
-      jest:
-        specifier: ^29.5.0
-        version: 29.5.0(@types/node@18.16.6)(ts-node@10.9.1)
 
   packages/lint:
     devDependencies:
@@ -2848,11 +2731,6 @@ packages:
     resolution: {integrity: sha512-LxcyMGxwmTh2lY9FwHPGWOHmYFCZvbrFCBZL4FzSSsxsRPuhrYUg/49/0KDfW8tnIEaEHtfmn6+NPN+1DqaNmA==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
-
-  /@faker-js/faker@8.0.2:
-    resolution: {integrity: sha512-Uo3pGspElQW91PCvKSIAXoEgAUlRnH29sX2/p89kg7sP1m2PzCufHINd0FhTXQf6DYGiUlVncdSPa2F9wxed2A==}
-    engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0, npm: '>=6.14.13'}
-    dev: false
 
   /@fal-works/esbuild-plugin-global-externals@2.1.2:
     resolution: {integrity: sha512-cEee/Z+I12mZcFJshKcCqC8tuX5hG3s+d+9nZ3LabqKF1vKdF41B92pJVCBggjAGORAeOzyyDDKrZwIkLffeOQ==}
@@ -5639,13 +5517,6 @@ packages:
       '@types/node': 18.16.6
       '@types/responselike': 1.0.0
 
-  /@types/clean-css@4.2.6:
-    resolution: {integrity: sha512-Ze1tf+LnGPmG6hBFMi0B4TEB0mhF7EiMM5oyjLDNPE9hxrPU0W+5+bHvO+eFPA+bt0iC1zkQMoU/iGdRVjcRbw==}
-    dependencies:
-      '@types/node': 18.16.6
-      source-map: 0.6.1
-    dev: true
-
   /@types/connect@3.4.35:
     resolution: {integrity: sha512-cdeYyv4KWoEgpBISTxWvqYsVy444DOqehiF3fM3ne10AmJ62RSyNkUnxMJXHQWRQQX2eR94m5y1IZyDwBjV9FQ==}
     dependencies:
@@ -5729,14 +5600,6 @@ packages:
   /@types/html-minifier-terser@6.1.0:
     resolution: {integrity: sha512-oh/6byDPnL1zeNXFrDXFLyZjkr1MsBG667IM792caf1L2UPOOMf65NFzjUH/ltyfwjAGfs1rsX1eftK0jC/KIg==}
     dev: false
-
-  /@types/html-minifier@4.0.2:
-    resolution: {integrity: sha512-4IkmkXJP/25R2fZsCHDX2abztXuQRzUAZq39PfCMz2loLFj8vS9y7aF6vDl58koXSTpsF+eL4Lc5Y4Aww/GCTQ==}
-    dependencies:
-      '@types/clean-css': 4.2.6
-      '@types/relateurl': 0.2.29
-      '@types/uglify-js': 3.17.1
-    dev: true
 
   /@types/http-cache-semantics@4.0.1:
     resolution: {integrity: sha512-SZs7ekbP8CN0txVG2xVRH6EgKmEm31BOxA07vkFaETzZz1xh+cbt8BcI0slpymvwhx5dlFnQG2rTlPVQn+iRPQ==}
@@ -5824,22 +5687,6 @@ packages:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
     dev: true
 
-  /@types/mjml-core@4.7.1:
-    resolution: {integrity: sha512-k5IRafi93tyZBGF+0BTrcBDvG47OueI+Q7TC4V4UjGQn0AMVvL3Y+S26QF/UHMmMJW5r1hxLyv3StX2/+FatFg==}
-    dev: true
-
-  /@types/mjml-react@2.0.6:
-    resolution: {integrity: sha512-pOYAX16xjkWNHWPNETfDYiUGYYwHQeuhtrUFDVCWh49zisgkLRG9kA3W9324Kc+KmO+xQp2LQldTVprhJ7ZMbw==}
-    dependencies:
-      '@types/react': 18.2.7
-    dev: true
-
-  /@types/mjml@4.7.1:
-    resolution: {integrity: sha512-if/IM7j3B1ZQucsakrJI4qaU8MWBS1NzQ9PfMY3Bxj4vY1Bp2jMXmVJhAUU2eLvts0a+bFL6Efk182BB/g492Q==}
-    dependencies:
-      '@types/mjml-core': 4.7.1
-    dev: true
-
   /@types/node-fetch@2.6.4:
     resolution: {integrity: sha512-1ZX9fcN4Rvkvgv4E6PAY5WXUFWFcRWxZa3EW83UjycOB9ljJCedb2CupIP4RZMEwF/M3eTcCihbBRgwtGbg5Rg==}
     dependencies:
@@ -5917,10 +5764,6 @@ packages:
       '@types/scheduler': 0.16.3
       csstype: 3.1.2
 
-  /@types/relateurl@0.2.29:
-    resolution: {integrity: sha512-QSvevZ+IRww2ldtfv1QskYsqVVVwCKQf1XbwtcyyoRvLIQzfyPhj/C+3+PKzSDRdiyejaiLgnq//XTkleorpLg==}
-    dev: true
-
   /@types/responselike@1.0.0:
     resolution: {integrity: sha512-85Y2BjiufFzaMIlvJDvTTB8Fxl2xfLo4HgmHzVBz08w4wDePCTjYw66PdrolO0kzli3yam/YCgRufyo1DdQVTA==}
     dependencies:
@@ -5981,12 +5824,6 @@ packages:
   /@types/treeify@1.0.0:
     resolution: {integrity: sha512-ONpcZAEYlbPx4EtJwfTyCDQJGUpKf4sEcuySdCVjK5Fj/3vHp5HII1fqa1/+qrsLnpYELCQTfVW/awsGJePoIg==}
     dev: false
-
-  /@types/uglify-js@3.17.1:
-    resolution: {integrity: sha512-GkewRA4i5oXacU/n4MA9+bLgt5/L3F1mKrYvFGm7r2ouLXhRKjuWwo9XHNnbx6WF3vlGW21S3fCvgqxvxXXc5g==}
-    dependencies:
-      source-map: 0.6.1
-    dev: true
 
   /@types/unist@2.0.6:
     resolution: {integrity: sha512-PBjIUxZHOuj0R15/xuwJYjFi+KZdNFrehocChv4g5hu6aFroHue8m0lBP0POdK2nKzbw0cgV1mws8+V/JAcEkQ==}
@@ -7899,6 +7736,7 @@ packages:
   /commander@10.0.1:
     resolution: {integrity: sha512-y4Mg2tXshplEbSGzx7amzPwKKOCGuoSRP/CjEdwwk0FOGlUbq6lKuoyDZTNZkmxHdJtp54hdfY/JUrdL7Xfdug==}
     engines: {node: '>=14'}
+    dev: false
 
   /commander@2.20.3:
     resolution: {integrity: sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==}
@@ -13257,32 +13095,12 @@ packages:
       yallist: 4.0.0
     dev: false
 
-  /mjml-accordion@4.14.1:
-    resolution: {integrity: sha512-dpNXyjnhYwhM75JSjD4wFUa9JgHm86M2pa0CoTzdv1zOQz67ilc4BoK5mc2S0gOjJpjBShM5eOJuCyVIuAPC6w==}
-    dependencies:
-      '@babel/runtime': 7.21.5
-      lodash: 4.17.21
-      mjml-core: 4.14.1
-    transitivePeerDependencies:
-      - encoding
-    dev: false
-
   /mjml-accordion@4.14.1(encoding@0.1.13):
     resolution: {integrity: sha512-dpNXyjnhYwhM75JSjD4wFUa9JgHm86M2pa0CoTzdv1zOQz67ilc4BoK5mc2S0gOjJpjBShM5eOJuCyVIuAPC6w==}
     dependencies:
       '@babel/runtime': 7.21.5
       lodash: 4.17.21
       mjml-core: 4.14.1(encoding@0.1.13)
-    transitivePeerDependencies:
-      - encoding
-    dev: false
-
-  /mjml-body@4.14.1:
-    resolution: {integrity: sha512-YpXcK3o2o1U+fhI8f60xahrhXuHmav6BZez9vIN3ZEJOxPFSr+qgr1cT2iyFz50L5+ZsLIVj2ZY+ALQjdsg8ig==}
-    dependencies:
-      '@babel/runtime': 7.21.5
-      lodash: 4.17.21
-      mjml-core: 4.14.1
     transitivePeerDependencies:
       - encoding
     dev: false
@@ -13297,16 +13115,6 @@ packages:
       - encoding
     dev: false
 
-  /mjml-button@4.14.1:
-    resolution: {integrity: sha512-V1Tl1vQ3lXYvvqHJHvGcc8URr7V1l/ZOsv7iLV4QRrh7kjKBXaRS7uUJtz6/PzEbNsGQCiNtXrODqcijLWlgaw==}
-    dependencies:
-      '@babel/runtime': 7.21.5
-      lodash: 4.17.21
-      mjml-core: 4.14.1
-    transitivePeerDependencies:
-      - encoding
-    dev: false
-
   /mjml-button@4.14.1(encoding@0.1.13):
     resolution: {integrity: sha512-V1Tl1vQ3lXYvvqHJHvGcc8URr7V1l/ZOsv7iLV4QRrh7kjKBXaRS7uUJtz6/PzEbNsGQCiNtXrODqcijLWlgaw==}
     dependencies:
@@ -13317,41 +13125,12 @@ packages:
       - encoding
     dev: false
 
-  /mjml-carousel@4.14.1:
-    resolution: {integrity: sha512-Ku3MUWPk/TwHxVgKEUtzspy/ePaWtN/3z6/qvNik0KIn0ZUIZ4zvR2JtaVL5nd30LHSmUaNj30XMPkCjYiKkFA==}
-    dependencies:
-      '@babel/runtime': 7.21.5
-      lodash: 4.17.21
-      mjml-core: 4.14.1
-    transitivePeerDependencies:
-      - encoding
-    dev: false
-
   /mjml-carousel@4.14.1(encoding@0.1.13):
     resolution: {integrity: sha512-Ku3MUWPk/TwHxVgKEUtzspy/ePaWtN/3z6/qvNik0KIn0ZUIZ4zvR2JtaVL5nd30LHSmUaNj30XMPkCjYiKkFA==}
     dependencies:
       '@babel/runtime': 7.21.5
       lodash: 4.17.21
       mjml-core: 4.14.1(encoding@0.1.13)
-    transitivePeerDependencies:
-      - encoding
-    dev: false
-
-  /mjml-cli@4.14.1:
-    resolution: {integrity: sha512-Gy6MnSygFXs0U1qOXTHqBg2vZX2VL/fAacgQzD4MHq4OuybWaTNSzXRwxBXYCxT3IJB874n2Q0Mxp+Xka+tnZg==}
-    hasBin: true
-    dependencies:
-      '@babel/runtime': 7.21.5
-      chokidar: 3.5.3
-      glob: 7.2.3
-      html-minifier: 4.0.0
-      js-beautify: 1.14.7
-      lodash: 4.17.21
-      mjml-core: 4.14.1
-      mjml-migrate: 4.14.1
-      mjml-parser-xml: 4.14.1
-      mjml-validator: 4.13.0
-      yargs: 16.2.0
     transitivePeerDependencies:
       - encoding
     dev: false
@@ -13375,39 +13154,12 @@ packages:
       - encoding
     dev: false
 
-  /mjml-column@4.14.1:
-    resolution: {integrity: sha512-iixVCIX1YJtpQuwG2WbDr7FqofQrlTtGQ4+YAZXGiLThs0En3xNIJFQX9xJ8sgLEGGltyooHiNICBRlzSp9fDg==}
-    dependencies:
-      '@babel/runtime': 7.21.5
-      lodash: 4.17.21
-      mjml-core: 4.14.1
-    transitivePeerDependencies:
-      - encoding
-    dev: false
-
   /mjml-column@4.14.1(encoding@0.1.13):
     resolution: {integrity: sha512-iixVCIX1YJtpQuwG2WbDr7FqofQrlTtGQ4+YAZXGiLThs0En3xNIJFQX9xJ8sgLEGGltyooHiNICBRlzSp9fDg==}
     dependencies:
       '@babel/runtime': 7.21.5
       lodash: 4.17.21
       mjml-core: 4.14.1(encoding@0.1.13)
-    transitivePeerDependencies:
-      - encoding
-    dev: false
-
-  /mjml-core@4.14.1:
-    resolution: {integrity: sha512-di88rSfX+8r4r+cEqlQCO7CRM4mYZrfe2wSCu2je38i+ujjkLpF72cgLnjBlSG5aOUCZgYvlsZ85stqIz9LQfA==}
-    dependencies:
-      '@babel/runtime': 7.21.5
-      cheerio: 1.0.0-rc.12
-      detect-node: 2.1.0
-      html-minifier: 4.0.0
-      js-beautify: 1.14.7
-      juice: 9.0.0(encoding@0.1.13)
-      lodash: 4.17.21
-      mjml-migrate: 4.14.1
-      mjml-parser-xml: 4.14.1
-      mjml-validator: 4.13.0
     transitivePeerDependencies:
       - encoding
     dev: false
@@ -13429,32 +13181,12 @@ packages:
       - encoding
     dev: false
 
-  /mjml-divider@4.14.1:
-    resolution: {integrity: sha512-agqWY0aW2xaMiUOhYKDvcAAfOLalpbbtjKZAl1vWmNkURaoK4L7MgDilKHSJDFUlHGm2ZOArTrq8i6K0iyThBQ==}
-    dependencies:
-      '@babel/runtime': 7.21.5
-      lodash: 4.17.21
-      mjml-core: 4.14.1
-    transitivePeerDependencies:
-      - encoding
-    dev: false
-
   /mjml-divider@4.14.1(encoding@0.1.13):
     resolution: {integrity: sha512-agqWY0aW2xaMiUOhYKDvcAAfOLalpbbtjKZAl1vWmNkURaoK4L7MgDilKHSJDFUlHGm2ZOArTrq8i6K0iyThBQ==}
     dependencies:
       '@babel/runtime': 7.21.5
       lodash: 4.17.21
       mjml-core: 4.14.1(encoding@0.1.13)
-    transitivePeerDependencies:
-      - encoding
-    dev: false
-
-  /mjml-group@4.14.1:
-    resolution: {integrity: sha512-dJt5batgEJ7wxlxzqOfHOI94ABX+8DZBvAlHuddYO4CsLFHYv6XRIArLAMMnAKU76r6p3X8JxYeOjKZXdv49kg==}
-    dependencies:
-      '@babel/runtime': 7.21.5
-      lodash: 4.17.21
-      mjml-core: 4.14.1
     transitivePeerDependencies:
       - encoding
     dev: false
@@ -13469,32 +13201,12 @@ packages:
       - encoding
     dev: false
 
-  /mjml-head-attributes@4.14.1:
-    resolution: {integrity: sha512-XdUNOp2csK28kBDSistInOyzWNwmu5HDNr4y1Z7vSQ1PfkmiuS6jWG7jHUjdoMhs27e6Leuyyc6a8gWSpqSWrg==}
-    dependencies:
-      '@babel/runtime': 7.21.5
-      lodash: 4.17.21
-      mjml-core: 4.14.1
-    transitivePeerDependencies:
-      - encoding
-    dev: false
-
   /mjml-head-attributes@4.14.1(encoding@0.1.13):
     resolution: {integrity: sha512-XdUNOp2csK28kBDSistInOyzWNwmu5HDNr4y1Z7vSQ1PfkmiuS6jWG7jHUjdoMhs27e6Leuyyc6a8gWSpqSWrg==}
     dependencies:
       '@babel/runtime': 7.21.5
       lodash: 4.17.21
       mjml-core: 4.14.1(encoding@0.1.13)
-    transitivePeerDependencies:
-      - encoding
-    dev: false
-
-  /mjml-head-breakpoint@4.14.1:
-    resolution: {integrity: sha512-Qw9l/W/I5Z9p7I4ShgnEpAL9if4472ejcznbBnp+4Gq+sZoPa7iYoEPsa9UCGutlaCh3N3tIi2qKhl9qD8DFxA==}
-    dependencies:
-      '@babel/runtime': 7.21.5
-      lodash: 4.17.21
-      mjml-core: 4.14.1
     transitivePeerDependencies:
       - encoding
     dev: false
@@ -13509,32 +13221,12 @@ packages:
       - encoding
     dev: false
 
-  /mjml-head-font@4.14.1:
-    resolution: {integrity: sha512-oBYm1gaOdEMjE5BoZouRRD4lCNZ1jcpz92NR/F7xDyMaKCGN6T/+r4S5dq1gOLm9zWqClRHaECdFJNEmrDpZqA==}
-    dependencies:
-      '@babel/runtime': 7.21.5
-      lodash: 4.17.21
-      mjml-core: 4.14.1
-    transitivePeerDependencies:
-      - encoding
-    dev: false
-
   /mjml-head-font@4.14.1(encoding@0.1.13):
     resolution: {integrity: sha512-oBYm1gaOdEMjE5BoZouRRD4lCNZ1jcpz92NR/F7xDyMaKCGN6T/+r4S5dq1gOLm9zWqClRHaECdFJNEmrDpZqA==}
     dependencies:
       '@babel/runtime': 7.21.5
       lodash: 4.17.21
       mjml-core: 4.14.1(encoding@0.1.13)
-    transitivePeerDependencies:
-      - encoding
-    dev: false
-
-  /mjml-head-html-attributes@4.14.1:
-    resolution: {integrity: sha512-vlJsJc1Sm4Ml2XvLmp01zsdmWmzm6+jNCO7X3eYi9ngEh8LjMCLIQOncnOgjqm9uGpQu2EgUhwvYFZP2luJOVg==}
-    dependencies:
-      '@babel/runtime': 7.21.5
-      lodash: 4.17.21
-      mjml-core: 4.14.1
     transitivePeerDependencies:
       - encoding
     dev: false
@@ -13549,32 +13241,12 @@ packages:
       - encoding
     dev: false
 
-  /mjml-head-preview@4.14.1:
-    resolution: {integrity: sha512-89gQtt3fhl2dkYpHLF5HDQXz/RLpzecU6wmAIT7Dz6etjLGE1dgq2Ay6Bu/OeHjDcT1gbM131zvBwuXw8OydNw==}
-    dependencies:
-      '@babel/runtime': 7.21.5
-      lodash: 4.17.21
-      mjml-core: 4.14.1
-    transitivePeerDependencies:
-      - encoding
-    dev: false
-
   /mjml-head-preview@4.14.1(encoding@0.1.13):
     resolution: {integrity: sha512-89gQtt3fhl2dkYpHLF5HDQXz/RLpzecU6wmAIT7Dz6etjLGE1dgq2Ay6Bu/OeHjDcT1gbM131zvBwuXw8OydNw==}
     dependencies:
       '@babel/runtime': 7.21.5
       lodash: 4.17.21
       mjml-core: 4.14.1(encoding@0.1.13)
-    transitivePeerDependencies:
-      - encoding
-    dev: false
-
-  /mjml-head-style@4.14.1:
-    resolution: {integrity: sha512-XryOuf32EDuUCBT2k99C1+H87IOM919oY6IqxKFJCDkmsbywKIum7ibhweJdcxiYGONKTC6xjuibGD3fQTTYNQ==}
-    dependencies:
-      '@babel/runtime': 7.21.5
-      lodash: 4.17.21
-      mjml-core: 4.14.1
     transitivePeerDependencies:
       - encoding
     dev: false
@@ -13589,32 +13261,12 @@ packages:
       - encoding
     dev: false
 
-  /mjml-head-title@4.14.1:
-    resolution: {integrity: sha512-aIfpmlQdf1eJZSSrFodmlC4g5GudBti2eMyG42M7/3NeLM6anEWoe+UkF/6OG4Zy0tCQ40BDJ5iBZlMsjQICzw==}
-    dependencies:
-      '@babel/runtime': 7.21.5
-      lodash: 4.17.21
-      mjml-core: 4.14.1
-    transitivePeerDependencies:
-      - encoding
-    dev: false
-
   /mjml-head-title@4.14.1(encoding@0.1.13):
     resolution: {integrity: sha512-aIfpmlQdf1eJZSSrFodmlC4g5GudBti2eMyG42M7/3NeLM6anEWoe+UkF/6OG4Zy0tCQ40BDJ5iBZlMsjQICzw==}
     dependencies:
       '@babel/runtime': 7.21.5
       lodash: 4.17.21
       mjml-core: 4.14.1(encoding@0.1.13)
-    transitivePeerDependencies:
-      - encoding
-    dev: false
-
-  /mjml-head@4.14.1:
-    resolution: {integrity: sha512-KoCbtSeTAhx05Ugn9TB2UYt5sQinSCb7RGRer5iPQ3CrXj8hT5B5Svn6qvf/GACPkWl4auExHQh+XgLB+r3OEA==}
-    dependencies:
-      '@babel/runtime': 7.21.5
-      lodash: 4.17.21
-      mjml-core: 4.14.1
     transitivePeerDependencies:
       - encoding
     dev: false
@@ -13629,32 +13281,12 @@ packages:
       - encoding
     dev: false
 
-  /mjml-hero@4.14.1:
-    resolution: {integrity: sha512-TQJ3yfjrKYGkdEWjHLHhL99u/meKFYgnfJvlo9xeBvRjSM696jIjdqaPHaunfw4CP6d2OpCIMuacgOsvqQMWOA==}
-    dependencies:
-      '@babel/runtime': 7.21.5
-      lodash: 4.17.21
-      mjml-core: 4.14.1
-    transitivePeerDependencies:
-      - encoding
-    dev: false
-
   /mjml-hero@4.14.1(encoding@0.1.13):
     resolution: {integrity: sha512-TQJ3yfjrKYGkdEWjHLHhL99u/meKFYgnfJvlo9xeBvRjSM696jIjdqaPHaunfw4CP6d2OpCIMuacgOsvqQMWOA==}
     dependencies:
       '@babel/runtime': 7.21.5
       lodash: 4.17.21
       mjml-core: 4.14.1(encoding@0.1.13)
-    transitivePeerDependencies:
-      - encoding
-    dev: false
-
-  /mjml-image@4.14.1:
-    resolution: {integrity: sha512-jfKLPHXuFq83okwlNM1Um/AEWeVDgs2JXIOsWp2TtvXosnRvGGMzA5stKLYdy1x6UfKF4c1ovpMS162aYGp+xQ==}
-    dependencies:
-      '@babel/runtime': 7.21.5
-      lodash: 4.17.21
-      mjml-core: 4.14.1
     transitivePeerDependencies:
       - encoding
     dev: false
@@ -13669,20 +13301,6 @@ packages:
       - encoding
     dev: false
 
-  /mjml-migrate@4.14.1:
-    resolution: {integrity: sha512-d+9HKQOhZi3ZFAaFSDdjzJX9eDQGjMf3BArLWNm2okC4ZgfJSpOc77kgCyFV8ugvwc8fFegPnSV60Jl4xtvK2A==}
-    hasBin: true
-    dependencies:
-      '@babel/runtime': 7.21.5
-      js-beautify: 1.14.7
-      lodash: 4.17.21
-      mjml-core: 4.14.1
-      mjml-parser-xml: 4.14.1
-      yargs: 16.2.0
-    transitivePeerDependencies:
-      - encoding
-    dev: false
-
   /mjml-migrate@4.14.1(encoding@0.1.13):
     resolution: {integrity: sha512-d+9HKQOhZi3ZFAaFSDdjzJX9eDQGjMf3BArLWNm2okC4ZgfJSpOc77kgCyFV8ugvwc8fFegPnSV60Jl4xtvK2A==}
     hasBin: true
@@ -13693,16 +13311,6 @@ packages:
       mjml-core: 4.14.1(encoding@0.1.13)
       mjml-parser-xml: 4.14.1
       yargs: 16.2.0
-    transitivePeerDependencies:
-      - encoding
-    dev: false
-
-  /mjml-navbar@4.14.1:
-    resolution: {integrity: sha512-rNy1Kw8CR3WQ+M55PFBAUDz2VEOjz+sk06OFnsnmNjoMVCjo1EV7OFLDAkmxAwqkC8h4zQWEOFY0MBqqoAg7+A==}
-    dependencies:
-      '@babel/runtime': 7.21.5
-      lodash: 4.17.21
-      mjml-core: 4.14.1
     transitivePeerDependencies:
       - encoding
     dev: false
@@ -13724,39 +13332,6 @@ packages:
       detect-node: 2.0.4
       htmlparser2: 8.0.2
       lodash: 4.17.21
-    dev: false
-
-  /mjml-preset-core@4.14.1:
-    resolution: {integrity: sha512-uUCqK9Z9d39rwB/+JDV2KWSZGB46W7rPQpc9Xnw1DRP7wD7qAfJwK6AZFCwfTgWdSxw0PwquVNcrUS9yBa9uhw==}
-    dependencies:
-      '@babel/runtime': 7.21.5
-      mjml-accordion: 4.14.1
-      mjml-body: 4.14.1
-      mjml-button: 4.14.1
-      mjml-carousel: 4.14.1
-      mjml-column: 4.14.1
-      mjml-divider: 4.14.1
-      mjml-group: 4.14.1
-      mjml-head: 4.14.1
-      mjml-head-attributes: 4.14.1
-      mjml-head-breakpoint: 4.14.1
-      mjml-head-font: 4.14.1
-      mjml-head-html-attributes: 4.14.1
-      mjml-head-preview: 4.14.1
-      mjml-head-style: 4.14.1
-      mjml-head-title: 4.14.1
-      mjml-hero: 4.14.1
-      mjml-image: 4.14.1
-      mjml-navbar: 4.14.1
-      mjml-raw: 4.14.1
-      mjml-section: 4.14.1
-      mjml-social: 4.14.1
-      mjml-spacer: 4.14.1
-      mjml-table: 4.14.1
-      mjml-text: 4.14.1
-      mjml-wrapper: 4.14.1
-    transitivePeerDependencies:
-      - encoding
     dev: false
 
   /mjml-preset-core@4.14.1(encoding@0.1.13):
@@ -13792,16 +13367,6 @@ packages:
       - encoding
     dev: false
 
-  /mjml-raw@4.14.1:
-    resolution: {integrity: sha512-9+4wzoXnCtfV6QPmjfJkZ50hxFB4Z8QZnl2Ac0D1Cn3dUF46UkmO5NLMu7UDIlm5DdFyycZrMOwvZS4wv9ksPw==}
-    dependencies:
-      '@babel/runtime': 7.21.5
-      lodash: 4.17.21
-      mjml-core: 4.14.1
-    transitivePeerDependencies:
-      - encoding
-    dev: false
-
   /mjml-raw@4.14.1(encoding@0.1.13):
     resolution: {integrity: sha512-9+4wzoXnCtfV6QPmjfJkZ50hxFB4Z8QZnl2Ac0D1Cn3dUF46UkmO5NLMu7UDIlm5DdFyycZrMOwvZS4wv9ksPw==}
     dependencies:
@@ -13828,32 +13393,12 @@ packages:
       react-reconciler: 0.26.2(react@18.2.0)
     dev: false
 
-  /mjml-section@4.14.1:
-    resolution: {integrity: sha512-Ik5pTUhpT3DOfB3hEmAWp8rZ0ilWtIivnL8XdUJRfgYE9D+MCRn+reIO+DAoJHxiQoI6gyeKkIP4B9OrQ7cHQw==}
-    dependencies:
-      '@babel/runtime': 7.21.5
-      lodash: 4.17.21
-      mjml-core: 4.14.1
-    transitivePeerDependencies:
-      - encoding
-    dev: false
-
   /mjml-section@4.14.1(encoding@0.1.13):
     resolution: {integrity: sha512-Ik5pTUhpT3DOfB3hEmAWp8rZ0ilWtIivnL8XdUJRfgYE9D+MCRn+reIO+DAoJHxiQoI6gyeKkIP4B9OrQ7cHQw==}
     dependencies:
       '@babel/runtime': 7.21.5
       lodash: 4.17.21
       mjml-core: 4.14.1(encoding@0.1.13)
-    transitivePeerDependencies:
-      - encoding
-    dev: false
-
-  /mjml-social@4.14.1:
-    resolution: {integrity: sha512-G44aOZXgZHukirjkeQWTTV36UywtE2YvSwWGNfo/8d+k5JdJJhCIrlwaahyKEAyH63G1B0Zt8b2lEWx0jigYUw==}
-    dependencies:
-      '@babel/runtime': 7.21.5
-      lodash: 4.17.21
-      mjml-core: 4.14.1
     transitivePeerDependencies:
       - encoding
     dev: false
@@ -13868,16 +13413,6 @@ packages:
       - encoding
     dev: false
 
-  /mjml-spacer@4.14.1:
-    resolution: {integrity: sha512-5SfQCXTd3JBgRH1pUy6NVZ0lXBiRqFJPVHBdtC3OFvUS3q1w16eaAXlIUWMKTfy8CKhQrCiE6m65kc662ZpYxA==}
-    dependencies:
-      '@babel/runtime': 7.21.5
-      lodash: 4.17.21
-      mjml-core: 4.14.1
-    transitivePeerDependencies:
-      - encoding
-    dev: false
-
   /mjml-spacer@4.14.1(encoding@0.1.13):
     resolution: {integrity: sha512-5SfQCXTd3JBgRH1pUy6NVZ0lXBiRqFJPVHBdtC3OFvUS3q1w16eaAXlIUWMKTfy8CKhQrCiE6m65kc662ZpYxA==}
     dependencies:
@@ -13888,32 +13423,12 @@ packages:
       - encoding
     dev: false
 
-  /mjml-table@4.14.1:
-    resolution: {integrity: sha512-aVBdX3WpyKVGh/PZNn2KgRem+PQhWlvnD00DKxDejRBsBSKYSwZ0t3EfFvZOoJ9DzfHsN0dHuwd6Z18Ps44NFQ==}
-    dependencies:
-      '@babel/runtime': 7.21.5
-      lodash: 4.17.21
-      mjml-core: 4.14.1
-    transitivePeerDependencies:
-      - encoding
-    dev: false
-
   /mjml-table@4.14.1(encoding@0.1.13):
     resolution: {integrity: sha512-aVBdX3WpyKVGh/PZNn2KgRem+PQhWlvnD00DKxDejRBsBSKYSwZ0t3EfFvZOoJ9DzfHsN0dHuwd6Z18Ps44NFQ==}
     dependencies:
       '@babel/runtime': 7.21.5
       lodash: 4.17.21
       mjml-core: 4.14.1(encoding@0.1.13)
-    transitivePeerDependencies:
-      - encoding
-    dev: false
-
-  /mjml-text@4.14.1:
-    resolution: {integrity: sha512-yZuvf5z6qUxEo5CqOhCUltJlR6oySKVcQNHwoV5sneMaKdmBiaU4VDnlYFera9gMD9o3KBHIX6kUg7EHnCwBRQ==}
-    dependencies:
-      '@babel/runtime': 7.21.5
-      lodash: 4.17.21
-      mjml-core: 4.14.1
     transitivePeerDependencies:
       - encoding
     dev: false
@@ -13934,17 +13449,6 @@ packages:
       '@babel/runtime': 7.21.5
     dev: false
 
-  /mjml-wrapper@4.14.1:
-    resolution: {integrity: sha512-aA5Xlq6d0hZ5LY+RvSaBqmVcLkvPvdhyAv3vQf3G41Gfhel4oIPmkLnVpHselWhV14A0KwIOIAKVxHtSAxyOTQ==}
-    dependencies:
-      '@babel/runtime': 7.21.5
-      lodash: 4.17.21
-      mjml-core: 4.14.1
-      mjml-section: 4.14.1
-    transitivePeerDependencies:
-      - encoding
-    dev: false
-
   /mjml-wrapper@4.14.1(encoding@0.1.13):
     resolution: {integrity: sha512-aA5Xlq6d0hZ5LY+RvSaBqmVcLkvPvdhyAv3vQf3G41Gfhel4oIPmkLnVpHselWhV14A0KwIOIAKVxHtSAxyOTQ==}
     dependencies:
@@ -13952,20 +13456,6 @@ packages:
       lodash: 4.17.21
       mjml-core: 4.14.1(encoding@0.1.13)
       mjml-section: 4.14.1(encoding@0.1.13)
-    transitivePeerDependencies:
-      - encoding
-    dev: false
-
-  /mjml@4.14.1:
-    resolution: {integrity: sha512-f/wnWWIVbeb/ge3ff7c/KYYizI13QbGIp03odwwkCThsJsacw4gpZZAU7V4gXY3HxSXP2/q3jxOfaHVbkfNpOQ==}
-    hasBin: true
-    dependencies:
-      '@babel/runtime': 7.21.5
-      mjml-cli: 4.14.1
-      mjml-core: 4.14.1
-      mjml-migrate: 4.14.1
-      mjml-preset-core: 4.14.1
-      mjml-validator: 4.13.0
     transitivePeerDependencies:
       - encoding
     dev: false

@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "eslint src",
     "test": "jest --passWithNoTests",
-    "tsc": "tsc --noEmit"
+    "tsc": "tsc --noEmit --incremental false"
   },
   "dependencies": {
     "axios": "^1.4.0",

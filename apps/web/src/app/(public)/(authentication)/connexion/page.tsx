@@ -14,12 +14,13 @@ const SigninPage = async ({ searchParams: { error, suivant } = {} }: { searchPar
     redirect(getServerUrl(suivant ?? '/'));
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const callbackUrl = suivant ?? '/';
 
   return (
     <>
       <Breadcrumbs currentPage="Connexion" />
-      <SigninPanel error={error} callbackUrl={callbackUrl} />
+      <SigninPanel error={error} />
     </>
   );
 };

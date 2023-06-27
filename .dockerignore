@@ -32,6 +32,3 @@ apps/cli/node_modules
 **/*.spec.tsx
 **/*.integration.ts
 **/*.integration.tsx
-**/*.e2e.ts
-**/*.e2e.tsx
-

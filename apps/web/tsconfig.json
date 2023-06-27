@@ -13,13 +13,10 @@
     "paths": {
       "@app/cli/*": ["../../apps/cli/src/*"],
       "@app/web/*": ["src/*"],
-      "@app/config/*": ["../../packages/config/src/*"],
-      "@app/emails/*": ["../../packages/emails/src/*"],
       "@app/lint/*": ["../../packages/lint/src/*"],
       "@app/storybook/*": ["../../packages/storybook/src/*"],
       "@app/test/*": ["../../packages/test/src/*"],
-      "@app/ui/*": ["../../packages/ui/src/*"],
-      "@app/fixtures/*": ["../../packages/fixtures/src/*"]
+      "@app/ui/*": ["../../packages/ui/src/*"]
     },
     "baseUrl": "."
   },

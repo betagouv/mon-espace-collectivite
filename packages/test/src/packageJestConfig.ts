@@ -51,11 +51,8 @@ export const packageJestConfig = ({
     moduleNameMapper: {
       '^@app/web/(.*)$': '<rootDir>/../../apps/web/src/$1',
       '^@app/cli/(.*)$': '<rootDir>/../../apps/cli/src/$1',
-      '^@app/config/(.*)$': '<rootDir>/../../packages/config/src/$1',
-      '^@app/fixtures/(.*)$': '<rootDir>/../../packages/fixtures/src/$1',
       '^@prisma/client$': '<rootDir>/../../apps/web/node_modules/@prisma/client',
       '^@app/ui/(.*)$': '<rootDir>/../../packages/ui/src/$1',
-      '^@app/emails/(.*)$': '<rootDir>/../../packages/emails/src/$1',
       '^@app/lint/(.*)$': '<rootDir>/../../packages/lint/src/$1',
       '^@app/storybook/(.*)$': '<rootDir>/../../packages/storybook/src/$1',
       '^@app/test/(.*)$': '<rootDir>/../../packages/test/src/$1',
