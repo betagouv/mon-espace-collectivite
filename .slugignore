@@ -1,0 +1,12 @@
+/.cache/
+/node_modules/
+/apps/cli/node_modules/
+/apps/web/.cache/
+/apps/web/.next/
+/apps/web/.turbo/
+/apps/web/node_modules/
+/packages/lint/node_modules/
+/packages/storybook/node_modules/
+/packages/storybook/storybook-static/
+/packages/test/node_modules/
+/packages/ui/node_modules/

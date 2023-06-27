@@ -23,6 +23,8 @@
     "lint": "turbo lint",
     "tsc": "turbo tsc",
     "test": "turbo test",
+    "heroku-postbuild": "turbo run heroku-postbuild --filter=web...",
+    "start": "cd apps/web && pnpm run heroku-start",
     "with-env": "dotenv --",
     "manypkg": "manypkg",
     "start:web": "npm -w @app/web start"
