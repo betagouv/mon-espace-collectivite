@@ -26,3 +26,6 @@ yarn-error.log*
 .env*.local
 .env
 .env.remote
+
+# turbo
+out/

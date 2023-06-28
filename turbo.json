@@ -17,11 +17,23 @@
     "heroku-postbuild": {
       "cache": false
     },
+    "lint:prepare": {
+      "outputs": [],
+      "cache": false
+    },
     "lint": {
       "outputs": [],
       "cache": false
     },
-    "test": {
+    "test:prepare": {
+      "outputs": [],
+      "cache": false
+    },
+    "test:unit": {
+      "outputs": [],
+      "cache": false
+    },
+    "test:e2e:headless": {
       "outputs": [],
       "cache": false
     },
