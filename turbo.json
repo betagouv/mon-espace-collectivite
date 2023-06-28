@@ -21,7 +21,11 @@
       "outputs": [],
       "cache": false
     },
-    "test": {
+    "test:unit": {
+      "outputs": [],
+      "cache": false
+    },
+    "test:e2e:headless": {
       "outputs": [],
       "cache": false
     },
