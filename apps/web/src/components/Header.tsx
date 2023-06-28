@@ -1,17 +1,12 @@
-import Link from 'next/link'
-import React from 'react'
-import { SessionUser } from '@app/web/auth/sessionUser'
-import HeaderBackLink from '@app/web/components/HeaderBackLink'
-import { HeaderUserMenu } from '@app/web/components/HeaderUserMenu'
-import { PublicWebAppConfig } from '@app/web/webAppConfig'
+import Link from 'next/link';
+import React from 'react';
 
-const Header = ({
-  user,
-  backLink,
-}: {
-  user?: SessionUser | null
-  backLink?: boolean
-}) => (
+import { SessionUser } from '@app/web/auth/sessionUser';
+import HeaderBackLink from '@app/web/components/HeaderBackLink';
+import { HeaderUserMenu } from '@app/web/components/HeaderUserMenu';
+import { PublicWebAppConfig } from '@app/web/webAppConfig';
+
+const Header = ({ user, backLink }: { user?: SessionUser | null; backLink?: boolean }) => (
   <header role="banner" className="fr-header">
     <div className="fr-header__body">
       <div className="fr-container">
@@ -22,12 +17,7 @@ const Header = ({
                 <HeaderBackLink />
               ) : (
                 <div className="fr-header__logo">
-                  <Link
-                    href="/"
-                    aria-current="page"
-                    target="_self"
-                    title={process.env.NEXT_PUBLIC_APP_NAME}
-                  >
+                  <Link href="/" aria-current="page" target="_self" title={process.env.NEXT_PUBLIC_APP_NAME}>
                     <p className="fr-logo">
                       République
                       <br />
@@ -52,15 +42,8 @@ const Header = ({
               </div>
             </div>
             <div className="fr-header__service">
-              <Link
-                href="/"
-                aria-current="page"
-                target="_self"
-                title={`Accueil - ${PublicWebAppConfig.projectTitle}`}
-              >
-                <p className="fr-header__service-title">
-                  {PublicWebAppConfig.projectTitle}
-                </p>
+              <Link href="/" aria-current="page" target="_self" title={`Accueil - ${PublicWebAppConfig.projectTitle}`}>
+                <p className="fr-header__service-title">{PublicWebAppConfig.projectTitle}</p>
               </Link>
             </div>
           </div>
@@ -85,10 +68,7 @@ const Header = ({
                   {user ? (
                     <HeaderUserMenu user={user} />
                   ) : (
-                    <Link
-                      href="/connexion"
-                      className="fr-btn fr-icon-user-line"
-                    >
+                    <Link href="/connexion" className="fr-btn fr-icon-user-line">
                       Se connecter
                     </Link>
                   )}
@@ -101,11 +81,7 @@ const Header = ({
     </div>
     <div id="modal-menu-mobile" className="fr-header__menu fr-modal">
       <div className="fr-container">
-        <button
-          aria-controls="modal-menu-mobile"
-          className="fr-btn--close fr-btn"
-          type="button"
-        >
+        <button aria-controls="modal-menu-mobile" className="fr-btn--close fr-btn" type="button">
           Fermer
         </button>
         <div className="fr-header__menu-links">
@@ -126,6 +102,6 @@ const Header = ({
       </div>
     </div>
   </header>
-)
+);
 
-export default Header
+export default Header;

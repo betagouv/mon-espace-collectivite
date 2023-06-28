@@ -1,19 +1,21 @@
-import classNames from 'classnames'
-import React from 'react'
-import { Control, Controller, FieldValues } from 'react-hook-form'
-import { FieldPath } from 'react-hook-form/dist/types/path'
-import { UiComponentProps } from '@app/ui/utils/uiComponentProps'
-import { SelectOption } from './utils/options'
+import classNames from 'classnames';
+import React from 'react';
+import { Control, Controller, FieldValues } from 'react-hook-form';
+import { FieldPath } from 'react-hook-form/dist/types/path';
+
+import { UiComponentProps } from '@app/ui/utils/uiComponentProps';
+
+import { SelectOption } from './utils/options';
 
 export type SelectFormFieldProps<T extends FieldValues> = {
-  label: string
-  path: FieldPath<T>
-  control: Control<T>
-  options: SelectOption[]
-  disabled?: boolean
-  hint?: string
-  valid?: string
-}
+  label: string;
+  path: FieldPath<T>;
+  control: Control<T>;
+  options: SelectOption[];
+  disabled?: boolean;
+  hint?: string;
+  valid?: string;
+};
 
 const SelectFormField = <T extends FieldValues>({
   label,
@@ -24,21 +26,18 @@ const SelectFormField = <T extends FieldValues>({
   disabled,
   valid,
 }: UiComponentProps & SelectFormFieldProps<T>) => {
-  const id = `input-form-field__${path}`
+  const id = `input-form-field__${path}`;
 
   return (
     <Controller
       control={control}
       name={path}
-      render={({
-        field: { onChange, onBlur, name, ref, value },
-        fieldState: { invalid, error, isDirty },
-      }) => {
-        let ariaDescribedBy: string | undefined
+      render={({ field: { onChange, onBlur, name, ref, value }, fieldState: { invalid, error, isDirty } }) => {
+        let ariaDescribedBy: string | undefined;
         if (error) {
-          ariaDescribedBy = `${id}__error`
+          ariaDescribedBy = `${id}__error`;
         } else if (valid && isDirty && !invalid) {
-          ariaDescribedBy = `${id}__valid`
+          ariaDescribedBy = `${id}__valid`;
         }
 
         return (
@@ -68,12 +67,7 @@ const SelectFormField = <T extends FieldValues>({
               value={value || ''}
             >
               {options.map((option) => (
-                <option
-                  key={option.value}
-                  value={option.value}
-                  disabled={option.disabled}
-                  hidden={option.hidden}
-                >
+                <option key={option.value} value={option.value} disabled={option.disabled} hidden={option.hidden}>
                   {option.name}
                 </option>
               ))}
@@ -89,10 +83,10 @@ const SelectFormField = <T extends FieldValues>({
               </p>
             )}
           </div>
-        )
+        );
       }}
     />
-  )
-}
+  );
+};
 
-export default SelectFormField
+export default SelectFormField;

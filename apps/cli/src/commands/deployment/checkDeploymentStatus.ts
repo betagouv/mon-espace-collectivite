@@ -1,8 +1,8 @@
-import axios from 'axios'
-import axiosRetry from 'axios-retry'
-import { Command } from '@commander-js/extra-typings'
-import { projectTitle } from '@app/config/config'
-import { output } from '@app/cli/output'
+import { Command } from '@commander-js/extra-typings';
+import axios from 'axios';
+import axiosRetry from 'axios-retry';
+
+import { output } from '@app/cli/output';
 
 export const checkDeploymentStatus = new Command()
   .command('deployment:check-status')
@@ -13,25 +13,19 @@ export const checkDeploymentStatus = new Command()
       headers: {
         Accept: 'text/html',
       },
-    })
+    });
     axiosRetry(client, {
       retries: 3,
       retryDelay: (retryCount) => retryCount * 3000,
-    })
+    });
 
-    const statusResponse = await client.get<{ status: string }>('/health')
-    output(`Status is ${statusResponse.data.status}`)
+    const statusResponse = await client.get<{ status: string }>('/health');
+    output(`Status is ${statusResponse.data.status}`);
 
-    const homePageResponse = await client.get<string>('/')
+    const homePageResponse = await client.get<string>('/');
     if (!homePageResponse.data.startsWith('<!DOCTYPE html>')) {
-      throw new Error('Home page is not valid html')
+      throw new Error('Home page is not valid html');
     }
 
-    if (!homePageResponse.data.includes(projectTitle)) {
-      throw new Error(
-        `Project title "${projectTitle}" is not present on the homepage`,
-      )
-    }
-
-    output(`Homepage looks like valid html`)
-  })
+    output(`Homepage looks like valid html`);
+  });

@@ -1,23 +1,17 @@
-import React, {
-  Dispatch,
-  SetStateAction,
-  useCallback,
-  useMemo,
-  useRef,
-  useState,
-} from 'react'
-import classNames from 'classnames'
-import Input from '@codegouvfr/react-dsfr/Input'
-import Options, { Option } from './Options'
-import styles from './SearchableSelect.module.css'
+import Input from '@codegouvfr/react-dsfr/Input';
+import classNames from 'classnames';
+import React, { Dispatch, SetStateAction, useCallback, useMemo, useRef, useState } from 'react';
 
-const DEFAULT_LIMIT = 5
+import Options, { Option } from './Options';
+import styles from './SearchableSelect.module.css';
+
+const DEFAULT_LIMIT = 5;
 
 type Category<T extends string> = {
-  name: string
-  options: Option<T>[]
-  limit?: number
-}
+  name: string;
+  options: Option<T>[];
+  limit?: number;
+};
 
 const SearchableSelect = <T extends string>({
   placeholder,
@@ -27,82 +21,69 @@ const SearchableSelect = <T extends string>({
   limit,
   setSelected,
 }: {
-  placeholder?: string
-  noResultMessage?: string
-  setSelected: Dispatch<SetStateAction<string>>
+  placeholder?: string;
+  noResultMessage?: string;
+  setSelected: Dispatch<SetStateAction<string>>;
 } & (
   | { categories: Category<T>[]; options: undefined; limit: undefined }
   | {
-      categories: undefined
-      limit?: number
-      options: Option<T>[]
+      categories: undefined;
+      limit?: number;
+      options: Option<T>[];
     }
 )) => {
   const allOptions = useMemo(() => {
     if (options) {
-      return options
+      return options;
     }
-    return categories.flatMap((category) => category.options)
-  }, [options, categories])
+    return categories.flatMap((category) => category.options);
+  }, [options, categories]);
 
-  const [inputValue, setInputValue] = useState('')
-  const [showOptions, setShowOptions] = useState(false)
+  const [inputValue, setInputValue] = useState('');
+  const [showOptions, setShowOptions] = useState(false);
 
-  const optionsContainerRef = useRef<HTMLDivElement>(null)
+  const optionsContainerRef = useRef<HTMLDivElement>(null);
 
   const filteredOptions = useMemo(
-    () =>
-      allOptions.filter((option) =>
-        option.name
-          .toLocaleLowerCase()
-          .includes(inputValue.toLocaleLowerCase()),
-      ),
+    () => allOptions.filter((option) => option.name.toLocaleLowerCase().includes(inputValue.toLocaleLowerCase())),
     [inputValue, allOptions],
-  )
+  );
 
   const select = useCallback(
     (option: Option<T>) => {
-      setInputValue(option.name)
-      setSelected(option.value)
+      setInputValue(option.name);
+      setSelected(option.value);
     },
     [setInputValue, setSelected],
-  )
+  );
 
   const unselect = useCallback(() => {
-    setInputValue('')
-    setSelected('')
-  }, [setInputValue, setSelected])
+    setInputValue('');
+    setSelected('');
+  }, [setInputValue, setSelected]);
 
   const onInternalFocus = useCallback(() => {
-    unselect()
-    setShowOptions(true)
-  }, [unselect])
+    unselect();
+    setShowOptions(true);
+  }, [unselect]);
 
   const onInternalBlur = useCallback(() => {
     if (filteredOptions.length === 1 && !filteredOptions[0].disabled) {
-      select(filteredOptions[0])
+      select(filteredOptions[0]);
     } else {
       const foundValue = allOptions
         .filter((option) => !option.disabled)
-        .find(
-          (option) =>
-            option.name.toLocaleLowerCase() === inputValue.toLocaleLowerCase(),
-        )
+        .find((option) => option.name.toLocaleLowerCase() === inputValue.toLocaleLowerCase());
       if (!foundValue) {
-        unselect()
+        unselect();
       }
     }
-    setShowOptions(false)
-  }, [filteredOptions, inputValue, allOptions, select, unselect])
+    setShowOptions(false);
+  }, [filteredOptions, inputValue, allOptions, select, unselect]);
 
   return (
     <div className={styles.input}>
-      <button
-        type="button"
-        title="Effacer la recherche"
-        className={styles.icon}
-        onClick={unselect}
-      >
+      <button type="button" title="Effacer la recherche" className={styles.icon} onClick={unselect}>
         <span
           className={classNames({
             'fr-icon-close-circle-fill': inputValue,
@@ -131,37 +112,21 @@ const SearchableSelect = <T extends string>({
         {categories &&
           categories.map((category, index) => (
             <div key={category.name}>
-              <div
-                className={classNames(
-                  styles.category,
-                  'fr-text--lg',
-                  'fr-mb-0',
-                  { 'fr-mt-3w': index !== 0 },
-                )}
-              >
+              <div className={classNames(styles.category, 'fr-text--lg', 'fr-mb-0', { 'fr-mt-3w': index !== 0 })}>
                 <b>{category.name}</b>
               </div>
               <Options
-                options={category.options.filter((option) =>
-                  filteredOptions.some((o) => o.value === option.value),
-                )}
+                options={category.options.filter((option) => filteredOptions.some((o) => o.value === option.value))}
                 select={select}
                 limit={category.limit || DEFAULT_LIMIT}
                 noResultMessage={noResultMessage}
               />
             </div>
           ))}
-        {options && (
-          <Options
-            options={filteredOptions}
-            select={select}
-            limit={limit || DEFAULT_LIMIT}
-            noResultMessage={noResultMessage}
-          />
-        )}
+        {options && <Options options={filteredOptions} select={select} limit={limit || DEFAULT_LIMIT} noResultMessage={noResultMessage} />}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default SearchableSelect
+export default SearchableSelect;

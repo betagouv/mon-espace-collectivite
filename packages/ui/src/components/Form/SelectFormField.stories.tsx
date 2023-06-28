@@ -1,11 +1,13 @@
-import React from 'react'
-import { useForm } from 'react-hook-form'
-import z from 'zod'
-import { zodResolver } from '@hookform/resolvers/zod/dist/zod'
-import { Meta, StoryObj } from '@storybook/react'
-import { useOnDiff } from '@app/web/hooks/useOnDiff'
-import SelectFormField, { SelectFormFieldProps } from './SelectFormField'
-import { SelectOption } from './utils/options'
+import { zodResolver } from '@hookform/resolvers/zod/dist/zod';
+import { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import z from 'zod';
+
+import { useOnDiff } from '@app/web/hooks/useOnDiff';
+
+import SelectFormField, { SelectFormFieldProps } from './SelectFormField';
+import { SelectOption } from './utils/options';
 
 const objectFormValidation = z
   .object({
@@ -13,43 +15,40 @@ const objectFormValidation = z
     choiceError: z.enum(['choice-1', 'choice-2', 'choice-3']),
     choiceSuccess: z.enum(['choice-1', 'choice-2', 'choice-3']),
   })
-  .strict()
-type ObjectFormData = z.infer<typeof objectFormValidation>
+  .strict();
+type ObjectFormData = z.infer<typeof objectFormValidation>;
 
-const Template = ({
-  path,
-  ...args
-}: Omit<SelectFormFieldProps<ObjectFormData>, 'control'>) => {
+const Template = ({ path, ...args }: Omit<SelectFormFieldProps<ObjectFormData>, 'control'>) => {
   const form = useForm<ObjectFormData>({
     resolver: zodResolver(objectFormValidation),
     reValidateMode: 'onChange',
     mode: 'all',
-  })
+  });
 
   useOnDiff(form, () => {
     form.setValue('choiceSuccess', 'choice-2', {
       shouldTouch: true,
       shouldDirty: true,
       shouldValidate: true,
-    })
-    form.setError('choiceError', { message: "Message d'erreur" })
-  })
+    });
+    form.setError('choiceError', { message: "Message d'erreur" });
+  });
 
   return (
     <form>
       <SelectFormField control={form.control} path={path} {...args} />
     </form>
-  )
-}
+  );
+};
 
 const meta: Meta<typeof SelectFormField> = {
   title: 'DSFR Component/Form/Select',
   component: SelectFormField,
-}
+};
 
-export default meta
+export default meta;
 
-type Story = StoryObj<typeof SelectFormField>
+type Story = StoryObj<typeof SelectFormField>;
 
 const options: SelectOption[] = [
   {
@@ -70,7 +69,7 @@ const options: SelectOption[] = [
     name: 'Choix 3',
     value: 'choice-3',
   },
-]
+];
 
 export const Default: Story = {
   name: 'Liste déroulante',
@@ -79,7 +78,7 @@ export const Default: Story = {
     label: 'Label',
     options,
   },
-}
+};
 
 export const Error: Story = {
   name: "État d'erreur",
@@ -88,7 +87,7 @@ export const Error: Story = {
     label: 'Label',
     options,
   },
-}
+};
 
 export const Success: Story = {
   name: 'État de succès',
@@ -98,7 +97,7 @@ export const Success: Story = {
     valid: 'Choix valide',
     options,
   },
-}
+};
 
 export const Disabled: Story = {
   name: 'État désactivé',
@@ -108,7 +107,7 @@ export const Disabled: Story = {
     disabled: true,
     options,
   },
-}
+};
 
 export const Hint: Story = {
   name: "Liste avec texte d'aide",
@@ -118,4 +117,4 @@ export const Hint: Story = {
     hint: 'Texte de description additionnel',
     options,
   },
-}
+};

@@ -1,21 +1,23 @@
-import classNames from 'classnames'
-import React from 'react'
-import { Control, Controller, FieldValues } from 'react-hook-form'
-import { FieldPath } from 'react-hook-form/dist/types/path'
-import { UiComponentProps } from '@app/ui/utils/uiComponentProps'
-import { RadioOption } from './utils/options'
+import classNames from 'classnames';
+import React from 'react';
+import { Control, Controller, FieldValues } from 'react-hook-form';
+import { FieldPath } from 'react-hook-form/dist/types/path';
+
+import { UiComponentProps } from '@app/ui/utils/uiComponentProps';
+
+import { RadioOption } from './utils/options';
 
 export type RadioFormFieldProps<T extends FieldValues> = {
-  control: Control<T>
-  path: FieldPath<T>
-  options: RadioOption[]
-  disabled?: boolean
-  label?: string
-  hint?: string
-  inline?: boolean
-  valid?: string
-  small?: boolean
-}
+  control: Control<T>;
+  path: FieldPath<T>;
+  options: RadioOption[];
+  disabled?: boolean;
+  label?: string;
+  hint?: string;
+  inline?: boolean;
+  valid?: string;
+  small?: boolean;
+};
 
 const RadioFormField = <T extends FieldValues>({
   label,
@@ -30,21 +32,18 @@ const RadioFormField = <T extends FieldValues>({
   className,
   'data-testid': dataTestId,
 }: UiComponentProps & RadioFormFieldProps<T>) => {
-  const id = `input-form-field__${path}`
+  const id = `input-form-field__${path}`;
 
   return (
     <Controller
       control={control}
       name={path}
-      render={({
-        field: { onChange, onBlur, name, ref },
-        fieldState: { invalid, error, isDirty },
-      }) => {
-        let ariaLabelBy: string | undefined
+      render={({ field: { onChange, onBlur, name, ref }, fieldState: { invalid, error, isDirty } }) => {
+        let ariaLabelBy: string | undefined;
         if (error) {
-          ariaLabelBy = `${id}__error`
+          ariaLabelBy = `${id}__error`;
         } else if (valid && isDirty && !invalid) {
-          ariaLabelBy = `${id}__valid`
+          ariaLabelBy = `${id}__valid`;
         }
 
         return (
@@ -59,15 +58,10 @@ const RadioFormField = <T extends FieldValues>({
                 },
                 className,
               )}
-              aria-labelledby={`${id}__legend${
-                ariaLabelBy ? ` ${ariaLabelBy}` : ''
-              }`}
+              aria-labelledby={`${id}__legend${ariaLabelBy ? ` ${ariaLabelBy}` : ''}`}
               role="group"
             >
-              <legend
-                className="fr-fieldset__legend fr-fieldset__legend--regular"
-                id={`${id}__legend`}
-              >
+              <legend className="fr-fieldset__legend fr-fieldset__legend--regular" id={`${id}__legend`}>
                 {label}
                 {hint ? <span className="fr-hint-text">{hint}</span> : null}
               </legend>
@@ -90,7 +84,7 @@ const RadioFormField = <T extends FieldValues>({
                       onBlur={onBlur}
                       onChange={(event) => {
                         if (event.target.checked) {
-                          onChange(option.value)
+                          onChange(option.value);
                         }
                       }}
                       value={option.value}
@@ -99,39 +93,27 @@ const RadioFormField = <T extends FieldValues>({
                     />
                     <label className="fr-label" htmlFor={`${id}__${index}`}>
                       {option.name}
-                      {option.hint && (
-                        <span className="fr-hint-text">{option.hint}</span>
-                      )}
+                      {option.hint && <span className="fr-hint-text">{option.hint}</span>}
                     </label>
                   </div>
                 </div>
               ))}
               {error && (
-                <div
-                  className="fr-messages-group"
-                  id={`${id}__error`}
-                  aria-live="assertive"
-                >
-                  <p className="fr-message fr-message--error">
-                    {error.message}
-                  </p>
+                <div className="fr-messages-group" id={`${id}__error`} aria-live="assertive">
+                  <p className="fr-message fr-message--error">{error.message}</p>
                 </div>
               )}
               {valid && isDirty && !invalid && (
-                <div
-                  className="fr-messages-group"
-                  id={`${id}__valid`}
-                  aria-live="assertive"
-                >
+                <div className="fr-messages-group" id={`${id}__valid`} aria-live="assertive">
                   <p className="fr-message fr-message--valid">{valid}</p>
                 </div>
               )}
             </fieldset>
           </div>
-        )
+        );
       }}
     />
-  )
-}
+  );
+};
 
-export default RadioFormField
+export default RadioFormField;

@@ -1,18 +1,19 @@
-import classNames from 'classnames'
-import React from 'react'
-import { Control, Controller, FieldValues } from 'react-hook-form'
-import { FieldPath } from 'react-hook-form/dist/types/path'
-import { UiComponentProps } from '@app/ui/utils/uiComponentProps'
+import classNames from 'classnames';
+import React from 'react';
+import { Control, Controller, FieldValues } from 'react-hook-form';
+import { FieldPath } from 'react-hook-form/dist/types/path';
+
+import { UiComponentProps } from '@app/ui/utils/uiComponentProps';
 
 export type CheckboxFormFieldProps<T extends FieldValues> = {
-  control: Control<T>
-  path: FieldPath<T>
-  disabled?: boolean
-  label?: string
-  hint?: string
-  valid?: string
-  small?: boolean
-}
+  control: Control<T>;
+  path: FieldPath<T>;
+  disabled?: boolean;
+  label?: string;
+  hint?: string;
+  valid?: string;
+  small?: boolean;
+};
 
 const CheckboxFormField = <T extends FieldValues>({
   label,
@@ -25,21 +26,18 @@ const CheckboxFormField = <T extends FieldValues>({
   className,
   'data-testid': dataTestId,
 }: UiComponentProps & CheckboxFormFieldProps<T>) => {
-  const id = `input-form-field__${path}`
+  const id = `input-form-field__${path}`;
 
   return (
     <Controller
       control={control}
       name={path}
-      render={({
-        field: { onChange, onBlur, name, ref, value },
-        fieldState: { invalid, error, isDirty },
-      }) => {
-        let ariaLabelBy: string | undefined
+      render={({ field: { onChange, onBlur, name, ref, value }, fieldState: { invalid, error, isDirty } }) => {
+        let ariaLabelBy: string | undefined;
         if (error) {
-          ariaLabelBy = `${id}__error`
+          ariaLabelBy = `${id}__error`;
         } else if (valid && isDirty && !invalid) {
-          ariaLabelBy = `${id}__valid`
+          ariaLabelBy = `${id}__valid`;
         }
 
         return (
@@ -54,9 +52,7 @@ const CheckboxFormField = <T extends FieldValues>({
                 },
                 className,
               )}
-              aria-labelledby={`${id}__legend${
-                ariaLabelBy ? ` ${ariaLabelBy}` : ''
-              }`}
+              aria-labelledby={`${id}__legend${ariaLabelBy ? ` ${ariaLabelBy}` : ''}`}
               role="group"
             >
               <div className="fr-fieldset__element">
@@ -72,7 +68,7 @@ const CheckboxFormField = <T extends FieldValues>({
                     disabled={disabled}
                     onBlur={onBlur}
                     onChange={(event) => {
-                      onChange(event.target.checked)
+                      onChange(event.target.checked);
                     }}
                     name={name}
                     ref={ref}
@@ -84,31 +80,21 @@ const CheckboxFormField = <T extends FieldValues>({
                 </div>
               </div>
               {error && (
-                <div
-                  className="fr-messages-group"
-                  id={`${id}__error`}
-                  aria-live="assertive"
-                >
-                  <p className="fr-message fr-message--error">
-                    {error.message}
-                  </p>
+                <div className="fr-messages-group" id={`${id}__error`} aria-live="assertive">
+                  <p className="fr-message fr-message--error">{error.message}</p>
                 </div>
               )}
               {valid && isDirty && !invalid && (
-                <div
-                  className="fr-messages-group"
-                  id={`${id}__valid`}
-                  aria-live="assertive"
-                >
+                <div className="fr-messages-group" id={`${id}__valid`} aria-live="assertive">
                   <p className="fr-message fr-message--valid">{valid}</p>
                 </div>
               )}
             </fieldset>
           </div>
-        )
+        );
       }}
     />
-  )
-}
+  );
+};
 
-export default CheckboxFormField
+export default CheckboxFormField;

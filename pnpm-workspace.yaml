@@ -1,11 +1,3 @@
 packages:
-  - apps/cli
-  - apps/web
-  - packages/cdk
-  - packages/config
-  - packages/emails
-  - packages/lint
-  - packages/ui
-  - packages/storybook
-  - packages/test
-  - packages/fixtures
+  - 'apps/*'
+  - 'packages/*'

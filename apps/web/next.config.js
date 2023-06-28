@@ -1,11 +1,11 @@
-const { withSentryConfig } = require('@sentry/nextjs')
+const { withSentryConfig } = require('@sentry/nextjs');
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
-})
-const path = require('node:path')
-const packageJson = require('./package.json')
+});
+const path = require('node:path');
+const packageJson = require('./package.json');
 
-const isDevelopment = process.env.NODE_ENV === 'development'
+const isDevelopment = process.env.NODE_ENV === 'development';
 
 // Some packages export a lot of modules in a single index file. To avoid them being compiled
 // next has added native support for modularize import transform
@@ -14,32 +14,26 @@ const isDevelopment = process.env.NODE_ENV === 'development'
 const modularizeImports = {
   'date-fns': { transform: 'date-fns/{{member}}' },
   'chart.js': { transform: 'chart.js/{{member}}' },
-}
+};
 
 /**
  * For faster dev UX, server dependencies do not need to be bundled.
  * Except those that are expected to be bundled for compilation features.
  */
-const alwaysBundledPackages = new Set([
-  'next',
-  'server-only',
-  '@codegouvfr/react-dsfr',
-])
+const alwaysBundledPackages = new Set(['next', 'server-only', '@codegouvfr/react-dsfr']);
 const externalServerPackagesForFasterDevelopmentUx = isDevelopment
-  ? [
-      ...Object.keys(packageJson.dependencies),
-      ...Object.keys(packageJson.devDependencies),
-    ].filter((packageName) => !alwaysBundledPackages.has(packageName))
-  : undefined
+  ? [...Object.keys(packageJson.dependencies), ...Object.keys(packageJson.devDependencies)].filter(
+      (packageName) => !alwaysBundledPackages.has(packageName),
+    )
+  : undefined;
 
 const nextConfig = {
   output: 'standalone',
   reactStrictMode: true,
-  transpilePackages: ['@app/emails'],
+  transpilePackages: [],
   experimental: {
     // See https://beta.nextjs.org/docs/api-reference/next.config.js#servercomponentsexternalpackages
-    serverComponentsExternalPackages:
-      externalServerPackagesForFasterDevelopmentUx,
+    serverComponentsExternalPackages: externalServerPackagesForFasterDevelopmentUx,
     // This includes files from the monorepo base two directories up
     outputFileTracingRoot: path.join(__dirname, '../../'),
   },
@@ -63,25 +57,24 @@ const nextConfig = {
   webpack: (config, { isServer }) => {
     if (!isServer) {
       // Client bundling
-      return config
+      return config;
     }
 
     // Server bundling
 
     // Mjml cannot be bundled as it uses dynamic requires
     // Only put library required on the server in externals as they would not be available in client
-    config.externals.push('mjml', 'mjml-core')
+    config.externals.push('mjml', 'mjml-core');
 
-    return config
+    return config;
   },
-}
+};
 
 // For all available options, see:
 // https://github.com/getsentry/sentry-webpack-plugin#options.
 const sentryWebpackPluginOptions = {
   silent: true, // Suppresses all logs
-}
+};
 
-module.exports = withBundleAnalyzer(
-  withSentryConfig(nextConfig, sentryWebpackPluginOptions),
-)
+// module.exports = withBundleAnalyzer(withSentryConfig(nextConfig, sentryWebpackPluginOptions));
+module.exports = withBundleAnalyzer(nextConfig);

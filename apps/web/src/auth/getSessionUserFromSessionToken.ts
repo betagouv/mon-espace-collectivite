@@ -1,11 +1,9 @@
-import { SessionUser } from '@app/web/auth/sessionUser'
-import { prismaClient } from '@app/web/prismaClient'
+import { SessionUser } from '@app/web/auth/sessionUser';
+import { prismaClient } from '@app/web/prismaClient';
 
-export const getSessionUserFromSessionToken = async (
-  sessionToken: string | null,
-): Promise<SessionUser | null> => {
+export const getSessionUserFromSessionToken = async (sessionToken: string | null): Promise<SessionUser | null> => {
   if (!sessionToken) {
-    return null
+    return null;
   }
 
   const res = await prismaClient.session.findFirst({
@@ -31,10 +29,10 @@ export const getSessionUserFromSessionToken = async (
         },
       },
     },
-  })
+  });
 
   if (!res?.user) {
-    return null
+    return null;
   }
 
   return {
@@ -42,5 +40,5 @@ export const getSessionUserFromSessionToken = async (
     created: res.user.created.toISOString(),
     updated: res.user.updated.toISOString(),
     emailVerified: res.user.emailVerified?.toISOString() ?? null,
-  }
-}
+  };
+};

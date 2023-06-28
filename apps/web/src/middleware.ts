@@ -1,9 +1,8 @@
-import { NextRequest, NextResponse } from 'next/server'
-import { ServerWebAppConfig } from '@app/web/webAppConfig'
+import { NextRequest, NextResponse } from 'next/server';
 
-const nodeEnvironment = process.env.NODE_ENV
-const isCI = !!process.env.CI
-const isProduction = nodeEnvironment === 'production'
+const nodeEnvironment = process.env.NODE_ENV;
+const isCI = !!process.env.CI;
+const isProduction = nodeEnvironment === 'production';
 
 const contentSecurityPolicy = `
   default-src 'self' https://matomo.incubateur.anct.gouv.fr https://sentry.incubateur.net;
@@ -13,9 +12,7 @@ const contentSecurityPolicy = `
   img-src 'self' data:;
   frame-src https://www.youtube-nocookie.com/;
   object-src 'none';
-  connect-src 'self' https://${ServerWebAppConfig.S3.uploadsBucket}.${
-  ServerWebAppConfig.S3.host
-} https://matomo.incubateur.anct.gouv.fr https://sentry.incubateur.net https://openmaptiles.geo.data.gouv.fr https://openmaptiles.github.io https://aides-territoires.beta.gouv.fr;
+  connect-src 'self' https://matomo.incubateur.anct.gouv.fr https://sentry.incubateur.net https://openmaptiles.geo.data.gouv.fr https://openmaptiles.github.io https://aides-territoires.beta.gouv.fr;
   worker-src 'self' blob:;
   font-src 'self' https: data:;
   frame-ancestors 'self' https://matomo.incubateur.anct.gouv.fr;
@@ -24,12 +21,12 @@ const contentSecurityPolicy = `
   ${isProduction ? 'upgrade-insecure-requests true;' : ''}
 `
   .replaceAll(/\s{2,}/g, ' ')
-  .trim()
+  .trim();
 
 const middleware = (request: NextRequest) => {
-  const forwardedProto = request.headers.get('X-Forwarded-Proto')
-  const requestHost = request.headers.get('host')
-  const baseUrl = process.env.BASE_URL
+  const forwardedProto = request.headers.get('X-Forwarded-Proto');
+  const requestHost = request.headers.get('host');
+  const baseUrl = process.env.BASE_URL;
 
   /**
    * https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security
@@ -47,31 +44,31 @@ const middleware = (request: NextRequest) => {
       // we redirect to the main domain defined in base_url
       (!!baseUrl && requestHost !== baseUrl))
   ) {
-    const domain = baseUrl || requestHost
-    const httpsBase = `https://${domain ?? ''}`
-    const requestUrl = new URL(request.url)
-    const path = `${requestUrl.pathname}${requestUrl.search}`
-    const redirectTo = `${httpsBase}${path}`
+    const domain = baseUrl || requestHost;
+    const httpsBase = `https://${domain ?? ''}`;
+    const requestUrl = new URL(request.url);
+    const path = `${requestUrl.pathname}${requestUrl.search}`;
+    const redirectTo = `${httpsBase}${path}`;
 
-    return NextResponse.redirect(redirectTo)
+    return NextResponse.redirect(redirectTo);
   }
 
-  const response = NextResponse.next()
+  const response = NextResponse.next();
 
   if (nodeEnvironment === 'development') {
-    response.headers.append('Access-Control-Allow-Headers', '*')
-    response.headers.append('Access-Control-Allow-Origin', '*')
+    response.headers.append('Access-Control-Allow-Headers', '*');
+    response.headers.append('Access-Control-Allow-Origin', '*');
   }
 
-  response.headers.append('X-Frame-Options', 'DENY')
-  response.headers.append('X-Content-Type-Options', 'nosniff')
-  response.headers.append('X-XSS-Protection', '1; mode=block')
-  response.headers.delete('X-Powered-By')
-  response.headers.append('Strict-Transport-Security', 'max-age=63072000')
+  response.headers.append('X-Frame-Options', 'DENY');
+  response.headers.append('X-Content-Type-Options', 'nosniff');
+  response.headers.append('X-XSS-Protection', '1; mode=block');
+  response.headers.delete('X-Powered-By');
+  response.headers.append('Strict-Transport-Security', 'max-age=63072000');
 
-  response.headers.append('Content-Security-Policy', contentSecurityPolicy)
+  response.headers.append('Content-Security-Policy', contentSecurityPolicy);
 
-  return response
-}
+  return response;
+};
 
-export default middleware
+export default middleware;
