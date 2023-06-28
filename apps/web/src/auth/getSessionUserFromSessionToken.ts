@@ -20,7 +20,6 @@ export const getSessionUserFromSessionToken = async (sessionToken: string | null
           lastName: true,
           name: true,
           emailVerified: true,
-          image: true,
           title: true,
           location: true,
           description: true,
