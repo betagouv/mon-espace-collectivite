@@ -33,7 +33,9 @@
     "start:web": "npm -w @app/web start"
   },
   "pnpm": {
-    "overrides": {}
+    "overrides": {
+      "@codegouvfr/react-dsfr": "0.72.1"
+    }
   },
   "optionalDependencies": {
     "turbo-linux-arm64": "^1.9.9"

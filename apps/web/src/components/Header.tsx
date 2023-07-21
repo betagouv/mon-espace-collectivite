@@ -47,7 +47,7 @@ const Header = ({ user, backLink }: { user?: SessionUser | null; backLink?: bool
               </Link>
             </div>
           </div>
-          <div className="fr-header__tools">
+          {/* <div className="fr-header__tools">
             <div className="fr-header__tools-links">
               <ul className="fr-btns-group">
                 <li>
@@ -75,7 +75,7 @@ const Header = ({ user, backLink }: { user?: SessionUser | null; backLink?: bool
                 </li>
               </ul>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
