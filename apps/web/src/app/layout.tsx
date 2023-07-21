@@ -3,16 +3,17 @@
 // setup.ts must be the first import for webpack css chunks to work properly
 // eslint-disable-next-line import/order
 import { setLink } from '@codegouvfr/react-dsfr/link';
+import { DsfrHead } from '@codegouvfr/react-dsfr/next-appdir/DsfrHead';
+import { DsfrProvider } from '@codegouvfr/react-dsfr/next-appdir/DsfrProvider';
+import { getHtmlAttributes } from '@codegouvfr/react-dsfr/next-appdir/getHtmlAttributes';
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { PropsWithChildren } from 'react';
 
-import { Dsfr } from '@app/web/app/Dsfr';
-import { EnvInformation } from '@app/web/app/EnvInformation';
-import { Matomo } from '@app/web/app/Matomo';
-import { PreloadResources } from '@app/web/app/PreloadResources';
+import { defaultColorScheme } from '@app/web/app/defaultColorScheme';
 import '@app/web/app/setup';
 import { PublicWebAppConfig } from '@app/web/webAppConfig';
+
+import { StartDsfr } from './StartDsfr';
 
 declare module '@codegouvfr/react-dsfr/link' {
   interface RegisterLink {
@@ -41,21 +42,34 @@ export const metadata: Metadata = {
   manifest: '/favicon/manifest.webmanifest',
 };
 
-const RootLayout = ({ children }: PropsWithChildren) => {
-  // Do we want to disable SSG for CSFR on this website ?
-  // const nonce = headers().get('x-sde-script-nonce') ?? undefined
-  const nonce = undefined;
+export function RootLayout({ children }: { children: JSX.Element }) {
+  const lang = 'fr';
+
   return (
-    <html lang="fr" data-fr-theme="light" data-fr-scheme="light">
+    <html {...getHtmlAttributes({ defaultColorScheme, lang })}>
+      <head>
+        <StartDsfr />
+        <DsfrHead
+          Link={Link}
+          preloadFonts={[
+            //"Marianne-Light",
+            //"Marianne-Light_Italic",
+            'Marianne-Regular',
+            //"Marianne-Regular_Italic",
+            'Marianne-Medium',
+            //"Marianne-Medium_Italic",
+            'Marianne-Bold',
+            //"Marianne-Bold_Italic",
+            //"Spectral-Regular",
+            //"Spectral-ExtraBold"
+          ]}
+        />
+      </head>
       <body>
-        <PreloadResources />
-        <Dsfr nonce={nonce} />
-        <Matomo nonce={nonce} />
-        <EnvInformation />
-        {children}
+        <DsfrProvider lang={lang}>{children}</DsfrProvider>
       </body>
     </html>
   );
-};
+}
 
 export default RootLayout;

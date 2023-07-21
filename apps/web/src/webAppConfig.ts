@@ -1,6 +1,6 @@
 const { mainLiveUrl, projectTitle, repositoryUrl } = {
   mainLiveUrl: 'mainLiveUrl',
-  projectTitle: 'projectTitle',
+  projectTitle: 'Mon Espace Collectivité',
   repositoryUrl: 'repositoryUrl',
 };
 

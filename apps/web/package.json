@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "license": "AGPL-3.0",
   "scripts": {
+    "predev": "only-include-used-icons",
     "dev": "pnpm --silent with-env next dev",
+    "prebuild": "only-include-used-icons",
     "build": "pnpm --silent with-env next build",
     "build:analyze": "ANALYZE=true pnpm --silent with-env next build",
     "modclean": "modclean -Pr",
@@ -25,7 +27,8 @@
     "heroku-start": "node ./dist/apps/web/server.js"
   },
   "dependencies": {
-    "@codegouvfr/react-dsfr": "^0.57.2",
+    "@codegouvfr/react-dsfr": "0.72.1",
+    "@emotion/server": "^11.11.0",
     "@gouvfr/dsfr": "^1.9.3",
     "@hookform/resolvers": "^3.1.0",
     "@luma-team/mjml-react": "^0.3.0-0",
@@ -125,6 +128,7 @@
     "modclean": "^3.0.0-beta.1",
     "react-is": "^18.2.0",
     "require-from-string": "^2.0.2",
+    "sass": "^1.64.0",
     "style-loader": "^3.3.3",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.0.4"
