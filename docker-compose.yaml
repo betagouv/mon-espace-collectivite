@@ -72,7 +72,7 @@ services:
     ports:
       - '127.0.0.1:${DOCKER_COMPOSE_HOST_PORTS:-3306:}3306'
     networks:
-      - mariadb
+      - postgres
     command: --max-allowed-packet=64MB
     restart: unless-stopped
 
@@ -106,8 +106,6 @@ services:
 
 networks:
   postgres:
-    driver: bridge
-  mariadb:
     driver: bridge
 
 volumes:
