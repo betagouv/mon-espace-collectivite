@@ -1,13 +1,14 @@
 import { fr } from '@codegouvfr/react-dsfr';
 import Image from 'next/image';
+import type { StaticImageData } from 'next/image';
 
 export interface FeatureCardProps {
-  iconSrc: string;
+  icon: StaticImageData;
   title: string;
   description: string;
 }
 
-export function FeatureCard({ title, description, iconSrc }: FeatureCardProps) {
+export function FeatureCard({ title, description, icon }: FeatureCardProps) {
   return (
     <div className={fr.cx('fr-tile')}>
       <div className={fr.cx('fr-tile__body')}>
@@ -15,7 +16,7 @@ export function FeatureCard({ title, description, iconSrc }: FeatureCardProps) {
         <p className={fr.cx('fr-tile__desc', 'fr-text--sm')}>{description}</p>
       </div>
       <div className={fr.cx('fr-tile__img')}>
-        <Image src={iconSrc} alt="" />
+        <Image src={icon} alt="" />
       </div>
     </div>
   );
