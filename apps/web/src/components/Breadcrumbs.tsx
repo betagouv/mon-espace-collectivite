@@ -8,14 +8,16 @@ export type BreadcrumbParent = {
 };
 export type BreadcrumbParents = BreadcrumbParent[];
 
-const Breadcrumbs = ({ currentPage, parents = [] }: { currentPage: string; parents?: BreadcrumbParents }) => (
-  <Breadcrumb
-    currentPageLabel={currentPage}
-    homeLinkProps={{
-      href: '/',
-    }}
-    segments={parents}
-  />
-);
+export function Breadcrumbs({ currentPage, parents = [] }: { currentPage: string; parents?: BreadcrumbParents }) {
+  return (
+    <Breadcrumb
+      currentPageLabel={currentPage}
+      homeLinkProps={{
+        href: '/',
+      }}
+      segments={parents}
+    />
+  );
+}
 
 export default Breadcrumbs;

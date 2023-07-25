@@ -46,22 +46,22 @@ export function RootLayout({ children }: { children: JSX.Element }) {
   const lang = 'fr';
 
   return (
-    <html {...getHtmlAttributes({ defaultColorScheme, lang })}>
+    <html lang={lang} {...getHtmlAttributes({ defaultColorScheme, lang })}>
       <head>
         <StartDsfr />
         <DsfrHead
           Link={Link}
           preloadFonts={[
-            //"Marianne-Light",
-            //"Marianne-Light_Italic",
+            // "Marianne-Light",
+            // "Marianne-Light_Italic",
             'Marianne-Regular',
-            //"Marianne-Regular_Italic",
+            // "Marianne-Regular_Italic",
             'Marianne-Medium',
-            //"Marianne-Medium_Italic",
+            // "Marianne-Medium_Italic",
             'Marianne-Bold',
-            //"Marianne-Bold_Italic",
-            //"Spectral-Regular",
-            //"Spectral-ExtraBold"
+            // "Marianne-Bold_Italic",
+            // "Spectral-Regular",
+            // "Spectral-ExtraBold"
           ]}
         />
       </head>

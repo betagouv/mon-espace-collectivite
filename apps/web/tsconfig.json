@@ -21,6 +21,7 @@
     "baseUrl": "."
   },
   "include": [
+    "types.d.ts",
     "next-env.d.ts",
     "node_modules/@types/testing-library__jest-dom/index.d.ts",
     "src/**/*.ts",

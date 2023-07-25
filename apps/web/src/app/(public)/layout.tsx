@@ -5,8 +5,9 @@ import { getSessionUser } from '@app/web/auth/getSessionUser';
 import FlashMessage from '@app/web/components/FlashMessage';
 import Header from '@app/web/components/Header';
 
-const PublicLayout = async ({ children }: PropsWithChildren) => {
+async function PublicLayout({ children }: PropsWithChildren) {
   const user = await getSessionUser();
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100%' }}>
       <Header user={user} />
@@ -15,6 +16,6 @@ const PublicLayout = async ({ children }: PropsWithChildren) => {
       <PublicFooter />
     </div>
   );
-};
+}
 
 export default PublicLayout;
