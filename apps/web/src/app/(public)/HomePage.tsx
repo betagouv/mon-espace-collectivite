@@ -175,6 +175,7 @@ export function HomePage() {
                 linkProps={{
                   href: 'https://tally.so/r/meD1Lx',
                 }}
+                priority="secondary"
               >
                 Contactez-nous
               </Button>
