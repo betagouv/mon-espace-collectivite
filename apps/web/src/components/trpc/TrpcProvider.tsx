@@ -4,7 +4,7 @@ import { PropsWithChildren } from 'react';
 import { useTrpcClient } from '@app/web/components/trpc/useTrpcClient';
 import { trpc } from '@app/web/trpc';
 
-const TrpcProvider = ({ children }: PropsWithChildren) => {
+export function TrpcProvider({ children }: PropsWithChildren) {
   // We use zustand to share state across all components that may use trpc
   // AND lazily create clients only if needed
   // even if there is multiple TrpcProvider components in the application at the same time
@@ -15,6 +15,6 @@ const TrpcProvider = ({ children }: PropsWithChildren) => {
       <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
     </trpc.Provider>
   );
-};
+}
 
 export default TrpcProvider;

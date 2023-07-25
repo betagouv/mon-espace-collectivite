@@ -3,8 +3,9 @@ import { cookies } from 'next/headers';
 import { AuthCard } from '@app/web/app/(public)/(authentication)/AuthCard';
 import { PublicWebAppConfig } from '@app/web/webAppConfig';
 
-export const Verify = () => {
+export function Verify() {
   const email = cookies().get('email-signin')?.value;
+
   return (
     <AuthCard>
       <div className="fr-grid-row fr-grid-row--center">
@@ -32,4 +33,4 @@ export const Verify = () => {
       </p>
     </AuthCard>
   );
-};
+}

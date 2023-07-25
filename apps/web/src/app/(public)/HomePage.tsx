@@ -1,16 +1,27 @@
 import { fr } from '@codegouvfr/react-dsfr';
 import { Button } from '@codegouvfr/react-dsfr/Button';
 import { useColors } from '@codegouvfr/react-dsfr/useColors';
-import application from '@gouvfr/dsfr/dist/artwork/pictograms/digital/application.svg';
-import locationFrance from '@gouvfr/dsfr/dist/artwork/pictograms/map/location-france.svg';
-import map from '@gouvfr/dsfr/dist/artwork/pictograms/map/map.svg';
-import information from '@gouvfr/dsfr/dist/artwork/pictograms/system/information.svg';
+import applicationWrongType from '@gouvfr/dsfr/dist/artwork/pictograms/digital/application.svg';
+import locationFranceWrongType from '@gouvfr/dsfr/dist/artwork/pictograms/map/location-france.svg';
+import mapWrongType from '@gouvfr/dsfr/dist/artwork/pictograms/map/map.svg';
+import informationWrongType from '@gouvfr/dsfr/dist/artwork/pictograms/system/information.svg';
+import type { StaticImageData } from 'next/image';
 
 import project1Image from '@app/web/assets/projects/1.jpg';
 import project2Image from '@app/web/assets/projects/2.png';
 import project3Image from '@app/web/assets/projects/3.png';
 import { FeatureCard } from '@app/web/components/FeatureCard';
 import { ProjectCard } from '@app/web/components/ProjectCard';
+
+// [WORKAROUND] I didn't figure out to configure eslint to take in account `types.d.ts` whereas in works in the IDE... TS linting through eslint is a bad idea...
+// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+const application: StaticImageData = applicationWrongType;
+// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+const locationFrance: StaticImageData = locationFranceWrongType;
+// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+const map: StaticImageData = mapWrongType;
+// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+const information: StaticImageData = informationWrongType;
 
 export const revalidate = 0;
 
@@ -46,7 +57,7 @@ export function HomePage() {
               backgroundPosition: 'right center',
               zIndex: 0,
             }}
-          ></div>
+          />
           <div
             className={fr.cx('fr-grid-row')}
             style={{
@@ -84,21 +95,21 @@ export function HomePage() {
                 <FeatureCard
                   title="1. Décrivez votre besoin"
                   description="Quelques informations clés pour être orienté vers le bon service / interlocuteur"
-                  icon={information}
+                  iconSrc={information.src}
                 />
               </div>
               <div className={fr.cx('fr-col-12', 'fr-col-sm-4')}>
                 <FeatureCard
                   title="2. Suivez votre demande"
                   description="Retrouvez les demandes de votre territoire, échanger et collaborer avec l’Etat"
-                  icon={application}
+                  iconSrc={application.src}
                 />
               </div>
               <div className={fr.cx('fr-col-12', 'fr-col-sm-4')}>
                 <FeatureCard
                   title="3. Laissez-vous guider"
                   description="Un délégué territorial, l’ANCT ou un partenaire vous contacte pour les prochaines étapes"
-                  icon={map}
+                  iconSrc={map.src}
                 />
               </div>
             </div>
@@ -112,7 +123,7 @@ export function HomePage() {
                       location="Créon (33)"
                       categories={['Transition écologique', 'Logement et cadre de vie']}
                       link="https://solutionsdelus.gouv.fr/projets/la-traverse-projet-dhabitat-social-et-ecologique-intergenerationnelle-creon"
-                      image={project1Image}
+                      imageSrc={project1Image.src}
                     />
                   </div>
                   <div className={fr.cx('fr-col-12')}>
@@ -121,7 +132,7 @@ export function HomePage() {
                       location="CC du Grand Pic Saint-Loup (34)"
                       link="https://solutionsdelus.gouv.fr/projets/faciliter-la-mobilite-durable-dans-le-projet-de-territoire"
                       categories={['Transport et mobilités']}
-                      image={project2Image}
+                      imageSrc={project2Image.src}
                     />
                   </div>
                   <div className={fr.cx('fr-col-12')}>
@@ -130,7 +141,7 @@ export function HomePage() {
                       location="Amiens (80)"
                       link="https://solutionsdelus.gouv.fr/projets/le-numerique-au-coeur-du-projet-social-le-ccas-damiens"
                       categories={['Accès au numérique']}
-                      image={project3Image}
+                      imageSrc={project3Image.src}
                     />
                   </div>
                 </div>
