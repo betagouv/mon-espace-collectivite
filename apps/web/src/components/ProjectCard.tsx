@@ -1,6 +1,7 @@
 import { fr } from '@codegouvfr/react-dsfr';
 import { useColors } from '@codegouvfr/react-dsfr/useColors';
 import Image from 'next/image';
+import type { StaticImageData } from 'next/image';
 import Link from 'next/link';
 
 import styles from '@app/web/components/ProjectCard.module.css';
@@ -10,16 +11,16 @@ export interface ProjectCardProps {
   location: string;
   categories: string[];
   link: string;
-  imageSrc: string;
+  image: StaticImageData;
 }
 
-export function ProjectCard({ name, location, categories, link, imageSrc }: ProjectCardProps) {
+export function ProjectCard({ name, location, categories, link, image }: ProjectCardProps) {
   const theme = useColors();
 
   return (
     <Link className={`${styles.projectCard} ${fr.cx('fr-mb-4v')}`} href={link} title={`Voir le projet "${name}"`} target="_blank">
       <picture className={styles.picture}>
-        <Image src={imageSrc} alt="" />
+        <Image src={image} alt="" />
       </picture>
       <div className={`${styles.content} ${fr.cx('fr-p-8v')}`}>
         <p className={fr.cx('fr-hint-text', 'fr-mb-0')} style={{ color: theme.decisions.text.mention.grey.default }}>
