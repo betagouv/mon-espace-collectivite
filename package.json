@@ -34,7 +34,7 @@
   },
   "pnpm": {
     "overrides": {
-      "@codegouvfr/react-dsfr": "0.72.1"
+      "@codegouvfr/react-dsfr": "0.73.1"
     }
   },
   "optionalDependencies": {

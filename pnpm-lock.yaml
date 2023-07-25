@@ -5,7 +5,7 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  '@codegouvfr/react-dsfr': 0.72.1
+  '@codegouvfr/react-dsfr': 0.73.1
 
 importers:
 
@@ -107,8 +107,8 @@ importers:
   apps/web:
     dependencies:
       '@codegouvfr/react-dsfr':
-        specifier: 0.72.1
-        version: 0.72.1
+        specifier: 0.73.1
+        version: 0.73.1
       '@emotion/server':
         specifier: ^11.11.0
         version: 11.11.0
@@ -644,8 +644,8 @@ importers:
   packages/ui:
     dependencies:
       '@codegouvfr/react-dsfr':
-        specifier: 0.72.1
-        version: 0.72.1
+        specifier: 0.73.1
+        version: 0.73.1
       '@gouvfr/dsfr':
         specifier: ^1.9.3
         version: 1.9.3
@@ -2110,8 +2110,8 @@ packages:
   /@bcoe/v8-coverage@0.2.3:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
 
-  /@codegouvfr/react-dsfr@0.72.1:
-    resolution: {integrity: sha512-rZYYGAXpVtjXAykHBM7FsPlnuFxLbruqSI2rTh9tCnNLy5AHpRidX0RSOP1YZDkM2qXnUM09m+X7XQbh41Ob1A==}
+  /@codegouvfr/react-dsfr@0.73.1:
+    resolution: {integrity: sha512-wEpsPDHEZvvSQGu9RfNeoUAry9tx7yvNx7RvbkLyqjCmlVXfOV3SoZW/b+dm8HlmWxyzLGagM/0Nj+AOkJgxaQ==}
     hasBin: true
     dependencies:
       tsafe: 1.6.4
