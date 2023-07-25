@@ -95,21 +95,21 @@ export function HomePage() {
                 <FeatureCard
                   title="1. Décrivez votre besoin"
                   description="Quelques informations clés pour être orienté vers le bon service / interlocuteur"
-                  iconSrc={information.src}
+                  icon={information}
                 />
               </div>
               <div className={fr.cx('fr-col-12', 'fr-col-sm-4')}>
                 <FeatureCard
                   title="2. Suivez votre demande"
                   description="Retrouvez les demandes de votre territoire, échanger et collaborer avec l’Etat"
-                  iconSrc={application.src}
+                  icon={application}
                 />
               </div>
               <div className={fr.cx('fr-col-12', 'fr-col-sm-4')}>
                 <FeatureCard
                   title="3. Laissez-vous guider"
                   description="Un délégué territorial, l’ANCT ou un partenaire vous contacte pour les prochaines étapes"
-                  iconSrc={map.src}
+                  icon={map}
                 />
               </div>
             </div>
@@ -123,7 +123,7 @@ export function HomePage() {
                       location="Créon (33)"
                       categories={['Transition écologique', 'Logement et cadre de vie']}
                       link="https://solutionsdelus.gouv.fr/projets/la-traverse-projet-dhabitat-social-et-ecologique-intergenerationnelle-creon"
-                      imageSrc={project1Image.src}
+                      image={project1Image}
                     />
                   </div>
                   <div className={fr.cx('fr-col-12')}>
@@ -132,7 +132,7 @@ export function HomePage() {
                       location="CC du Grand Pic Saint-Loup (34)"
                       link="https://solutionsdelus.gouv.fr/projets/faciliter-la-mobilite-durable-dans-le-projet-de-territoire"
                       categories={['Transport et mobilités']}
-                      imageSrc={project2Image.src}
+                      image={project2Image}
                     />
                   </div>
                   <div className={fr.cx('fr-col-12')}>
@@ -141,7 +141,7 @@ export function HomePage() {
                       location="Amiens (80)"
                       link="https://solutionsdelus.gouv.fr/projets/le-numerique-au-coeur-du-projet-social-le-ccas-damiens"
                       categories={['Accès au numérique']}
-                      imageSrc={project3Image.src}
+                      image={project3Image}
                     />
                   </div>
                 </div>
