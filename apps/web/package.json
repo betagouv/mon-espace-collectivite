@@ -26,6 +26,9 @@
     "heroku-postbuild": "pnpm run build && ./prepare-standalone.sh",
     "heroku-start": "node ./dist/apps/web/server.js"
   },
+  "prisma": {
+    "seed": "echo \"Nothing to seed for now\""
+  },
   "dependencies": {
     "@codegouvfr/react-dsfr": "0.72.1",
     "@emotion/server": "^11.11.0",
