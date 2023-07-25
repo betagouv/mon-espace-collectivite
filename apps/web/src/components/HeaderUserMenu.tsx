@@ -9,7 +9,7 @@ import { SessionUser } from '@app/web/auth/sessionUser';
 
 import styles from './HeaderUserMenu.module.css';
 
-export const HeaderUserMenu = ({ user: { email, name } }: { user: SessionUser }) => {
+export function HeaderUserMenu({ user: { email, name } }: { user: SessionUser }) {
   // The click outside default behavior from dsfr js do not work in this case 🤷‍
   // So we have to use client component and hooks to handle the click outside
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -96,4 +96,4 @@ export const HeaderUserMenu = ({ user: { email, name } }: { user: SessionUser })
       </div>
     </>
   );
-};
+}

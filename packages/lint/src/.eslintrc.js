@@ -92,12 +92,7 @@ module.exports = {
         '@typescript-eslint/no-floating-promises': 'warn',
         'unicorn/no-array-callback-reference': 'off',
         'import/prefer-default-export': 'off',
-        'react/jsx-props-no-spreading': [
-          'error',
-          {
-            custom: 'ignore',
-          },
-        ],
+        'react/jsx-props-no-spreading': 'off',
         '@typescript-eslint/no-unused-vars': [
           'error',
           {
@@ -108,15 +103,11 @@ module.exports = {
         ],
         // Null and undefined have different intent in our code, especially for integration with prisma and trpc
         'unicorn/no-null': 'off',
-        'react/function-component-definition': [
-          2,
-          {
-            namedComponents: 'arrow-function',
-            unnamedComponents: 'arrow-function',
-          },
-        ],
+        'react/function-component-definition': 'off',
+        'import/no-named-as-default': 'off',
         // We use typescript default values and types
         'react/require-default-props': 'off',
+        'react/no-unused-prop-types': 'off',
         'unicorn/prevent-abbreviations': [
           'error',
           {

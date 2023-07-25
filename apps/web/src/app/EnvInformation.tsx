@@ -1,6 +1,6 @@
 import { PublicWebAppConfig, ServerWebAppConfig } from '@app/web/webAppConfig';
 
-export const EnvInformation = () => {
+export function EnvInformation() {
   const { isMain, Chromatic: chromatic, Branch: branch } = ServerWebAppConfig;
 
   // Branch can be empty on dev env
@@ -39,4 +39,4 @@ export const EnvInformation = () => {
       </div>
     </div>
   );
-};
+}

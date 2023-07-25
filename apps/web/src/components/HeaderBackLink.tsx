@@ -3,7 +3,7 @@
 import classNames from 'classnames';
 import { useRouter } from 'next/navigation';
 
-const HeaderBackLink = () => {
+export function HeaderBackLink() {
   const router = useRouter();
   return (
     <button type="button" className={classNames('fr-btn', 'fr-btn--sm', 'fr-btn--tertiary-no-outline')} onClick={router.back}>
@@ -11,6 +11,6 @@ const HeaderBackLink = () => {
       Retour
     </button>
   );
-};
+}
 
 export default HeaderBackLink;

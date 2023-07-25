@@ -9,7 +9,7 @@ import Breadcrumbs from '@app/web/components/Breadcrumbs';
 
 export const revalidate = 0;
 
-const SignoutPage = () => {
+function SignoutPage() {
   const [isLoading, setIsLoading] = useState(false);
   const onLogout = async () => {
     setIsLoading(true);
@@ -35,6 +35,6 @@ const SignoutPage = () => {
       </AuthCard>
     </>
   );
-};
+}
 
 export default SignoutPage;
