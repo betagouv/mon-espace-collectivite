@@ -9,11 +9,11 @@ import { getHtmlAttributes } from '@codegouvfr/react-dsfr/next-appdir/getHtmlAtt
 import { Metadata } from 'next';
 import Link from 'next/link';
 
+import { Matomo } from '@app/web/app/Matomo';
+import { StartDsfr } from '@app/web/app/StartDsfr';
 import { defaultColorScheme } from '@app/web/app/defaultColorScheme';
 import '@app/web/app/setup';
 import { PublicWebAppConfig } from '@app/web/webAppConfig';
-
-import { StartDsfr } from './StartDsfr';
 
 declare module '@codegouvfr/react-dsfr/link' {
   interface RegisterLink {
@@ -44,6 +44,7 @@ export const metadata: Metadata = {
 
 export function RootLayout({ children }: { children: JSX.Element }) {
   const lang = 'fr';
+  const nonce = undefined;
 
   return (
     <html lang={lang} {...getHtmlAttributes({ defaultColorScheme, lang })}>
@@ -67,6 +68,7 @@ export function RootLayout({ children }: { children: JSX.Element }) {
       </head>
       <body>
         <DsfrProvider lang={lang}>{children}</DsfrProvider>
+        <Matomo nonce={nonce} />
       </body>
     </html>
   );
