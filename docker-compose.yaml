@@ -58,10 +58,60 @@ services:
       timeout: 3s
       retries: 5
 
+  mariadb:
+    # Matomo cannot be run on our PostgreSQL, so running a dedicated MariaDB
+    container_name: mariadb_container_${DOCKER_COMPOSE_CONTAINER_NAME_SUFFIX:-default}
+    image: mariadb:10.11
+    environment:
+      - MYSQL_ROOT_PASSWORD=matomo
+      - MYSQL_USER=matomo
+      - MYSQL_PASSWORD=matomo
+      - MYSQL_DATABASE=matomo
+    volumes:
+      - mariadb:/var/lib/mysql:Z
+    ports:
+      - '127.0.0.1:${DOCKER_COMPOSE_HOST_PORTS:-3306:}3306'
+    networks:
+      - mariadb
+    command: --max-allowed-packet=64MB
+    restart: unless-stopped
+
+  # TODO
+  # first init of matomo is fully manual... seems it cannot be automated (but since volume that's fine)
+  # https://github.com/matomo-org/docker/issues/238
+  # maybe have a look at https://hub.docker.com/r/bitnami/matomo that provides `MATOMO_WEBSITE_NAME` & co.
+  #
+  # maybe set them into a docker-compose.matomo.yaml since it's rare to be used
+  #
+  # https://github.com/matomo-org/docker/blob/master/.examples/apache/docker-compose.yml
+  # Wait for mariadb to be ready with healthcheck...
+  # TODO
+
+  matomo:
+    container_name: matomo_container_${DOCKER_COMPOSE_CONTAINER_NAME_SUFFIX:-default}
+    image: matomo:4.14
+    depends_on: mariadb
+    environment:
+      - MATOMO_DATABASE_HOST=mariadb
+      - MATOMO_DATABASE_ADAPTER=mysql
+      - MATOMO_DATABASE_USERNAME=matomo
+      - MATOMO_DATABASE_PASSWORD=matomo
+      - MATOMO_DATABASE_DBNAME=matomo
+      - MATOMO_DATABASE_TABLES_PREFIX=matomo_
+    volumes:
+      - matomo:/var/www/html:z
+    ports:
+      - '127.0.0.1:${DOCKER_COMPOSE_HOST_PORTS:-8080:}80'
+    restart: unless-stopped
+
 networks:
   postgres:
+    driver: bridge
+  mariadb:
     driver: bridge
 
 volumes:
   postgres:
   pgadmin:
+  mariadb:
+  matomo:
