@@ -1,6 +1,6 @@
-import * as dotenv from 'dotenv'
+import * as dotenv from 'dotenv';
 
-dotenv.config({ path: '../..' })
+dotenv.config({ path: '../..' });
 
 // Next config does not work with es modules
 // nextJest()()().then((config) => console.log('NEXT CONFIG', config, config.transform))
@@ -9,46 +9,22 @@ dotenv.config({ path: '../..' })
  * If you have a babel error in jest test environment
  * add the faulty package to this list
  */
-const transformIgnorePackages = [
-  'uuid',
-  'nanoid',
-  'undici',
-  'node-fetch',
-  'data-uri-to-buffer',
-  'fetch-blob',
-  'formdata-polyfill',
-  '@aws-sdk/middleware-retry',
-  '@aws-sdk/client-s3',
-  'axios',
-]
+const transformIgnorePackages = ['uuid', 'nanoid', 'undici', 'node-fetch', 'data-uri-to-buffer', 'fetch-blob', 'formdata-polyfill', 'axios'];
 
-const packagesNamesPattern = transformIgnorePackages.join('|')
+const packagesNamesPattern = transformIgnorePackages.join('|');
 
-const nodeModulesTransformIgnorePattern = `node_modules/(?!${packagesNamesPattern})`
+const nodeModulesTransformIgnorePattern = `node_modules/(?!${packagesNamesPattern})`;
 
 const config = {
   moduleFileExtensions: ['js', 'ts', 'tsx'],
-  transformIgnorePatterns: [
-    nodeModulesTransformIgnorePattern,
-    '^.+\\.module\\.(css|sass|scss)$',
-  ],
+  transformIgnorePatterns: [nodeModulesTransformIgnorePattern, '^.+\\.module\\.(css|sass|scss)$'],
   setupFilesAfterEnv: ['<rootDir>/jest/jest.setup.ts'],
-  testMatch: [
-    '**/*.spec.ts',
-    '**/*.spec.tsx',
-    '**/*.integration.ts',
-    '**/*.integration.tsx',
-  ],
+  testMatch: ['**/*.spec.ts', '**/*.spec.tsx', '**/*.integration.ts', '**/*.integration.tsx'],
   moduleNameMapper: {
-    '^.+\\.module\\.(css|sass|scss)$':
-      '<rootDir>/node_modules/next/dist/build/jest/object-proxy.js',
-    '^.+\\.(css|sass|scss)$':
-      '<rootDir>/node_modules/next/dist/build/jest/__mocks__/styleMock.js',
-    '^.+\\.(png|jpg|jpeg|gif|webp|avif|ico|bmp)$':
-      '<rootDir>/node_modules/next/dist/build/jest/__mocks__/fileMock.js',
-    '^.+\\.(svg)$':
-      '<rootDir>/node_modules/next/dist/build/jest/__mocks__/fileMock.js',
-    '^@pt/(.*)$': '<rootDir>/src/$1',
+    '^.+\\.module\\.(css|sass|scss)$': '<rootDir>/node_modules/next/dist/build/jest/object-proxy.js',
+    '^.+\\.(css|sass|scss)$': '<rootDir>/node_modules/next/dist/build/jest/__mocks__/styleMock.js',
+    '^.+\\.(png|jpg|jpeg|gif|webp|avif|ico|bmp)$': '<rootDir>/node_modules/next/dist/build/jest/__mocks__/fileMock.js',
+    '^.+\\.(svg)$': '<rootDir>/node_modules/next/dist/build/jest/__mocks__/fileMock.js',
   },
   testPathIgnorePatterns: ['/node_modules/', '/.next/'],
   watchPathIgnorePatterns: ['/.next/'],
@@ -74,6 +50,6 @@ const config = {
       },
     ],
   },
-}
+};
 
-export default config
+export default config;

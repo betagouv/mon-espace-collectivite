@@ -1,10 +1,13 @@
-import React from 'react'
-import styles from './Icon.module.css'
+import React from 'react';
 
-const Icon = ({ name }: { name: string }) => (
-  <div className={`fr-mr-2v ${styles.container}`}>
-    <span className={`fr-icon ${name}`} />
-  </div>
-)
+import styles from './Icon.module.css';
 
-export default Icon
+export function Icon({ name }: { name: string }) {
+  return (
+    <div className={`fr-mr-2v ${styles.container}`}>
+      <span className={`fr-icon ${name}`} />
+    </div>
+  );
+}
+
+export default Icon;

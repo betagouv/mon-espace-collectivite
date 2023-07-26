@@ -1,4 +1,4 @@
-import { ServerWebAppConfig } from '@app/web/webAppConfig'
+import { ServerWebAppConfig } from '@app/web/webAppConfig';
 
 // Disallow indexing of preview environments
 export const GET = () =>
@@ -8,4 +8,4 @@ Allow: /
 `)
     : new Response(`User-agent: *
 Disallow: /
-`)
+`);

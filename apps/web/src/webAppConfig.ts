@@ -1,6 +1,10 @@
-import { mainLiveUrl, projectTitle, repositoryUrl } from '@app/config/config'
+const { mainLiveUrl, projectTitle, repositoryUrl } = {
+  mainLiveUrl: 'mainLiveUrl',
+  projectTitle: 'Mon Espace Collectivité',
+  repositoryUrl: 'repositoryUrl',
+};
 
-const NodeEnvironment = process.env.NODE_ENV
+const NodeEnvironment = process.env.NODE_ENV;
 
 /**
  * Necessary environment variables for web app are listed here.
@@ -11,9 +15,9 @@ const NodeEnvironment = process.env.NODE_ENV
  * It contains secrets that must not be sent to the client
  */
 
-const emailServer = `smtp://${process.env.SMTP_USERNAME ?? ''}:${
-  process.env.SMTP_PASSWORD ?? ''
-}@${process.env.SMTP_SERVER ?? ''}:${process.env.SMTP_PORT ?? ''}`
+const emailServer = `smtp://${process.env.SMTP_USERNAME ?? ''}:${process.env.SMTP_PASSWORD ?? ''}@${process.env.SMTP_SERVER ?? ''}:${
+  process.env.SMTP_PORT ?? ''
+}`;
 
 export const ServerWebAppConfig = {
   NodeEnv: NodeEnvironment,
@@ -26,28 +30,10 @@ export const ServerWebAppConfig = {
   Auth: {
     Email: {
       server: emailServer,
-      from: `${process.env.EMAIL_FROM_NAME ?? ''} <${
-        process.env.EMAIL_FROM_ADDRESS ?? ''
-      }>`,
+      from: `${process.env.EMAIL_FROM_NAME ?? ''} <${process.env.EMAIL_FROM_ADDRESS ?? ''}>`,
     },
   },
-  S3: {
-    uploadsBucket: process.env.UPLOADS_BUCKET ?? '',
-    host: process.env.S3_HOST ?? '',
-    region: process.env.SCW_DEFAULT_REGION ?? '',
-    accessKey: process.env.SCW_ACCESS_KEY ?? '',
-    secretKey: process.env.SCW_SECRET_KEY ?? '',
-  },
-  Cockpit: {
-    metricsUrl: process.env.COCKPIT_METRICS_URL ?? '',
-    logsUrl: process.env.COCKPIT_LOGS_URL ?? '',
-    alertManagerUrl: process.env.COCKPIT_ALERT_MANAGER_URL ?? '',
-    grafanaUrl: process.env.COCKPIT_GRAFANA_URL ?? '',
-  },
-  InclusionConnect: {
-    clientSecret: process.env.INCLUSION_CONNECT_CLIENT_SECRET ?? '',
-  },
-}
+};
 
 /**
  * Public config can be used on client side or server side
@@ -58,10 +44,6 @@ export const PublicWebAppConfig = {
   projectTitle,
   mainLiveUrl,
   repository: repositoryUrl,
-  InclusionConnect: {
-    issuer: process.env.NEXT_PUBLIC_INCLUSION_CONNECT_ISSUER ?? '',
-    clientId: process.env.NEXT_PUBLIC_INCLUSION_CONNECT_CLIENT_ID ?? '',
-  },
   Sentry: {
     dsn: process.env.NEXT_PUBLIC_SENTRY_DSN ?? '',
     environment: process.env.NEXT_PUBLIC_SENTRY_ENVIRONMENT ?? 'local',
@@ -70,4 +52,4 @@ export const PublicWebAppConfig = {
     host: process.env.NEXT_PUBLIC_MATOMO_HOST ?? '',
     siteId: process.env.NEXT_PUBLIC_MATOMO_SITE_ID ?? '',
   },
-}
+};

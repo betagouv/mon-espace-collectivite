@@ -1,9 +1,9 @@
 // eslint-disable-next-line unicorn/prevent-abbreviations
-import { appendFile } from 'node:fs/promises'
-import { resolve } from 'node:path'
+import { appendFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
 
 // eslint-disable-next-line unicorn/prevent-abbreviations
-export type DotEnvVariable = { name: string; value: string }
+export type DotEnvVariable = { name: string; value: string };
 
 // Appends text after a new line
 // eslint-disable-next-line unicorn/prevent-abbreviations
@@ -12,35 +12,33 @@ export const appendTextToDotEnvFile = async (text: string) => {
     // eslint-disable-next-line unicorn/prefer-module
     __dirname,
     '../../../.env',
-  )
-  await appendFile(dotenvFile, `\n${text}\n`)
-}
+  );
+  await appendFile(dotenvFile, `\n${text}\n`);
+};
 
 // eslint-disable-next-line unicorn/prevent-abbreviations
 export const appendEnvVariablesToDotEnvFile = async ({
   comment,
   environmentVariables,
 }: {
-  comment?: string
-  environmentVariables: DotEnvVariable[]
+  comment?: string;
+  environmentVariables: DotEnvVariable[];
 }) => {
-  const now = new Date().toISOString()
+  const now = new Date().toISOString();
   const banner = `
 ###
 # The following variables have been automatically appended on ${now} 
 # ${comment?.split('\n').join('\n# ') ?? ''}
 ###
-`
+`;
 
   const footer = `
 ###
 # End ${now}
 ###
-`
+`;
 
-  const variablesText = environmentVariables
-    .map(({ name, value }) => `${name}="${value}"`)
-    .join('\n')
+  const variablesText = environmentVariables.map(({ name, value }) => `${name}="${value}"`).join('\n');
 
-  return appendTextToDotEnvFile(`${banner}\n${variablesText}\n${footer}`)
-}
+  return appendTextToDotEnvFile(`${banner}\n${variablesText}\n${footer}`);
+};

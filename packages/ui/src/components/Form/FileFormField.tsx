@@ -1,32 +1,23 @@
-'use client'
+'use client';
 
-import classNames from 'classnames'
-import React, { HTMLProps } from 'react'
-import {
-  Control,
-  Controller,
-  FieldValues,
-  Path,
-  PathValue,
-} from 'react-hook-form'
-import { FieldPath } from 'react-hook-form/dist/types/path'
+import classNames from 'classnames';
+import React, { HTMLProps } from 'react';
+import { Control, Controller, FieldValues, Path, PathValue } from 'react-hook-form';
+import { FieldPath } from 'react-hook-form/dist/types/path';
 
 export type FileFormFieldProps<T extends FieldValues> = {
-  control: Control<T>
-  path: FieldPath<T>
-  disabled?: boolean
-  label?: string
-  hint?: string
-  placeholder?: string
-  accept?: string
-  className?: string
-  valid?: string
-  info?: string | ((value: PathValue<T, Path<T>>) => string)
-  'data-testid'?: string
-} & Omit<
-  HTMLProps<HTMLInputElement>,
-  'onChange' | 'type' | 'onBlur' | 'value' | 'ref' | 'id' | 'aria-describedby'
->
+  control: Control<T>;
+  path: FieldPath<T>;
+  disabled?: boolean;
+  label?: string;
+  hint?: string;
+  placeholder?: string;
+  accept?: string;
+  className?: string;
+  valid?: string;
+  info?: string | ((value: PathValue<T, Path<T>>) => string);
+  'data-testid'?: string;
+} & Omit<HTMLProps<HTMLInputElement>, 'onChange' | 'type' | 'onBlur' | 'value' | 'ref' | 'id' | 'aria-describedby'>;
 
 const FileFormField = <T extends FieldValues>({
   label,
@@ -41,18 +32,14 @@ const FileFormField = <T extends FieldValues>({
   info,
   'data-testid': dataTestId,
 }: FileFormFieldProps<T>) => {
-  const id = `file-form-field__${path}`
+  const id = `file-form-field__${path}`;
 
   return (
     <Controller
       control={control}
       name={path}
-      render={({
-        field: { onChange, onBlur, value, name, ref },
-        fieldState: { invalid, isTouched, error },
-      }) => {
-        const inputValue =
-          (value as { filename: string } | undefined)?.filename ?? ''
+      render={({ field: { onChange, onBlur, value, name, ref }, fieldState: { invalid, isTouched, error } }) => {
+        const inputValue = (value as { filename: string } | undefined)?.filename ?? '';
         return (
           <div
             className={classNames(
@@ -82,17 +69,16 @@ const FileFormField = <T extends FieldValues>({
               onBlur={onBlur}
               onChange={(event) => {
                 // We want to emit a File from this onchange instead of the field value (that is the default implementation)
-                const { files } = event.target
+                const { files } = event.target;
                 if (!files) {
-                  onChange('')
-                  return
+                  onChange('');
+                  return;
                 }
-                const file = files[0] ?? ''
+                const file = files[0] ?? '';
                 if (file) {
-                  ;(file as File & { filename: string }).filename =
-                    event.target.value
+                  (file as File & { filename: string }).filename = event.target.value;
                 }
-                onChange(file)
+                onChange(file);
               }}
               value={inputValue}
               ref={ref}
@@ -105,26 +91,20 @@ const FileFormField = <T extends FieldValues>({
               </p>
             )}
             {error && (
-              <p
-                id={`${id}__error`}
-                className={classNames('fr-error-text', { 'fr-mt-1v': !!info })}
-              >
+              <p id={`${id}__error`} className={classNames('fr-error-text', { 'fr-mt-1v': !!info })}>
                 {error.message}
               </p>
             )}
             {valid && isTouched && !invalid && (
-              <p
-                id={`${id}__valid`}
-                className={classNames('fr-valid-text', { 'fr-mt-1v': !!info })}
-              >
+              <p id={`${id}__valid`} className={classNames('fr-valid-text', { 'fr-mt-1v': !!info })}>
                 {valid}
               </p>
             )}
           </div>
-        )
+        );
       }}
     />
-  )
-}
+  );
+};
 
-export default FileFormField
+export default FileFormField;

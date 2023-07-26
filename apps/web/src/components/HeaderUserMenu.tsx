@@ -1,43 +1,39 @@
-'use client'
+'use client';
 
-import classNames from 'classnames'
-import Link from 'next/link'
-import { KeyboardEvent, MouseEvent as ReactMouseEvent, useRef } from 'react'
-import { useOnClickOutside } from 'usehooks-ts'
-import { SessionUser } from '@app/web/auth/sessionUser'
-import styles from './HeaderUserMenu.module.css'
+import classNames from 'classnames';
+import Link from 'next/link';
+import { KeyboardEvent, MouseEvent as ReactMouseEvent, useRef } from 'react';
+import { useOnClickOutside } from 'usehooks-ts';
 
-export const HeaderUserMenu = ({
-  user: { email, name },
-}: {
-  user: SessionUser
-}) => {
+import { SessionUser } from '@app/web/auth/sessionUser';
+
+import styles from './HeaderUserMenu.module.css';
+
+export function HeaderUserMenu({ user: { email, name } }: { user: SessionUser }) {
   // The click outside default behavior from dsfr js do not work in this case 🤷‍
   // So we have to use client component and hooks to handle the click outside
-  const buttonRef = useRef<HTMLButtonElement>(null)
-  const collapseRef = useRef<HTMLDivElement>(null)
-  const onClickOrEnterInsideDropdown = (
-    event: KeyboardEvent<HTMLDivElement> | ReactMouseEvent<HTMLDivElement>,
-  ) => {
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const collapseRef = useRef<HTMLDivElement>(null);
+  const onClickOrEnterInsideDropdown = (event: KeyboardEvent<HTMLDivElement> | ReactMouseEvent<HTMLDivElement>) => {
     // Close the dropdown if a link has been clicked
     if (event.target instanceof HTMLAnchorElement) {
-      buttonRef.current?.click()
+      buttonRef.current?.click();
     }
-  }
+  };
   const onClickOutsideDropdown = (event: MouseEvent) => {
     // Let the event propagate if clicked on the control button
     if (event.target === buttonRef?.current) {
-      return
+      return;
     }
 
     // Close the dropdown if open on outside click
     if (buttonRef.current?.getAttribute('aria-expanded') !== 'true') {
-      return
+      return;
     }
 
-    buttonRef.current.click()
-  }
-  useOnClickOutside(collapseRef, onClickOutsideDropdown)
+    buttonRef.current.click();
+  };
+  useOnClickOutside(collapseRef, onClickOutsideDropdown);
 
   const menuContent = (
     <ul className="fr-menu__list">
@@ -56,24 +52,18 @@ export const HeaderUserMenu = ({
             borderBottom: 'var(--slim-grey-border)',
           }}
         >
-          <span
-            className="fr-icon-user-setting-line fr-icon--sm fr-mr-1w"
-            style={{ color: 'var(--blue-france-sun-113-625)' }}
-          />
+          <span className="fr-icon-user-setting-line fr-icon--sm fr-mr-1w" style={{ color: 'var(--blue-france-sun-113-625)' }} />
           Voir mon profil
         </Link>
       </li>
       <li>
         <Link className="fr-nav__link" href="/deconnexion">
-          <span
-            className="fr-icon-logout-box-r-line fr-icon--sm fr-mr-1w"
-            style={{ color: 'var(--blue-france-sun-113-625)' }}
-          />
+          <span className="fr-icon-logout-box-r-line fr-icon--sm fr-mr-1w" style={{ color: 'var(--blue-france-sun-113-625)' }} />
           Se déconnecter
         </Link>
       </li>
     </ul>
-  )
+  );
 
   /**
    * In mobile, the user menu is displayed in the menu modal.
@@ -101,12 +91,9 @@ export const HeaderUserMenu = ({
       >
         {menuContent}
       </div>
-      <div
-        role="navigation"
-        className={classNames('fr-hidden-lg', 'fr-px-1w', styles.mobile)}
-      >
+      <div role="navigation" className={classNames('fr-hidden-lg', 'fr-px-1w', styles.mobile)}>
         {menuContent}
       </div>
     </>
-  )
+  );
 }

@@ -1,0 +1,29 @@
+{
+  "scripts": {
+    "first-deploy": "cd apps/web && npx prisma db seed"
+  },
+  "env": {
+    "APP_IS_EPHEMERAL": {
+      "description": "All the variables in this file adapt the environment to review apps (temporary environments)",
+      "value": "true"
+    },
+    "NEXTAUTH_SECRET": {
+      "value": "seed-to-forge-jwt-tokens-not-sensitive-in-temporary-environments"
+    },
+    "NEXT_PUBLIC_BASE_URL": {
+      "generator": "url"
+    },
+    "NEXT_PUBLIC_SENTRY_DSN": {
+      "value": ""
+    },
+    "SENTRY_URL": {
+      "value": ""
+    },
+    "NEXT_PUBLIC_MATOMO_HOST": {
+      "value": ""
+    },
+    "NEXT_PUBLIC_MATOMO_SITE_ID": {
+      "value": ""
+    }
+  }
+}

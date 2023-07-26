@@ -1,6 +1,3 @@
-.next/
-
-public/dsfr
-build-storybook.log
-cypress/videos
-cypress/screenshots
+/.next/
+/public/dsfr/
+/src/**/*.docx
