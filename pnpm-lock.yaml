@@ -112,6 +112,9 @@ importers:
       '@emotion/server':
         specifier: ^11.11.0
         version: 11.11.0
+      '@gouvfr/dsfr':
+        specifier: ^1.10.0
+        version: 1.10.0
       '@hookform/resolvers':
         specifier: ^3.1.0
         version: 3.1.0(react-hook-form@7.44.2)
@@ -646,6 +649,9 @@ importers:
       '@codegouvfr/react-dsfr':
         specifier: 0.73.1
         version: 0.73.1
+      '@gouvfr/dsfr':
+        specifier: ^1.10.0
+        version: 1.10.0
       '@hookform/resolvers':
         specifier: ^3.1.0
         version: 3.1.0(react-hook-form@7.44.2)
@@ -2758,6 +2764,11 @@ packages:
 
   /@fal-works/esbuild-plugin-global-externals@2.1.2:
     resolution: {integrity: sha512-cEee/Z+I12mZcFJshKcCqC8tuX5hG3s+d+9nZ3LabqKF1vKdF41B92pJVCBggjAGORAeOzyyDDKrZwIkLffeOQ==}
+    dev: false
+
+  /@gouvfr/dsfr@1.10.0:
+    resolution: {integrity: sha512-fHqGCvc8jGtkX2AKRCWi9o3jf/kirP/BeeZ2FBVGwS9Oxd8KsG22xk/6Tls8nA+qPaI+2ZkZQxATBV8KlhwNhQ==}
+    engines: {node: '>=18.16.1'}
     dev: false
 
   /@hapi/hoek@9.3.0:
