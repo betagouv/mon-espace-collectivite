@@ -23,18 +23,12 @@ function PublicFooter() {
       }}
       bottomItems={[
         {
-          text: 'Politique de confidentialité',
-          linkProps: { href: '/confidentialite' },
+          text: 'Mentions légales',
+          linkProps: { href: '/mentions-legales' },
         },
         {
-          text: 'Code source',
-          linkProps: {
-            href: {
-              href: 'https://github.com/betagouv/mon-espace-collectivite',
-            },
-            target: '_blank',
-            rel: 'noreferrer',
-          },
+          text: 'Données personnelles et cookies',
+          linkProps: { href: '/donnees-personnelles' },
         },
         headerFooterDisplayItem,
       ]}
