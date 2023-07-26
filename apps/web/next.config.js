@@ -66,6 +66,11 @@ const nextConfig = {
       type: 'asset/resource',
     });
 
+    config.module.rules.push({
+      test: /\.(txt|html)$/i,
+      use: 'raw-loader',
+    });
+
     // Mjml cannot be bundled as it uses dynamic requires
     // Only put library required on the server in externals as they would not be available in client
     config.externals.push('mjml', 'mjml-core');

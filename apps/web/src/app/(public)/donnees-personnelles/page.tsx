@@ -1,6 +1,6 @@
 import { fr } from '@codegouvfr/react-dsfr';
 
-import statementContent from '@app/web/app/(public)/mentions-legales/content.transformed.html';
+import statementContent from '@app/web/app/(public)/donnees-personnelles/content.transformed.html';
 
 function createMarkup() {
   return { __html: statementContent };
@@ -8,7 +8,7 @@ function createMarkup() {
 
 export const revalidate = 0;
 
-export function LegalNoticePage() {
+export function PersonalDataPage() {
   return (
     <div className={fr.cx('fr-container', 'fr-py-6w')}>
       <div className={fr.cx('fr-grid-row', 'fr-grid-row--center')}>
@@ -20,4 +20,4 @@ export function LegalNoticePage() {
   );
 }
 
-export default LegalNoticePage;
+export default PersonalDataPage;
