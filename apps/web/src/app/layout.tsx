@@ -2,6 +2,7 @@
 // eslint-disable-next-line import/order
 // setup.ts must be the first import for webpack css chunks to work properly
 // eslint-disable-next-line import/order
+import { Display } from '@codegouvfr/react-dsfr/Display/Display';
 import { setLink } from '@codegouvfr/react-dsfr/link';
 import { DsfrHead } from '@codegouvfr/react-dsfr/next-appdir/DsfrHead';
 import { DsfrProvider } from '@codegouvfr/react-dsfr/next-appdir/DsfrProvider';
@@ -67,7 +68,10 @@ export function RootLayout({ children }: { children: JSX.Element }) {
         />
       </head>
       <body>
-        <DsfrProvider lang={lang}>{children}</DsfrProvider>
+        <DsfrProvider lang={lang}>
+          {children}
+          <Display />
+        </DsfrProvider>
         <Matomo nonce={nonce} />
       </body>
     </html>
