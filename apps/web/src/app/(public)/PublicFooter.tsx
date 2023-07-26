@@ -1,3 +1,4 @@
+import { headerFooterDisplayItem } from '@codegouvfr/react-dsfr/Display';
 import Footer from '@codegouvfr/react-dsfr/Footer';
 
 function PublicFooter() {
@@ -35,6 +36,7 @@ function PublicFooter() {
             rel: 'noreferrer',
           },
         },
+        headerFooterDisplayItem,
       ]}
     />
   );
