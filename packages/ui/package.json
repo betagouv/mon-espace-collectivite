@@ -9,11 +9,10 @@
     "tsc": "tsc --noEmit --incremental false",
     "postinstall": "pnpm --silent setup:dsfr",
     "with-env": "dotenv -e ../../.env --",
-    "setup:dsfr": "FROM=\"./node_modules/@gouvfr/dsfr/dist\"; TO=\"public/dsfr\"; if [ ! -d \"$FROM\" ]; then FROM=\"../../node_modules/@gouvfr/dsfr/dist\"; fi; mkdir -p $TO/utility && cp $FROM/dsfr.module.min.js $TO/ && cp $FROM/dsfr.module.min.js.map $TO/ && cp $FROM/dsfr.nomodule.min.js $TO/ && cp $FROM/dsfr.nomodule.min.js.map $TO/ && cp $FROM/dsfr.min.css $TO/ && cp $FROM/utility/utility.min.css $TO/utility/ && cp -R $FROM/icons $TO/ && cp -R $FROM/artwork $TO/ && cp -R $FROM/fonts $TO/"
+    "setup:dsfr": "FROM=\"./node_modules/@codegouvfr/react-dsfr/dsfr\"; TO=\"public/dsfr\"; if [ ! -d \"$FROM\" ]; then FROM=\"../../node_modules/@codegouvfr/react-dsfr/dsfr\"; fi; mkdir -p $TO/utility && cp $FROM/dsfr.module.min.js $TO/ && cp $FROM/dsfr.module.min.js.map $TO/ && cp $FROM/dsfr.nomodule.min.js $TO/ && cp $FROM/dsfr.nomodule.min.js.map $TO/ && cp $FROM/dsfr.min.css $TO/ && cp $FROM/utility/utility.min.css $TO/utility/ && cp -R $FROM/icons $TO/ && cp -R $FROM/artwork $TO/ && cp -R $FROM/fonts $TO/"
   },
   "dependencies": {
     "@codegouvfr/react-dsfr": "0.73.1",
-    "@gouvfr/dsfr": "^1.9.3",
     "@hookform/resolvers": "^3.1.0",
     "classnames": "^2.3.2",
     "dotenv": "^16.0.3",

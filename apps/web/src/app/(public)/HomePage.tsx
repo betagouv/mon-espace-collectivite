@@ -1,10 +1,10 @@
 import { fr } from '@codegouvfr/react-dsfr';
 import { Button } from '@codegouvfr/react-dsfr/Button';
+import applicationWrongType from '@codegouvfr/react-dsfr/dsfr/artwork/pictograms/digital/application.svg';
+import locationFranceWrongType from '@codegouvfr/react-dsfr/dsfr/artwork/pictograms/map/location-france.svg';
+import mapWrongType from '@codegouvfr/react-dsfr/dsfr/artwork/pictograms/map/map.svg';
+import informationWrongType from '@codegouvfr/react-dsfr/dsfr/artwork/pictograms/system/information.svg';
 import { useColors } from '@codegouvfr/react-dsfr/useColors';
-import applicationWrongType from '@gouvfr/dsfr/dist/artwork/pictograms/digital/application.svg';
-import locationFranceWrongType from '@gouvfr/dsfr/dist/artwork/pictograms/map/location-france.svg';
-import mapWrongType from '@gouvfr/dsfr/dist/artwork/pictograms/map/map.svg';
-import informationWrongType from '@gouvfr/dsfr/dist/artwork/pictograms/system/information.svg';
 import type { StaticImageData } from 'next/image';
 
 import project1Image from '@app/web/assets/projects/1.jpg';
