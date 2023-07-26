@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "first-deploy": "cd apps/web && pnpx prisma db seed"
+    "first-deploy": "cd apps/web && npx prisma db seed"
   },
   "env": {
     "APP_IS_EPHEMERAL": {
